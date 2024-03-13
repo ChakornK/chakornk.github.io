@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.poppins {
+	font-family: "Poppins", sans-serif;
+}
+.inter {
+	font-family: "Inter", sans-serif;
+}
+
+*::selection {
+	background-color: #eee;
+	color: #222;
+}
+*:focus-visible {
+	outline: none;
+	box-shadow: 0 0 7px 0px #ffffffaa;
+}
