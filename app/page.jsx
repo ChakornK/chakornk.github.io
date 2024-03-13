@@ -45,7 +45,7 @@ export default function Home() {
 						title: "JH Eagles app",
 						description:
 							"Horrible React Native app I made for a school project that I totally did not do the night before it was due.",
-						image: "/img/JHEagles.png",
+						image: "/img/JhEagles.png",
 					},
 				].map((e) => (
 					<Link
