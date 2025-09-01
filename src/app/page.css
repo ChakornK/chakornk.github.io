@@ -1,0 +1,9 @@
+@reference "tailwindcss";
+
+main {
+  @apply bg-black w-screen h-screen overflow-auto overscroll-none text-stone-200;
+}
+
+.page {
+  @apply top-0 left-0 sticky flex flex-col justify-center items-center gap-4 bg-gradient-to-b from-transparent via-black to-black w-screen h-screen;
+}
