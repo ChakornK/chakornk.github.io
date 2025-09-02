@@ -4,6 +4,7 @@ import "lenis/dist/lenis.css";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useEffect, useRef, useState } from "preact/hooks";
 import "./page.css";
+import { GithubIcon } from "../components/icons";
 
 const pgNums = 2;
 export default () => {
@@ -14,7 +15,7 @@ export default () => {
   });
 
   useEffect(() => {
-    if (scrollYProgress.get() > 0) setCanScroll(true);
+    if (scrollYProgress.get() > 0.5 / pgNums) setCanScroll(true);
     setTimeout(() => setCanScroll(true), 2140);
 
     new Lenis({
@@ -28,13 +29,13 @@ export default () => {
       style={{ overflowY: canScroll ? "auto" : "hidden" }}
       ref={mainRef}
     >
-      <Cover scrollYProgress={scrollYProgress} />
+      <Cover scrollYProgress={scrollYProgress} instantLoad={canScroll} />
       <Works />
     </motion.main>
   );
 };
 
-const Cover = ({ scrollYProgress }) => {
+const Cover = ({ scrollYProgress, instantLoad }) => {
   const scale = useTransform(
     scrollYProgress,
     [0.5 / pgNums, 1 / pgNums],
@@ -47,11 +48,11 @@ const Cover = ({ scrollYProgress }) => {
   );
 
   return (
-    <div className="page">
+    <motion.div className="page" style={{ opacity }}>
       <motion.svg
         viewBox="-16 -16 493 104.4"
         className="-m-4 h-25"
-        style={{ scale, opacity }}
+        style={{ scale }}
       >
         {[
           "M62.6,22.5c-1.4-9.3-6.5-16.1-14.9-19.8C38.5-1.5,23.5-.8,15.3,4.7,4.4,11.4,0,23.3,0,36.4c0,13,4.2,24.8,15.1,31.5,5,3,11.2,4.5,18.5,4.5,14.2.3,27.9-7.7,30.1-22.4h-12.7c-3,11.8-20.8,13.5-29.2,7.3-11.9-8.4-12.2-33.6-.3-42.2,5.3-4.5,17.6-4.7,23.3-.6,2.9,1.9,4.8,4.6,5.7,8h12.1Z",
@@ -69,26 +70,51 @@ const Cover = ({ scrollYProgress }) => {
             stroke="currentColor"
             strokeWidth="1"
             fill="currentColor"
-            animate={{
-              pathLength: [0, 0.5, 1, null, null],
-              fillOpacity: [0, null, null, 1, null],
-              filter: [
-                "drop-shadow(0 0 0px currentColor)",
-                null,
-                null,
-                "drop-shadow(0 0 8px currentColor)",
-                "drop-shadow(0 0 0px currentColor)",
-              ],
-            }}
-            transition={{
-              duration: 1.5,
-              delay: i * 0.08,
-              ease: "easeInOut",
-            }}
+            animate={
+              instantLoad
+                ? {
+                    pathLength: 1,
+                    fillOpacity: 1,
+                  }
+                : {
+                    pathLength: [0, 0.5, 1, null, null],
+                    fillOpacity: [0, null, null, 1, null],
+                    filter: [
+                      "drop-shadow(0 0 0px currentColor)",
+                      null,
+                      null,
+                      "drop-shadow(0 0 8px currentColor)",
+                      "drop-shadow(0 0 0px currentColor)",
+                    ],
+                  }
+            }
+            transition={
+              instantLoad
+                ? { duration: 0 }
+                : {
+                    duration: 1.5,
+                    delay: i * 0.08,
+                    ease: "easeInOut",
+                  }
+            }
           />
         ))}
       </motion.svg>
-    </div>
+      <motion.div
+        className="flex items-center gap-2 mt-4 text-neutral-400"
+        style={{ scale }}
+        animate={instantLoad ? { opacity: 1 } : { opacity: [0, 1] }}
+        transition={
+          instantLoad
+            ? { duration: 0 }
+            : { delay: 2, duration: 1, ease: "easeOut" }
+        }
+      >
+        <a href="https://github.com/ChakornK" target="_blank" rel="noreferrer">
+          <GithubIcon width={32} height={32} />
+        </a>
+      </motion.div>
+    </motion.div>
   );
 };
 
