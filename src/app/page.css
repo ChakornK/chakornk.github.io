@@ -1,7 +1,8 @@
 @reference "tailwindcss";
 
 main {
-  @apply bg-black w-screen h-screen overflow-auto overscroll-none text-stone-200;
+  @apply bg-black w-screen h-screen overflow-x-hidden overscroll-none text-neutral-200;
+  scrollbar-color: #222 #111;
 }
 
 .page {
