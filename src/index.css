@@ -11,4 +11,5 @@ body {
   @apply bg-black overflow-hidden;
   font-family: "Onest", sans-serif;
   font-optical-sizing: auto;
+  visibility: visible !important;
 }

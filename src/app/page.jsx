@@ -48,10 +48,10 @@ const Cover = ({ scrollYProgress, instantLoad }) => {
   );
 
   return (
-    <motion.div className="page" style={{ opacity }}>
+    <motion.div className="justify-center page" style={{ opacity }}>
       <motion.svg
         viewBox="-16 -16 493 104.4"
-        className="-m-4 h-25"
+        className="opacity-0 -m-4 h-25"
         style={{ scale }}
       >
         {[
@@ -73,10 +73,12 @@ const Cover = ({ scrollYProgress, instantLoad }) => {
             animate={
               instantLoad
                 ? {
+                    opacity: 1,
                     pathLength: 1,
                     fillOpacity: 1,
                   }
                 : {
+                    opacity: [1],
                     pathLength: [0, 0.5, 1, null, null],
                     fillOpacity: [0, null, null, 1, null],
                     filter: [
@@ -101,7 +103,7 @@ const Cover = ({ scrollYProgress, instantLoad }) => {
         ))}
       </motion.svg>
       <motion.div
-        className="flex items-center gap-2 mt-4 text-neutral-400"
+        className="flex items-center gap-2 opacity-0 mt-4 text-neutral-400"
         style={{ scale }}
         animate={instantLoad ? { opacity: 1 } : { opacity: [0, 1] }}
         transition={
