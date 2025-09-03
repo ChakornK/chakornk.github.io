@@ -8,15 +8,14 @@ import { GithubIcon } from "../components/icons";
 
 const pgNums = 2;
 export default () => {
-  const [canScroll, setCanScroll] = useState(false);
+  const [notTop, setNotTop] = useState(false);
   const mainRef = useRef(null);
   const { scrollYProgress } = useScroll({
     container: mainRef,
   });
 
   useEffect(() => {
-    if (scrollYProgress.get() > 0.5 / pgNums) setCanScroll(true);
-    setTimeout(() => setCanScroll(true), 2140);
+    if (scrollYProgress.get() > 0.5 / pgNums) setNotTop(true);
 
     new Lenis({
       autoRaf: true,
@@ -25,11 +24,8 @@ export default () => {
   }, []);
 
   return (
-    <motion.main
-      style={{ overflowY: canScroll ? "auto" : "hidden" }}
-      ref={mainRef}
-    >
-      <Cover scrollYProgress={scrollYProgress} instantLoad={canScroll} />
+    <motion.main ref={mainRef}>
+      <Cover scrollYProgress={scrollYProgress} instantLoad={notTop} />
       <Works />
     </motion.main>
   );
