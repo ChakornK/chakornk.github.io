@@ -1,12 +1,18 @@
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
 
-import { motion, useScroll, useTransform } from "motion/react";
+import {
+  AnimatePresence,
+  motion,
+  useMotionValueEvent,
+  useScroll,
+  useTransform,
+} from "motion/react";
 import { useEffect, useRef, useState } from "preact/hooks";
 import "./page.css";
 import { GithubIcon } from "../components/icons";
 
-const pgNums = 2;
+const pgNums = 4; // length of page in vh
 export default () => {
   const [notTop, setNotTop] = useState(false);
   const mainRef = useRef(null);
@@ -26,7 +32,7 @@ export default () => {
   return (
     <motion.main ref={mainRef}>
       <Cover scrollYProgress={scrollYProgress} instantLoad={notTop} />
-      <Works />
+      <Works scrollYProgress={scrollYProgress} />
     </motion.main>
   );
 };
@@ -49,6 +55,7 @@ const Cover = ({ scrollYProgress, instantLoad }) => {
         viewBox="-16 -16 493 104.4"
         className="opacity-0 -m-4 h-25"
         style={{ scale }}
+        animate={{ opacity: 1 }}
       >
         {[
           "M62.6 22.5c-1.4-9.3-6.5-16.1-14.9-19.8-9.2-4.2-24.2-3.5-32.4 2C4.4 11.4 0 23.3 0 36.4c0 13 4.2 24.8 15.1 31.5 5 3 11.2 4.5 18.5 4.5 14.2.3 27.9-7.7 30.1-22.4H51c-3 11.8-20.8 13.5-29.2 7.3-11.9-8.4-12.2-33.6-.3-42.2 5.3-4.5 17.6-4.7 23.3-.6 2.9 1.9 4.8 4.6 5.7 8h12.1Z",
@@ -116,10 +123,133 @@ const Cover = ({ scrollYProgress, instantLoad }) => {
   );
 };
 
-const Works = () => {
+const projects = [
+  {
+    title: "Project One",
+    desc: "Description for project one.",
+    img: "/path/to/image1.jpg",
+    link: "#",
+  },
+  {
+    title: "Project Two",
+    desc: "Description for project two.",
+    img: "/path/to/image2.jpg",
+    link: "#",
+  },
+  {
+    title: "Project Three",
+    desc: "Description for project three.",
+    img: "/path/to/image3.jpg",
+    link: "#",
+  },
+  {
+    title: "Project Four",
+    desc: "Description for project one.",
+    img: "/path/to/image1.jpg",
+    link: "#",
+  },
+  {
+    title: "Project Five",
+    desc: "Description for project two.",
+    img: "/path/to/image2.jpg",
+    link: "#",
+  },
+  {
+    title: "Project Six",
+    desc: "Description for project three.",
+    img: "/path/to/image3.jpg",
+    link: "#",
+  },
+];
+const Works = ({ scrollYProgress }) => {
+  const opacity = useTransform(
+    scrollYProgress,
+    [0.9 / pgNums, 0.95 / pgNums, 3.95 / pgNums, 4 / pgNums],
+    [0, 1, 1, 0]
+  );
+  const cardIndexMotion = useTransform(
+    scrollYProgress,
+    Array(projects.length)
+      .fill(0)
+      .map((_, i) => ((2.6 / projects.length) * i + 1.35) / pgNums),
+    Array(projects.length)
+      .fill(0)
+      .map((_, i) => i),
+    {
+      ease: Math.round,
+    }
+  );
+  const [cardIndex, setCardIndex] = useState(0);
+  useMotionValueEvent(cardIndexMotion, "change", (v) => {
+    setCardIndex(cardIndexMotion.get());
+  });
+
   return (
-    <div className="page">
-      <h2 className="font-semibold text-6xl">Works</h2>
-    </div>
+    <motion.div className="page" style={{ opacity, height: "300vh" }}>
+      <div className="top-0 sticky flex flex-col items-center w-screen h-screen">
+        <h2 className="mt-24 -mb-8 font-semibold text-6xl">Works</h2>
+
+        <div className="relative bg-white grow">
+          <AnimatePresence>
+            {projects.map(
+              (p, i) =>
+                cardIndex >= i && <ProjectCard key={p.title} index={i} {...p} />
+            )}
+          </AnimatePresence>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+const variationFreq = { r: 2.3, x: 2, y: 1.8 };
+/** @type {import("motion").Variants} */
+const projectCardAnimation = {
+  hidden: (i) => {
+    const r = Math.sin(i * variationFreq.r);
+    const x = Math.sin(i * variationFreq.x);
+    const y = Math.sin(i * variationFreq.y);
+    return {
+      opacity: 0,
+      bottom: "-100%",
+      translate: "-50% 0%",
+      transform: `translate(${x * 20}px, ${y * 20}px) rotate(${r * 20}deg)`,
+    };
+  },
+  visible: (i) => {
+    const r = Math.sin(i * variationFreq.r);
+    const x = Math.sin(i * variationFreq.x);
+    const y = Math.sin(i * variationFreq.y);
+    return {
+      opacity: 1,
+      bottom: "50%",
+      translate: "-50% 50%",
+      transform: `translate(${x * 10}px, ${y * 10}px) rotate(${r * 2}deg)`,
+    };
+  },
+  exit: (i) => {
+    const x = Math.sin(i * variationFreq.x);
+    const y = Math.sin(i * variationFreq.y);
+    return {
+      opacity: 0,
+      bottom: "50%",
+      transform: `translate(${x * 300}px, ${y * 10}px) rotate(${x * 10}deg)`,
+    };
+  },
+};
+const ProjectCard = ({ title, desc, img, link, index }) => {
+  return (
+    <motion.div
+      className="card"
+      variants={projectCardAnimation}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      custom={index}
+      transition={{ duration: 0.5, ease: [0, 1, 0.3, 1] }}
+    >
+      <p className="font-medium text-xl">{title}</p>
+      <p className="text-neutral-400 text-sm">{desc}</p>
+    </motion.div>
   );
 };
