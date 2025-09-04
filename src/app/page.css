@@ -1,7 +1,7 @@
 @reference "tailwindcss";
 
 main {
-  @apply bg-black w-screen h-screen overflow-x-hidden overscroll-none text-neutral-200;
+  @apply bg-black w-screen h-screen overflow-x-hidden overscroll-none text-neutral-200 select-none;
   scrollbar-color: #222 #111;
 }
 

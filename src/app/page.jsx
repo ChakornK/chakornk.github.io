@@ -21,7 +21,7 @@ export default () => {
   });
 
   useEffect(() => {
-    if (scrollYProgress.get() > 0.5 / pgNums) setNotTop(true);
+    if (scrollYProgress.get() > 0.2 / pgNums) setNotTop(true);
 
     new Lenis({
       autoRaf: true,
@@ -40,12 +40,12 @@ export default () => {
 const Cover = ({ scrollYProgress, instantLoad }) => {
   const scale = useTransform(
     scrollYProgress,
-    [0.5 / pgNums, 1 / pgNums],
+    [0.2 / pgNums, 1 / pgNums],
     [1, 0.8]
   );
   const opacity = useTransform(
     scrollYProgress,
-    [0.5 / pgNums, 1 / pgNums],
+    [0.4 / pgNums, 1 / pgNums],
     [1, 0]
   );
 
@@ -148,18 +148,6 @@ const projects = [
     img: "/path/to/image1.jpg",
     link: "#",
   },
-  {
-    title: "Project Five",
-    desc: "Description for project two.",
-    img: "/path/to/image2.jpg",
-    link: "#",
-  },
-  {
-    title: "Project Six",
-    desc: "Description for project three.",
-    img: "/path/to/image3.jpg",
-    link: "#",
-  },
 ];
 const Works = ({ scrollYProgress }) => {
   const opacity = useTransform(
@@ -171,7 +159,7 @@ const Works = ({ scrollYProgress }) => {
     scrollYProgress,
     Array(projects.length)
       .fill(0)
-      .map((_, i) => ((2.6 / projects.length) * i + 1.35) / pgNums),
+      .map((_, i) => ((2.5 / projects.length) * i + 1.45) / pgNums),
     Array(projects.length)
       .fill(0)
       .map((_, i) => i),
@@ -181,7 +169,7 @@ const Works = ({ scrollYProgress }) => {
   );
   const [cardIndex, setCardIndex] = useState(0);
   useMotionValueEvent(cardIndexMotion, "change", (v) => {
-    setCardIndex(cardIndexMotion.get());
+    setCardIndex(v);
   });
 
   return (
@@ -225,6 +213,7 @@ const projectCardAnimation = {
       bottom: "50%",
       translate: "-50% 50%",
       transform: `translate(${x * 10}px, ${y * 10}px) rotate(${r * 2}deg)`,
+      transition: { duration: 0.5, ease: [0, 1, 0.3, 1] },
     };
   },
   exit: (i) => {
@@ -234,6 +223,7 @@ const projectCardAnimation = {
       opacity: 0,
       bottom: "50%",
       transform: `translate(${x * 300}px, ${y * 10}px) rotate(${x * 10}deg)`,
+      transition: { duration: 0.3, ease: "easeOut" },
     };
   },
 };
@@ -246,7 +236,6 @@ const ProjectCard = ({ title, desc, img, link, index }) => {
       animate="visible"
       exit="exit"
       custom={index}
-      transition={{ duration: 0.5, ease: [0, 1, 0.3, 1] }}
     >
       <p className="font-medium text-xl">{title}</p>
       <p className="text-neutral-400 text-sm">{desc}</p>
