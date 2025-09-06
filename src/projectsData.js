@@ -3,7 +3,7 @@ export const projects = [
     title: "JH Eagles",
     brief:
       "A remake of Johnston Height's EagleTime app that follows Material Design 3, made with Flutter",
-    img: "/path/to/image1.jpg",
+    cover: "jheaglescover",
     links: {
       github: "https://github.com/chakornk/jh-eagles",
     },
@@ -11,7 +11,7 @@ export const projects = [
   {
     title: "Drawdle",
     brief: "A website to teach drawing",
-    img: "/path/to/image2.jpg",
+    cover: "drawdlecover",
     links: {
       github: "https://github.com/drawdle/drawdle",
     },
@@ -20,7 +20,7 @@ export const projects = [
     title: "SVG-based liquid glass",
     brief:
       "Simple Codepen project that shows how the liquid glass effect can be created using SVG filters",
-    img: "/path/to/image1.jpg",
+    cover: "svglgcover",
     links: {
       codepen: "https://codepen.io/chakornk/pen/ZYbRrgZ",
     },
@@ -28,7 +28,7 @@ export const projects = [
   {
     title: "ClubManager",
     brief: "Website for managing school clubs",
-    img: "/path/to/image3.jpg",
+    cover: "clubmanagercover",
     links: {},
   },
 ];

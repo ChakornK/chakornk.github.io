@@ -13,8 +13,10 @@ main {
 .card {
   @apply bottom-1/2 left-1/2 absolute bg-neutral-950 p-8 gap-2 flex flex-col border-2 border-neutral-900 rounded-xl;
   width: 36rem;
-  height: 32rem;
   max-width: 80vw;
   max-height: 80vh;
   filter: drop-shadow(0 0 1rem #000a);
+}
+.card-img {
+  @apply bg-white/2 mt-4 rounded-xl aspect-video;
 }

@@ -202,7 +202,7 @@ const projectCardAnimation = {
     };
   },
 };
-const ProjectCard = ({ title, brief, img, links, index }) => {
+const ProjectCard = ({ title, brief, cover, links, index }) => {
   return (
     <motion.div
       className="card"
@@ -214,6 +214,12 @@ const ProjectCard = ({ title, brief, img, links, index }) => {
     >
       <p className="font-medium text-xl">{title}</p>
       <p className="text-neutral-400 text-sm">{brief}</p>
+      <img
+        src={`img/${cover}.webp`}
+        alt={title}
+        draggable={false}
+        className="card-img"
+      />
     </motion.div>
   );
 };
