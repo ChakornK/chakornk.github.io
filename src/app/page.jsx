@@ -11,6 +11,7 @@ import {
 import { useEffect, useRef, useState } from "preact/hooks";
 import "./page.css";
 import { GithubIcon } from "../components/icons";
+import { projects } from "../projectsData";
 
 const pgNums = 4; // length of page in vh
 export default () => {
@@ -53,7 +54,7 @@ const Cover = ({ scrollYProgress, instantLoad }) => {
     <motion.div className="justify-center page" style={{ opacity }}>
       <motion.svg
         viewBox="-16 -16 493 104.4"
-        className="opacity-0 -m-4 h-25"
+        className="opacity-0 -m-4 px-4 max-w-screen h-25"
         style={{ scale }}
         animate={{ opacity: 1 }}
       >
@@ -123,32 +124,6 @@ const Cover = ({ scrollYProgress, instantLoad }) => {
   );
 };
 
-const projects = [
-  {
-    title: "Project One",
-    desc: "Description for project one.",
-    img: "/path/to/image1.jpg",
-    link: "#",
-  },
-  {
-    title: "Project Two",
-    desc: "Description for project two.",
-    img: "/path/to/image2.jpg",
-    link: "#",
-  },
-  {
-    title: "Project Three",
-    desc: "Description for project three.",
-    img: "/path/to/image3.jpg",
-    link: "#",
-  },
-  {
-    title: "Project Four",
-    desc: "Description for project one.",
-    img: "/path/to/image1.jpg",
-    link: "#",
-  },
-];
 const Works = ({ scrollYProgress }) => {
   const opacity = useTransform(
     scrollYProgress,
@@ -175,7 +150,7 @@ const Works = ({ scrollYProgress }) => {
   return (
     <motion.div className="page" style={{ opacity, height: "300vh" }}>
       <div className="top-0 sticky flex flex-col items-center w-screen h-screen">
-        <h2 className="mt-24 -mb-8 font-semibold text-6xl">Works</h2>
+        <h2 className="mt-16 -mb-4 font-semibold text-6xl">Works</h2>
 
         <div className="relative bg-white grow">
           <AnimatePresence>
@@ -227,7 +202,7 @@ const projectCardAnimation = {
     };
   },
 };
-const ProjectCard = ({ title, desc, img, link, index }) => {
+const ProjectCard = ({ title, brief, img, links, index }) => {
   return (
     <motion.div
       className="card"
@@ -238,7 +213,7 @@ const ProjectCard = ({ title, desc, img, link, index }) => {
       custom={index}
     >
       <p className="font-medium text-xl">{title}</p>
-      <p className="text-neutral-400 text-sm">{desc}</p>
+      <p className="text-neutral-400 text-sm">{brief}</p>
     </motion.div>
   );
 };

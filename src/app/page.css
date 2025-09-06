@@ -2,7 +2,8 @@
 
 main {
   @apply bg-black w-screen h-screen overflow-x-hidden overscroll-none text-neutral-200 select-none;
-  scrollbar-color: #222 #111;
+  scrollbar-color: #111 #000;
+  scrollbar-width: thin;
 }
 
 .page {
@@ -10,9 +11,9 @@ main {
 }
 
 .card {
-  @apply bottom-1/2 left-1/2 absolute bg-neutral-950 p-4 border-2 border-neutral-900 rounded-xl;
-  width: 40rem;
-  height: 36rem;
+  @apply bottom-1/2 left-1/2 absolute bg-neutral-950 p-8 gap-2 flex flex-col border-2 border-neutral-900 rounded-xl;
+  width: 36rem;
+  height: 32rem;
   max-width: 80vw;
   max-height: 80vh;
   filter: drop-shadow(0 0 1rem #000a);
