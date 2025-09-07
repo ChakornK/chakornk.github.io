@@ -28,6 +28,7 @@ import {
   SiGithub,
   SiInstagram,
 } from "@icons-pack/react-simple-icons";
+import { CdnImg } from "@/components/cdnimg";
 
 const StateProvider = createContext(null);
 
@@ -381,7 +382,7 @@ const ProjectCard = ({
           cursor: isTop ? "pointer" : "default",
         }}
       >
-        <img
+        <CdnImg
           src={`img/${id}cover.webp`}
           alt={title}
           draggable={false}

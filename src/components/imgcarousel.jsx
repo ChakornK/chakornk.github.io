@@ -2,6 +2,7 @@ import { AnimatePresence, motion, wrap } from "motion/react";
 import { useState } from "preact/hooks";
 import "./imgcarousel.css";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { MotionCdnImg } from "./cdnimg";
 
 const bgVariants = {
   hidden: {
@@ -54,7 +55,7 @@ export const ImgCarousel = ({ images }) => {
       <AnimatePresence initial={false} custom={direction}>
         <div className="carousel-bg-container">
           <AnimatePresence>
-            <motion.img
+            <MotionCdnImg
               key={`bg-${images[imageIndex]}`}
               className="carousel-bg"
               src={images[imageIndex]}
@@ -68,7 +69,7 @@ export const ImgCarousel = ({ images }) => {
             />
           </AnimatePresence>
         </div>
-        <motion.img
+        <MotionCdnImg
           key={`${images[imageIndex]}-${Date.now()}`}
           className="carousel-img"
           src={images[imageIndex]}
