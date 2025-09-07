@@ -20,7 +20,7 @@ import {
 import "./page.css";
 import { projects } from "../projectsData";
 import { ImgCarousel } from "../components/imgcarousel";
-import { CheckCircle2, Globe, X } from "lucide-react";
+import { ArrowDown, CheckCircle2, Globe, X } from "lucide-react";
 import { createContext } from "preact";
 import {
   SiCodepen,
@@ -37,7 +37,7 @@ let lenis;
 export default () => {
   const [notTop, setNotTop] = useState(false);
   const mainRef = useRef(null);
-  const { scrollYProgress } = useScroll({
+  const { scrollYProgress, scrollY } = useScroll({
     container: mainRef,
   });
 
@@ -58,7 +58,7 @@ export default () => {
   )}vw`;
 
   return (
-    <StateProvider.Provider value={{ scrollYProgress }}>
+    <StateProvider.Provider value={{ scrollYProgress, scrollY }}>
       <motion.main ref={mainRef}>
         <Cover instantLoad={notTop} />
         <Works />
@@ -73,7 +73,7 @@ export default () => {
 };
 
 const Cover = ({ instantLoad }) => {
-  const { scrollYProgress } = useContext(StateProvider);
+  const { scrollYProgress, scrollY } = useContext(StateProvider);
   const scale = useTransform(
     scrollYProgress,
     [0.2 / pgNums, 1 / pgNums],
@@ -100,6 +100,8 @@ const Cover = ({ instantLoad }) => {
       setCanInteract(true);
     }
   }, []);
+
+  const scrollPromptOpacity = useTransform(scrollY, [0, 40, 60], [1, 1, 0]);
 
   return (
     <motion.div
@@ -173,6 +175,14 @@ const Cover = ({ instantLoad }) => {
         <a href="https://github.com/ChakornK" target="_blank" rel="noreferrer">
           <SiGithub size={32} />
         </a>
+      </motion.div>
+
+      <motion.div
+        style={{ opacity: scrollPromptOpacity }}
+        className="bottom-4 left-1/2 fixed flex flex-col items-center -translate-x-1/2 pointer-events-none"
+      >
+        <ArrowDown />
+        Scroll down
       </motion.div>
     </motion.div>
   );
