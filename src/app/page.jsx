@@ -11,11 +11,11 @@ import {
 } from "motion/react";
 import { useContext, useEffect, useRef, useState } from "preact/hooks";
 import "./page.css";
-import { GithubIcon } from "../components/icons";
 import { projects } from "../projectsData";
 import { ImgCarousel } from "../components/imgcarousel";
 import { X } from "lucide-react";
 import { createContext } from "preact";
+import { SiGithub } from "@icons-pack/react-simple-icons";
 
 const StateProvider = createContext(null);
 
@@ -138,7 +138,7 @@ const Cover = ({ instantLoad }) => {
         }
       >
         <a href="https://github.com/ChakornK" target="_blank" rel="noreferrer">
-          <GithubIcon width={32} height={32} />
+          <SiGithub size={32} />
         </a>
       </motion.div>
     </motion.div>

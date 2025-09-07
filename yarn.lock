@@ -470,6 +470,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@icons-pack/react-simple-icons@npm:^13.7.0":
+  version: 13.7.0
+  resolution: "@icons-pack/react-simple-icons@npm:13.7.0"
+  peerDependencies:
+    react: ^16.13 || ^17 || ^18 || ^19
+  checksum: 10c0/8a469a2f048451ad44229c4e923c7f0d9524540b1b199b09ad57892e04e5a5e8422b2d8444d3d04ab0f4dbe2b6642159d9aef84986b1fba22f08a2225d16efe0
+  languageName: node
+  linkType: hard
+
 "@isaacs/cliui@npm:^8.0.2":
   version: 8.0.2
   resolution: "@isaacs/cliui@npm:8.0.2"
@@ -1379,6 +1388,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "chakornk.github.io@workspace:."
   dependencies:
+    "@icons-pack/react-simple-icons": "npm:^13.7.0"
     "@preact/preset-vite": "npm:^2.10.2"
     "@tailwindcss/typography": "npm:^0.5.16"
     "@tailwindcss/vite": "npm:^4.1.12"
