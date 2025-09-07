@@ -28,7 +28,7 @@ import {
   SiGithub,
   SiInstagram,
 } from "@icons-pack/react-simple-icons";
-import { CdnImg } from "@/components/cdnimg";
+import { CdnImg } from "../components/cdnimg";
 
 const StateProvider = createContext(null);
 
