@@ -15,11 +15,16 @@ import { projects } from "../projectsData";
 import { ImgCarousel } from "../components/imgcarousel";
 import { Globe, X } from "lucide-react";
 import { createContext } from "preact";
-import { SiCodepen, SiGithub } from "@icons-pack/react-simple-icons";
+import {
+  SiCodepen,
+  SiDiscord,
+  SiGithub,
+  SiInstagram,
+} from "@icons-pack/react-simple-icons";
 
 const StateProvider = createContext(null);
 
-const pgNums = 4; // length of page in vh
+const pgNums = 4.5; // length of page in vh
 let lenis;
 export default () => {
   const [notTop, setNotTop] = useState(false);
@@ -49,6 +54,7 @@ export default () => {
       <motion.main ref={mainRef}>
         <Cover instantLoad={notTop} />
         <Works />
+        <Socials />
       </motion.main>
       <motion.div
         className="bottom-0 left-1/2 z-20 fixed bg-white h-0.5 -translate-x-1/2"
@@ -150,7 +156,7 @@ const Works = () => {
 
   const opacity = useTransform(
     scrollYProgress,
-    [0.9 / pgNums, 0.95 / pgNums, 3.95 / pgNums, 4 / pgNums],
+    [0.9 / pgNums, 0.95 / pgNums, 4 / pgNums, 4.1 / pgNums],
     [0, 1, 1, 0]
   );
   const cardIndexMotion = useTransform(
@@ -360,5 +366,81 @@ const LinkIcon = ({ name }) => {
       return <SiCodepen size={"1.25rem"} />;
     default:
       return <Globe size={"1.25rem"} />;
+  }
+};
+
+const socialLinks = {
+  Github: "https://github.com/chakornk",
+  Instagram: "https://instagram.com/chakorn.07",
+  Discord: "chakorn.7",
+};
+const Socials = () => {
+  const { scrollYProgress } = useContext(StateProvider);
+
+  const opacity = useTransform(
+    scrollYProgress,
+    [4 / pgNums, 4.1 / pgNums],
+    [0, 1]
+  );
+
+  return (
+    <motion.div className="page" style={{ opacity, height: "50vh" }}>
+      <h2 className="font-semibold text-6xl">Socials</h2>
+      <motion.div
+        className="flex items-center gap-4"
+        variants={{
+          initial: {
+            opacity: 0,
+          },
+          animate: {
+            opacity: 1,
+            transition: {
+              delayChildren: stagger(0.2, { startDelay: 0.2, from: "first" }),
+            },
+          },
+        }}
+        initial="initial"
+        whileInView="animate"
+      >
+        {Object.entries(socialLinks).map(([name, url]) => (
+          <motion.a
+            key={url}
+            className="cursor-pointer"
+            href={name !== "Discord" && url}
+            onClick={
+              name === "Discord"
+                ? (e) => {
+                    const c = new Clipboard();
+                    c.writeText(url);
+                  }
+                : null
+            }
+            target="_blank"
+            variants={{
+              initial: {
+                opacity: 0,
+              },
+              animate: {
+                opacity: 1,
+              },
+            }}
+          >
+            <SocialIcon name={name} />
+          </motion.a>
+        ))}
+      </motion.div>
+    </motion.div>
+  );
+};
+const SocialIcon = ({ name }) => {
+  switch (name.toLowerCase()) {
+    case "github":
+      return <SiGithub size={"2rem"} />;
+    case "instagram":
+      return <SiInstagram size={"2rem"} />;
+    case "discord":
+      return <SiDiscord size={"2rem"} />;
+    default:
+      return null;
   }
 };
