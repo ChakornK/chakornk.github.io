@@ -13,6 +13,7 @@ import "./page.css";
 import { GithubIcon } from "../components/icons";
 import { projects } from "../projectsData";
 import { ImgCarousel } from "../components/imgcarousel";
+import { X } from "lucide-react";
 
 const pgNums = 4; // length of page in vh
 export default () => {
@@ -238,16 +239,24 @@ const ProjectCard = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
             onClick={onClose}
           >
             <motion.div
               key={`expanded-card-${title}`}
               className="card lg"
-              initial={{ transform: "translate(0, 200px)" }}
-              animate={{ transform: "translate(0, 0)" }}
-              exit={{ transform: "translate(0, 200px)" }}
+              initial={{ transform: "translate(0, 25px) scale(0.9)" }}
+              animate={{ transform: "translate(0, 0) scale(1)" }}
+              exit={{ transform: "translate(0, 25px) scale(0.9)" }}
+              transition={{ duration: 0.3, ease: [0, 1, 0.3, 1] }}
               onClick={(e) => e.stopPropagation()}
             >
+              <button
+                className="top-2 right-2 z-50 absolute overlay-button"
+                onClick={onClose}
+              >
+                <X size={20} />
+              </button>
               <div className="w-full h-1/2">
                 <ImgCarousel
                   images={

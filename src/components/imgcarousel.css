@@ -18,6 +18,5 @@
 }
 
 .carousel-button {
-  @apply absolute top-1/2 -translate-y-1/2 z-10 w-8 h-8 transition-colors bg-black/40 rounded-full flex justify-center items-center cursor-pointer;
-  @apply hover:bg-black/60;
+  @apply absolute top-1/2 -translate-y-1/2 z-10;
 }

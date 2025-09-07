@@ -13,3 +13,10 @@ body {
   font-optical-sizing: auto;
   visibility: visible !important;
 }
+
+.overlay-button {
+  @apply flex justify-center items-center rounded-full w-8 h-8 transition-colors cursor-pointer;
+  &.bg {
+    @apply bg-black/40 hover:bg-black/60;
+  }
+}

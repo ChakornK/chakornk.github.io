@@ -95,10 +95,16 @@ export const ImgCarousel = ({ images }) => {
           }}
         />
       </AnimatePresence>
-      <button className="left-2 carousel-button" onClick={() => paginate(-1)}>
+      <button
+        className="left-2 carousel-button overlay-button bg"
+        onClick={() => paginate(-1)}
+      >
         <ChevronLeft size={20} />
       </button>
-      <button className="right-2 carousel-button" onClick={() => paginate(1)}>
+      <button
+        className="right-2 carousel-button overlay-button bg"
+        onClick={() => paginate(1)}
+      >
         <ChevronRight size={20} />
       </button>
     </div>
