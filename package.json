@@ -11,6 +11,7 @@
   "dependencies": {
     "flubber": "^0.4.2",
     "lenis": "^1.3.11",
+    "lucide-react": "^0.542.0",
     "motion": "^12.23.12",
     "preact": "^10.27.0",
     "preact-iso": "^2.10.0"

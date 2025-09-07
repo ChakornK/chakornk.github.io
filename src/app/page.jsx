@@ -12,6 +12,7 @@ import { useEffect, useRef, useState } from "preact/hooks";
 import "./page.css";
 import { GithubIcon } from "../components/icons";
 import { projects } from "../projectsData";
+import { ImgCarousel } from "../components/imgcarousel";
 
 const pgNums = 4; // length of page in vh
 export default () => {
@@ -147,6 +148,8 @@ const Works = ({ scrollYProgress }) => {
     setCardIndex(v);
   });
 
+  const [expandedCard, setExpandedCard] = useState(null);
+
   return (
     <motion.div className="page" style={{ opacity, height: "300vh" }}>
       <div className="top-0 sticky flex flex-col items-center w-screen h-screen">
@@ -156,7 +159,16 @@ const Works = ({ scrollYProgress }) => {
           <AnimatePresence>
             {projects.map(
               (p, i) =>
-                cardIndex >= i && <ProjectCard key={p.title} index={i} {...p} />
+                cardIndex >= i && (
+                  <ProjectCard
+                    key={p.title}
+                    index={i}
+                    expanded={expandedCard === i}
+                    onOpen={() => setExpandedCard(i)}
+                    onClose={() => setExpandedCard(null)}
+                    {...p}
+                  />
+                )
             )}
           </AnimatePresence>
         </div>
@@ -202,24 +214,71 @@ const projectCardAnimation = {
     };
   },
 };
-const ProjectCard = ({ title, brief, cover, links, index }) => {
+const ProjectCard = ({
+  title,
+  id,
+  brief,
+  imgsNum,
+  imgs,
+  links,
+  expanded,
+  onOpen,
+  onClose,
+  index,
+}) => {
   return (
-    <motion.div
-      className="card"
-      variants={projectCardAnimation}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-      custom={index}
-    >
-      <p className="font-medium text-xl">{title}</p>
-      <p className="text-neutral-400 text-sm">{brief}</p>
-      <img
-        src={`img/${cover}.webp`}
-        alt={title}
-        draggable={false}
-        className="card-img"
-      />
-    </motion.div>
+    <>
+      <AnimatePresence>
+        {expanded && (
+          <motion.div
+            key={`overlay-${title}`}
+            className="overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+          >
+            <motion.div
+              key={`expanded-card-${title}`}
+              className="card lg"
+              initial={{ transform: "translate(0, 200px)" }}
+              animate={{ transform: "translate(0, 0)" }}
+              exit={{ transform: "translate(0, 200px)" }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="w-full h-1/2">
+                <ImgCarousel
+                  images={
+                    imgs
+                      ? imgs.map((img) => `img/${img}.webp`)
+                      : Array(imgsNum)
+                          .fill(0)
+                          .map((_, i) => `img/${id}${i}.webp`)
+                  }
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <motion.button
+        className="card sm"
+        variants={projectCardAnimation}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        custom={index}
+        onClick={() => !expanded && onOpen()}
+      >
+        <img
+          src={`img/${id}cover.webp`}
+          alt={title}
+          draggable={false}
+          className="card-img"
+        />
+        <p className="font-medium text-xl">{title}</p>
+        <p className="text-neutral-400 text-sm">{brief}</p>
+      </motion.button>
+    </>
   );
 };

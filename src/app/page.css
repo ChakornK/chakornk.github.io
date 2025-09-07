@@ -11,12 +11,28 @@ main {
 }
 
 .card {
-  @apply bottom-1/2 left-1/2 absolute bg-neutral-950 p-8 gap-2 flex flex-col border-2 border-neutral-900 rounded-xl;
-  width: 36rem;
-  max-width: 80vw;
-  max-height: 80vh;
+  @apply bottom-1/2 left-1/2 absolute bg-neutral-950 gap-2 flex flex-col border-2 border-neutral-900 rounded-xl;
   filter: drop-shadow(0 0 1rem #000a);
+
+  &.sm {
+    @apply p-8;
+    width: 36rem;
+    height: 28rem;
+    max-width: 80vw;
+    max-height: 80vh;
+  }
+  &.lg {
+    @apply -translate-x-1/2 translate-y-1/2;
+    width: 80vw;
+    height: 80vh;
+    max-width: 72rem;
+    max-height: 80vh;
+  }
 }
 .card-img {
-  @apply bg-white/2 mt-4 rounded-xl aspect-video;
+  @apply bg-white/2 mb-4 rounded-xl aspect-video;
+}
+
+.overlay {
+  @apply fixed top-0 left-0 w-screen h-screen bg-black/50 z-10;
 }
