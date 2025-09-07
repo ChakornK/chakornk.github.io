@@ -13,9 +13,9 @@ import { useContext, useEffect, useRef, useState } from "preact/hooks";
 import "./page.css";
 import { projects } from "../projectsData";
 import { ImgCarousel } from "../components/imgcarousel";
-import { X } from "lucide-react";
+import { Globe, X } from "lucide-react";
 import { createContext } from "preact";
-import { SiGithub } from "@icons-pack/react-simple-icons";
+import { SiCodepen, SiGithub } from "@icons-pack/react-simple-icons";
 
 const StateProvider = createContext(null);
 
@@ -301,9 +301,14 @@ const ProjectCard = ({
                     </ul>
                   </div>
                 </div>
-                <div className="card-lg-links">
-                  <p className="font-semibold text-white text-lg">Links</p>
-                </div>
+                {Object.entries(links).length !== 0 && (
+                  <div className="card-lg-links">
+                    <p className="font-semibold text-white text-lg">Links</p>
+                    {Object.entries(links).map(([name, url]) => (
+                      <ProjectLink key={url} name={name} url={url} />
+                    ))}
+                  </div>
+                )}
               </div>
             </motion.div>
           </motion.div>
@@ -332,4 +337,28 @@ const ProjectCard = ({
       </motion.button>
     </>
   );
+};
+const ProjectLink = ({ name, url }) => {
+  return (
+    <a
+      href={url}
+      target="_blank"
+      className="flex items-center gap-1.5 hover:underline"
+    >
+      <span>
+        <LinkIcon name={name} />
+      </span>
+      {name}
+    </a>
+  );
+};
+const LinkIcon = ({ name }) => {
+  switch (name.toLowerCase()) {
+    case "github":
+      return <SiGithub size={"1.25rem"} />;
+    case "codepen":
+      return <SiCodepen size={"1.25rem"} />;
+    default:
+      return <Globe size={"1.25rem"} />;
+  }
 };

@@ -14,7 +14,7 @@ export const projects = [
     ],
     imgsNum: 4,
     links: {
-      github: "https://github.com/chakornk/jh-eagles",
+      Github: "https://github.com/chakornk/jh-eagles",
     },
   },
   {
@@ -30,7 +30,7 @@ export const projects = [
     ],
     imgsNum: 2,
     links: {
-      github: "https://github.com/drawdle/drawdle",
+      Github: "https://github.com/drawdle/drawdle",
     },
   },
   {
@@ -44,7 +44,7 @@ export const projects = [
     ],
     imgs: ["svglgcover"],
     links: {
-      codepen: "https://codepen.io/chakornk/pen/ZYbRrgZ",
+      Codepen: "https://codepen.io/chakornk/pen/ZYbRrgZ",
     },
   },
   {
