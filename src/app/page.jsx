@@ -221,6 +221,7 @@ const ProjectCard = ({
   title,
   id,
   brief,
+  features,
   imgsNum,
   imgs,
   links,
@@ -268,6 +269,17 @@ const ProjectCard = ({
                           .map((_, i) => `img/${id}${i}.webp`)
                   }
                 />
+                <div className="flex md:flex-row flex-col">
+                  <div className="prose-invert p-4 md:p-8 prose prose-neutral">
+                    <h2>{title}</h2>
+                    <p>{brief}</p>
+                    <ul>
+                      {features.map((f, i) => (
+                        <li key={i}>{f}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
               </div>
             </motion.div>
           </motion.div>
