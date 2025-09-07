@@ -275,12 +275,12 @@ const projectCardAnimation = {
     };
   },
   exit: (i) => {
-    const x = Math.sin(i * variationFreq.x);
+    const r = Math.sin(i * variationFreq.r);
     const y = Math.sin(i * variationFreq.y);
     return {
       opacity: 0,
       bottom: "50%",
-      transform: `translate(${x * 300}px, ${y * 10}px) rotate(${x * 10}deg)`,
+      transform: `translate(${r * 300}px, ${y * 10}px) rotate(${r * 10}deg)`,
       transition: { duration: 0.3, ease: "easeOut" },
     };
   },
