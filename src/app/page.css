@@ -3,7 +3,11 @@
 main {
   @apply bg-black w-screen h-screen overflow-x-hidden overscroll-none text-neutral-200 select-none;
   scrollbar-color: #111 #000;
-  scrollbar-width: thin;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .page {

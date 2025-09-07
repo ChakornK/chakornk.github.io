@@ -4,6 +4,7 @@ import "lenis/dist/lenis.css";
 import {
   AnimatePresence,
   motion,
+  useMotionTemplate,
   useMotionValueEvent,
   useScroll,
   useTransform,
@@ -40,12 +41,22 @@ export default () => {
     );
   }, []);
 
+  const scrollProgress = useMotionTemplate`${useTransform(
+    scrollYProgress,
+    [0, 1],
+    [0, 100]
+  )}vw`;
+
   return (
     <LenisProvider.Provider value={{ lenis, scrollYProgress }}>
       <motion.main ref={mainRef}>
         <Cover instantLoad={notTop} />
         <Works />
       </motion.main>
+      <motion.div
+        className="bottom-0 left-1/2 z-20 fixed bg-white h-0.5 -translate-x-1/2"
+        style={{ width: scrollProgress }}
+      />
     </LenisProvider.Provider>
   );
 };
