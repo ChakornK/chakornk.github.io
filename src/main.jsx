@@ -9,6 +9,7 @@ import {
 
 import "./index.css";
 import Home from "./app/page.jsx";
+import NotFound from "./app/404.jsx";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <ErrorBoundary>
         <Router>
           <Route path="/" component={Home} />
+          <Route default component={NotFound} />
         </Router>
       </ErrorBoundary>
     </LocationProvider>

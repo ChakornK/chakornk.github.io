@@ -7,7 +7,18 @@ import { browserslistToTargets } from "lightningcss";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [preact(), tailwind()],
+  plugins: [
+    preact({
+      prerender: {
+        enabled: true,
+        renderTarget: "#app",
+        additionalPrerenderRoutes: ["/404"],
+        previewMiddlewareEnabled: true,
+        previewMiddlewareFallback: "/404",
+      },
+    }),
+    tailwind(),
+  ],
   build: {
     cssMinify: "lightningcss",
     minify: "terser",
