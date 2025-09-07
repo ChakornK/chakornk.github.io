@@ -4,7 +4,11 @@ export const projects = [
     id: "jheagles",
     brief:
       "A remake of Johnston Height's EagleTime app that follows Material Design 3, made with Flutter",
-    features: [],
+    features: [
+      "Built with Flutter and Material Design 3 component widgets",
+      "Connects to the school's EagleTime app's API",
+      "Home page allows users to view general information such as the current weather and block rotation",
+    ],
     imgsNum: 4,
     links: {
       github: "https://github.com/chakornk/jh-eagles",

@@ -8,15 +8,20 @@ import {
   useScroll,
   useTransform,
 } from "motion/react";
-import { useEffect, useRef, useState } from "preact/hooks";
+import { useContext, useEffect, useRef, useState } from "preact/hooks";
 import "./page.css";
 import { GithubIcon } from "../components/icons";
 import { projects } from "../projectsData";
 import { ImgCarousel } from "../components/imgcarousel";
 import { X } from "lucide-react";
+import { createContext } from "preact";
+
+const LenisProvider = createContext(null);
 
 const pgNums = 4; // length of page in vh
 export default () => {
+  const [lenis, setLenis] = useState(null);
+
   const [notTop, setNotTop] = useState(false);
   const mainRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -26,22 +31,27 @@ export default () => {
   useEffect(() => {
     if (scrollYProgress.get() > 0.2 / pgNums) setNotTop(true);
 
-    new Lenis({
-      autoRaf: true,
-      wrapper: mainRef.current,
-      prevent: (n) => n.classList.contains("scroll-block"),
-    });
+    setLenis(
+      new Lenis({
+        autoRaf: true,
+        wrapper: mainRef.current,
+        prevent: (n) => n.classList.contains("scroll-block"),
+      })
+    );
   }, []);
 
   return (
-    <motion.main ref={mainRef}>
-      <Cover scrollYProgress={scrollYProgress} instantLoad={notTop} />
-      <Works scrollYProgress={scrollYProgress} />
-    </motion.main>
+    <LenisProvider.Provider value={{ lenis, scrollYProgress }}>
+      <motion.main ref={mainRef}>
+        <Cover instantLoad={notTop} />
+        <Works />
+      </motion.main>
+    </LenisProvider.Provider>
   );
 };
 
-const Cover = ({ scrollYProgress, instantLoad }) => {
+const Cover = ({ instantLoad }) => {
+  const { scrollYProgress } = useContext(LenisProvider);
   const scale = useTransform(
     scrollYProgress,
     [0.2 / pgNums, 1 / pgNums],
@@ -127,7 +137,9 @@ const Cover = ({ scrollYProgress, instantLoad }) => {
   );
 };
 
-const Works = ({ scrollYProgress }) => {
+const Works = () => {
+  const { lenis, scrollYProgress } = useContext(LenisProvider);
+
   const opacity = useTransform(
     scrollYProgress,
     [0.9 / pgNums, 0.95 / pgNums, 3.95 / pgNums, 4 / pgNums],
@@ -135,22 +147,30 @@ const Works = ({ scrollYProgress }) => {
   );
   const cardIndexMotion = useTransform(
     scrollYProgress,
-    Array(projects.length)
-      .fill(0)
-      .map((_, i) => ((2.5 / projects.length) * i + 1.45) / pgNums),
-    Array(projects.length)
-      .fill(0)
-      .map((_, i) => i),
+    [
+      1.34 / pgNums,
+      ...projects.map((_, i) => ((2.6 / projects.length) * i + 1.35) / pgNums),
+    ],
+    [-1, ...projects.map((_, i) => i)],
     {
       ease: Math.round,
     }
   );
-  const [cardIndex, setCardIndex] = useState(0);
+  const [cardIndex, setCardIndex] = useState(-1);
   useMotionValueEvent(cardIndexMotion, "change", (v) => {
     setCardIndex(v);
   });
 
   const [expandedCard, setExpandedCard] = useState(null);
+  useEffect(() => {
+    if (expandedCard) {
+      lenis?.stop();
+    } else {
+      lenis?.start();
+    }
+
+    return () => lenis?.start();
+  }, [expandedCard, lenis]);
 
   return (
     <motion.div className="page" style={{ opacity, height: "300vh" }}>
