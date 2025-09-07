@@ -4,6 +4,7 @@ import "lenis/dist/lenis.css";
 import {
   AnimatePresence,
   motion,
+  stagger,
   useMotionTemplate,
   useMotionValueEvent,
   useScroll,
@@ -77,8 +78,27 @@ const Cover = ({ instantLoad }) => {
     [1, 0]
   );
 
+  const [canInteract, setCanInteract] = useState(false);
+  useMotionValueEvent(opacity, "change", (v) => {
+    if (v === 0) {
+      setCanInteract(false);
+    } else {
+      setCanInteract(true);
+    }
+  });
+  useEffect(() => {
+    if (opacity.get() === 0) {
+      setCanInteract(false);
+    } else {
+      setCanInteract(true);
+    }
+  }, []);
+
   return (
-    <motion.div className="justify-center page" style={{ opacity }}>
+    <motion.div
+      className="justify-center page"
+      style={{ opacity, pointerEvents: canInteract ? "auto" : "none" }}
+    >
       <motion.svg
         viewBox="-16 -16 493 104.4"
         className="opacity-0 -m-4 px-4 max-w-screen h-25"
@@ -177,8 +197,31 @@ const Works = () => {
 
   const [expandedCard, setExpandedCard] = useState(null);
 
+  const [canInteract, setCanInteract] = useState(false);
+  useMotionValueEvent(opacity, "change", (v) => {
+    if (v === 0) {
+      setCanInteract(false);
+    } else {
+      setCanInteract(true);
+    }
+  });
+  useEffect(() => {
+    if (opacity.get() === 0) {
+      setCanInteract(false);
+    } else {
+      setCanInteract(true);
+    }
+  }, []);
+
   return (
-    <motion.div className="page" style={{ opacity, height: "300vh" }}>
+    <motion.div
+      className="page"
+      style={{
+        opacity,
+        height: "300vh",
+        pointerEvents: canInteract ? "auto" : "none",
+      }}
+    >
       <div className="top-0 sticky flex flex-col items-center w-screen h-screen">
         <h2 className="mt-16 -mb-4 font-semibold text-6xl">Works</h2>
 
@@ -351,9 +394,7 @@ const ProjectLink = ({ name, url }) => {
       target="_blank"
       className="flex items-center gap-1.5 hover:underline"
     >
-      <span>
-        <LinkIcon name={name} />
-      </span>
+      <LinkIcon name={name} />
       {name}
     </a>
   );
