@@ -10,8 +10,9 @@
   @apply top-0 left-0 absolute w-full h-full object-cover pointer-events-none;
 }
 .carousel-img {
-  @apply top-2 left-1/2 -translate-x-1/2 absolute rounded-xl shadow-xl cursor-grab;
-  height: calc(100% - 1rem);
+  @apply top-1/2 left-1/2 -translate-1/2 absolute rounded-xl shadow-xl cursor-grab;
+  max-height: calc(100% - 1rem);
+  height: auto;
   &:active {
     @apply cursor-grabbing;
   }
