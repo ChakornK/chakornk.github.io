@@ -29,6 +29,7 @@ export default () => {
     new Lenis({
       autoRaf: true,
       wrapper: mainRef.current,
+      prevent: (n) => n.classList.contains("scroll-block"),
     });
   }, []);
 
@@ -235,7 +236,7 @@ const ProjectCard = ({
         {expanded && (
           <motion.div
             key={`overlay-${title}`}
-            className="overlay"
+            className="scroll-block overlay"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
