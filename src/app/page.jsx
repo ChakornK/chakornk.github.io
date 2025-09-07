@@ -17,12 +17,11 @@ import { ImgCarousel } from "../components/imgcarousel";
 import { X } from "lucide-react";
 import { createContext } from "preact";
 
-const LenisProvider = createContext(null);
+const StateProvider = createContext(null);
 
 const pgNums = 4; // length of page in vh
+let lenis;
 export default () => {
-  const [lenis, setLenis] = useState(null);
-
   const [notTop, setNotTop] = useState(false);
   const mainRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -32,13 +31,11 @@ export default () => {
   useEffect(() => {
     if (scrollYProgress.get() > 0.2 / pgNums) setNotTop(true);
 
-    setLenis(
-      new Lenis({
-        autoRaf: true,
-        wrapper: mainRef.current,
-        prevent: (n) => n.classList.contains("scroll-block"),
-      })
-    );
+    lenis = new Lenis({
+      autoRaf: true,
+      wrapper: mainRef.current,
+      prevent: (n) => n.classList.contains("scroll-block"),
+    });
   }, []);
 
   const scrollProgress = useMotionTemplate`${useTransform(
@@ -48,7 +45,7 @@ export default () => {
   )}vw`;
 
   return (
-    <LenisProvider.Provider value={{ lenis, scrollYProgress }}>
+    <StateProvider.Provider value={{ scrollYProgress }}>
       <motion.main ref={mainRef}>
         <Cover instantLoad={notTop} />
         <Works />
@@ -57,12 +54,12 @@ export default () => {
         className="bottom-0 left-1/2 z-20 fixed bg-white h-0.5 -translate-x-1/2"
         style={{ width: scrollProgress }}
       />
-    </LenisProvider.Provider>
+    </StateProvider.Provider>
   );
 };
 
 const Cover = ({ instantLoad }) => {
-  const { scrollYProgress } = useContext(LenisProvider);
+  const { scrollYProgress } = useContext(StateProvider);
   const scale = useTransform(
     scrollYProgress,
     [0.2 / pgNums, 1 / pgNums],
@@ -149,7 +146,7 @@ const Cover = ({ instantLoad }) => {
 };
 
 const Works = () => {
-  const { lenis, scrollYProgress } = useContext(LenisProvider);
+  const { scrollYProgress } = useContext(StateProvider);
 
   const opacity = useTransform(
     scrollYProgress,
@@ -173,15 +170,6 @@ const Works = () => {
   });
 
   const [expandedCard, setExpandedCard] = useState(null);
-  useEffect(() => {
-    if (expandedCard != null) {
-      lenis?.stop();
-    } else {
-      lenis?.start();
-    }
-
-    return () => lenis?.start();
-  }, [expandedCard, lenis]);
 
   return (
     <motion.div className="page" style={{ opacity, height: "300vh" }}>
@@ -300,16 +288,16 @@ const ProjectCard = ({
                           .map((_, i) => `img/${id}${i}.webp`)
                   }
                 />
-                <div className="flex md:flex-row flex-col">
-                  <div className="prose-invert p-4 md:p-8 prose prose-neutral">
-                    <h2>{title}</h2>
-                    <p>{brief}</p>
-                    <ul>
-                      {features.map((f, i) => (
-                        <li key={i}>{f}</li>
-                      ))}
-                    </ul>
-                  </div>
+              </div>
+              <div className="flex md:flex-row flex-col h-1/2">
+                <div className="prose-invert p-4 md:p-8 overflow-auto prose prose-neutral">
+                  <h2>{title}</h2>
+                  <p>{brief}</p>
+                  <ul>
+                    {features.map((f, i) => (
+                      <li key={i}>{f}</li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </motion.div>

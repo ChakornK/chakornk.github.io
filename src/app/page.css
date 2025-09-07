@@ -8,6 +8,9 @@ main {
   &::-webkit-scrollbar {
     display: none;
   }
+  &:has(.scroll-block) {
+    @apply overflow-y-clip;
+  }
 }
 
 .page {
