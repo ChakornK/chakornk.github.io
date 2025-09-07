@@ -174,7 +174,7 @@ const Works = () => {
 
   const [expandedCard, setExpandedCard] = useState(null);
   useEffect(() => {
-    if (expandedCard) {
+    if (expandedCard != null) {
       lenis?.stop();
     } else {
       lenis?.start();
