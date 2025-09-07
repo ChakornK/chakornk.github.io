@@ -10,11 +10,17 @@ import {
   useScroll,
   useTransform,
 } from "motion/react";
-import { useContext, useEffect, useRef, useState } from "preact/hooks";
+import {
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "preact/hooks";
 import "./page.css";
 import { projects } from "../projectsData";
 import { ImgCarousel } from "../components/imgcarousel";
-import { Globe, X } from "lucide-react";
+import { CheckCircle2, Globe, X } from "lucide-react";
 import { createContext } from "preact";
 import {
   SiCodepen,
@@ -424,6 +430,21 @@ const Socials = () => {
     [0, 1]
   );
 
+  const [copiedAlertVisible, setCopiedAlertVisible] = useState(false);
+  const [copiedAlertId, setCopiedAlertId] = useState(null);
+  const copyText = useCallback(async (text) => {
+    await navigator.clipboard.writeText(text);
+    setCopiedAlertVisible(true);
+    try {
+      clearTimeout(copiedAlertId);
+    } catch {}
+    setCopiedAlertId(
+      setTimeout(() => {
+        setCopiedAlertVisible(false);
+      }, 1000)
+    );
+  });
+
   return (
     <motion.div className="page" style={{ opacity, height: "50vh" }}>
       <h2 className="font-semibold text-6xl">Socials</h2>
@@ -450,9 +471,8 @@ const Socials = () => {
             href={name !== "Discord" && url}
             onClick={
               name === "Discord"
-                ? (e) => {
-                    const c = new Clipboard();
-                    c.writeText(url);
+                ? () => {
+                    copyText(url);
                   }
                 : null
             }
@@ -470,6 +490,29 @@ const Socials = () => {
           </motion.a>
         ))}
       </motion.div>
+      <AnimatePresence>
+        {copiedAlertVisible && (
+          <motion.div
+            key={copiedAlertId}
+            className="top-2 left-1/2 fixed flex items-center gap-2 bg-emerald-900 px-4 py-2 border border-emerald-400 rounded-full text-emerald-400 -translate-x-1/2"
+            initial={{
+              y: -30,
+              opacity: 0,
+            }}
+            animate={{
+              y: 0,
+              opacity: 1,
+            }}
+            exit={{
+              y: -30,
+              opacity: 0,
+            }}
+          >
+            <CheckCircle2 size={"1.25rem"} />
+            Copied to clipboard
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };
