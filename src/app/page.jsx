@@ -163,6 +163,7 @@ const Works = ({ scrollYProgress }) => {
                   <ProjectCard
                     key={p.title}
                     index={i}
+                    isTop={cardIndex === i}
                     expanded={expandedCard === i}
                     onOpen={() => setExpandedCard(i)}
                     onClose={() => setExpandedCard(null)}
@@ -224,6 +225,7 @@ const ProjectCard = ({
   expanded,
   onOpen,
   onClose,
+  isTop,
   index,
 }) => {
   return (
@@ -268,7 +270,10 @@ const ProjectCard = ({
         animate="visible"
         exit="exit"
         custom={index}
-        onClick={() => !expanded && onOpen()}
+        onClick={() => !expanded && isTop && onOpen()}
+        style={{
+          cursor: isTop ? "pointer" : "default",
+        }}
       >
         <img
           src={`img/${id}cover.webp`}
