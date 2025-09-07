@@ -289,15 +289,20 @@ const ProjectCard = ({
                   }
                 />
               </div>
-              <div className="flex md:flex-row flex-col h-1/2">
-                <div className="prose-invert p-4 md:p-8 overflow-auto prose prose-neutral">
-                  <h2>{title}</h2>
-                  <p>{brief}</p>
-                  <ul>
-                    {features.map((f, i) => (
-                      <li key={i}>{f}</li>
-                    ))}
-                  </ul>
+              <div className="card-lg-details-container">
+                <div className="card-lg-description">
+                  <h2 className="card-lg-title">{title}</h2>
+                  <div className="card-lg-prose">
+                    <p>{brief}</p>
+                    <ul>
+                      {features.map((f, i) => (
+                        <li key={i}>{f}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+                <div className="card-lg-links">
+                  <p className="font-semibold text-white text-lg">Links</p>
                 </div>
               </div>
             </motion.div>
