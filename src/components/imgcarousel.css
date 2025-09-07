@@ -1,0 +1,23 @@
+@reference "tailwindcss";
+
+.carousel {
+  @apply relative h-full overflow-clip;
+}
+.carousel-bg-container {
+  @apply top-0 left-0 absolute blur-2xl brightness-50 w-full h-full;
+}
+.carousel-bg {
+  @apply top-0 left-0 absolute w-full h-full object-cover pointer-events-none;
+}
+.carousel-img {
+  @apply top-1/2 left-1/2 -translate-1/2 absolute rounded-xl shadow-xl cursor-grab;
+  max-height: calc(100% - 1rem);
+  height: auto;
+  &:active {
+    @apply cursor-grabbing;
+  }
+}
+
+.carousel-button {
+  @apply absolute top-1/2 -translate-y-1/2 z-10;
+}

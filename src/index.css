@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  @apply bg-black overflow-hidden;
+  font-family: "Onest", sans-serif;
+  font-optical-sizing: auto;
+  visibility: visible !important;
+}
+
+.overlay-button {
+  @apply flex justify-center items-center rounded-full w-8 h-8 transition-colors cursor-pointer;
+  &.bg {
+    @apply bg-black/40 hover:bg-black/60;
+  }
+}
