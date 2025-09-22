@@ -36,7 +36,7 @@ main {
     width: 90vw;
     height: 90vh;
     max-width: 72rem;
-    max-height: 90vh;
+    max-height: 90svh;
   }
 }
 .card-img {
