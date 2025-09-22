@@ -71,18 +71,18 @@ export const ImgCarousel = ({ images }) => {
         </div>
         <MotionCdnImg
           key={`${images[imageIndex]}-${Date.now()}`}
-          className="carousel-img"
+          className={`carousel-img ${images.length > 1 ? "carousel-drag" : ""}`}
           src={images[imageIndex]}
           custom={direction}
           variants={variants}
-          initial="enter"
-          animate="center"
-          exit="exit"
+          initial={images.length > 1 && "enter"}
+          animate={images.length > 1 && "center"}
+          exit={images.length > 1 && "exit"}
           transition={{
             duration: 0.4,
             ease: "easeOut",
           }}
-          drag="x"
+          drag={images.length > 1 && "x"}
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={1}
           onDragEnd={(e, { offset, velocity }) => {
@@ -96,18 +96,22 @@ export const ImgCarousel = ({ images }) => {
           }}
         />
       </AnimatePresence>
-      <button
-        className="left-2 carousel-button overlay-button bg"
-        onClick={() => paginate(-1)}
-      >
-        <ChevronLeft size={20} />
-      </button>
-      <button
-        className="right-2 carousel-button overlay-button bg"
-        onClick={() => paginate(1)}
-      >
-        <ChevronRight size={20} />
-      </button>
+      {images.length > 1 && (
+        <>
+          <button
+            className="left-2 carousel-button overlay-button bg"
+            onClick={() => paginate(-1)}
+          >
+            <ChevronLeft size={20} />
+          </button>
+          <button
+            className="right-2 carousel-button overlay-button bg"
+            onClick={() => paginate(1)}
+          >
+            <ChevronRight size={20} />
+          </button>
+        </>
+      )}
     </div>
   );
 };

@@ -7,6 +7,7 @@ export const CdnImg = (props) => (
         ? props.src
         : `https://cdn.jsdelivr.net/gh/chakornk/chakornk.github.io@main/public/${props.src}`
     }
+    draggable={false}
     {...props}
   />
 );
@@ -17,6 +18,7 @@ export const MotionCdnImg = (props) => (
         ? props.src
         : `https://cdn.jsdelivr.net/gh/chakornk/chakornk.github.io@main/public/${props.src}`
     }
+    draggable={false}
     {...props}
   />
 );
