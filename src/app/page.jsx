@@ -340,7 +340,7 @@ const ProjectCard = ({
               onClick={(e) => e.stopPropagation()}
             >
               <button
-                className="top-2 right-2 z-50 absolute overlay-button"
+                className="top-2 right-2 z-50 absolute bg-black/50 overlay-button"
                 onClick={onClose}
               >
                 <X size={20} />
