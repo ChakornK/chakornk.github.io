@@ -32,7 +32,9 @@ main {
     max-height: 80vh;
   }
   &.lg {
-    @apply -translate-x-1/2 translate-y-1/2;
+    @apply -translate-x-1/2 -translate-y-1/2;
+    top: 50svh;
+    bottom: auto;
     width: 90vw;
     height: 90vh;
     max-width: 72rem;
