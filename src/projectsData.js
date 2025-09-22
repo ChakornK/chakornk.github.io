@@ -22,7 +22,7 @@ export const projects = [
     id: "drawdle",
     brief: "A website to teach drawing",
     features: [
-      "Made in collaboration with two other people",
+      "Made in collaboration with [@TheUnicat](https://github.com/TheUnicat) and [@danburgerisaburger](https://github.com/danburgerisaburger)",
       "Built with React, Pixi.js, and Tailwind CSS",
       "Full-stack app powered by Next.js",
       "Frontend provides a drawing canvas with customizable brush sizes and colors",
@@ -52,7 +52,7 @@ export const projects = [
     id: "clubmanager",
     brief: "Website for managing school clubs",
     features: [
-      "Made in collaboration with one other person",
+      "Made in collaboration with [@maneetdhaliwal](https://github.com/maneetdhaliwal)",
       "Built with React and Tailwind CSS",
       "Fontend powered by Next.js",
       "Discover page allows users to explore and join clubs",

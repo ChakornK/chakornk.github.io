@@ -29,6 +29,7 @@ import {
   SiInstagram,
 } from "@icons-pack/react-simple-icons";
 import { CdnImg } from "../components/cdnimg";
+import { Remark } from "react-remark";
 
 const StateProvider = createContext(null);
 
@@ -362,7 +363,17 @@ const ProjectCard = ({
                     <p>{brief}</p>
                     <ul>
                       {features.map((f, i) => (
-                        <li key={i}>{f}</li>
+                        <li key={i} className="*:my-[0_!important]">
+                          <Remark
+                            rehypeReactOptions={{
+                              components: {
+                                a: (props) => <a target="_blank" {...props} />,
+                              },
+                            }}
+                          >
+                            {f}
+                          </Remark>
+                        </li>
                       ))}
                     </ul>
                   </div>
