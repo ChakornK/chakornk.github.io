@@ -19,7 +19,7 @@ main {
 }
 
 .card {
-  @apply bottom-1/2 left-1/2 absolute bg-neutral-950 gap-2 flex flex-col border-2 border-neutral-900 rounded-xl;
+  @apply bottom-1/2 left-1/2 absolute bg-neutral-950 gap-2 flex flex-col border-2 border-neutral-900 rounded-xl overflow-hidden;
   filter: drop-shadow(0 0 1rem #000a);
 
   scrollbar-color: #111 #0a0a0a;

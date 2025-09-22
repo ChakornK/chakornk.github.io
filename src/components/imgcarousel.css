@@ -4,10 +4,10 @@
   @apply relative h-full overflow-clip;
 }
 .carousel-bg-container {
-  @apply top-0 left-0 absolute blur-2xl brightness-50 w-full h-full;
+  @apply top-0 left-0 absolute blur-2xl brightness-50 w-full h-full overflow-hidden;
 }
 .carousel-bg {
-  @apply top-0 left-0 absolute w-full h-full object-cover pointer-events-none;
+  @apply top-0 left-0 absolute w-full h-full object-cover scale-125 pointer-events-none;
 }
 .carousel-img {
   @apply top-1/2 left-1/2 -translate-1/2 absolute rounded-xl shadow-xl cursor-grab;
