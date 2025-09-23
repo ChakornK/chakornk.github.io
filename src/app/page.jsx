@@ -28,7 +28,7 @@ import {
   SiGithub,
   SiInstagram,
 } from "@icons-pack/react-simple-icons";
-import { CdnImg } from "../components/cdnimg";
+import { CdnImg, CdnImgPreloader } from "../components/cdnimg";
 import { Remark } from "react-remark";
 
 const StateProvider = createContext(null);
@@ -351,6 +351,13 @@ const ProjectCard = ({
   isTop,
   index,
 }) => {
+  const [imgsState, _] = useState(
+    imgs
+      ? imgs.map((img) => `img/${img}.webp`)
+      : Array(imgsNum)
+          .fill(0)
+          .map((_, i) => `img/${id}${i}.webp`)
+  );
   return (
     <>
       <AnimatePresence>
@@ -380,15 +387,7 @@ const ProjectCard = ({
                 <X size={20} />
               </button>
               <div className="w-full h-1/2">
-                <ImgCarousel
-                  images={
-                    imgs
-                      ? imgs.map((img) => `img/${img}.webp`)
-                      : Array(imgsNum)
-                          .fill(0)
-                          .map((_, i) => `img/${id}${i}.webp`)
-                  }
-                />
+                <ImgCarousel images={imgsState} />
               </div>
               <div className="card-lg-details-container">
                 <div className="card-lg-description">
@@ -443,6 +442,7 @@ const ProjectCard = ({
           draggable={false}
           className="card-img"
         />
+        <CdnImgPreloader images={imgsState} />
         <p className="font-medium text-xl">{title}</p>
         <p className="text-neutral-400 text-sm">{brief}</p>
       </motion.button>
