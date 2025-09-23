@@ -212,7 +212,7 @@ const Cover = ({ instantLoad }) => {
 };
 
 const works_revealStart = pgEnd.cover + 0.34;
-const works_cardOffset = pgEnd.cover + 0.6;
+const works_cardOffset = pgEnd.cover + 0.8;
 const Works = () => {
   const { scrollYProgress } = useContext(StateProvider);
 
@@ -232,7 +232,7 @@ const Works = () => {
       fpg(works_revealStart),
       ...projects.map((_, i) =>
         fpg(
-          ((pgEnd.works - works_cardOffset) / projects.length) * i +
+          ((pgEnd.works - works_revealStart) / projects.length) * i +
             works_cardOffset
         )
       ),
