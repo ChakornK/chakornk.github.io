@@ -65,6 +65,16 @@ export default () => {
     [0, 1],
     [0, 100]
   )}vw`;
+  const scrollProgressOpacity = useTransform(
+    scrollYProgress,
+    [fpg(0), fpg(0.1), fpg(pgNums - 0.1), fpg(pgNums)],
+    [0, 1, 1, 0]
+  );
+  const scrollProgressY = useTransform(
+    scrollYProgress,
+    [fpg(0), fpg(0.1), fpg(pgNums - 0.1), fpg(pgNums)],
+    [2, 0, 0, 2]
+  );
 
   return (
     <StateProvider.Provider value={{ scrollYProgress, scrollY }}>
@@ -75,7 +85,11 @@ export default () => {
       </motion.main>
       <motion.div
         className="bottom-0 left-1/2 z-20 fixed bg-white h-0.5 -translate-x-1/2"
-        style={{ width: scrollProgress }}
+        style={{
+          width: scrollProgress,
+          opacity: scrollProgressOpacity,
+          y: scrollProgressY,
+        }}
       />
     </StateProvider.Provider>
   );
