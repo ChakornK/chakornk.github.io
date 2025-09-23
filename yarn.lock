@@ -470,12 +470,38 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@icons-pack/react-simple-icons@npm:^13.7.0":
-  version: 13.7.0
-  resolution: "@icons-pack/react-simple-icons@npm:13.7.0"
+"@fortawesome/fontawesome-common-types@npm:7.0.1":
+  version: 7.0.1
+  resolution: "@fortawesome/fontawesome-common-types@npm:7.0.1"
+  checksum: 10c0/1cebe9727950f8fcea581e115ed91f9b2bf287114077adde0cc1fb32d25c2c2ec282a8cff291b22ca558cbb1264af7fad04b85c5afcb899745584b2874df4151
+  languageName: node
+  linkType: hard
+
+"@fortawesome/fontawesome-svg-core@npm:^7.0.1":
+  version: 7.0.1
+  resolution: "@fortawesome/fontawesome-svg-core@npm:7.0.1"
+  dependencies:
+    "@fortawesome/fontawesome-common-types": "npm:7.0.1"
+  checksum: 10c0/adf72373e45ec0b81e9a60e74a6aeadd70cd7da31ecf37736e6288ef956148699272155935d97d7bf02f37e2fefd8f9b8c34b626e59fcca54a5947be46ff06fe
+  languageName: node
+  linkType: hard
+
+"@fortawesome/free-brands-svg-icons@npm:^7.0.1":
+  version: 7.0.1
+  resolution: "@fortawesome/free-brands-svg-icons@npm:7.0.1"
+  dependencies:
+    "@fortawesome/fontawesome-common-types": "npm:7.0.1"
+  checksum: 10c0/a05058f7ff8aaf86952a96877d270e52293c5da5804ae21cf127b28063dfedfa4a1bb260040f774ccd81c3e55a045d36e2137686ea93ad84c8310ffd6a2303ba
+  languageName: node
+  linkType: hard
+
+"@fortawesome/react-fontawesome@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "@fortawesome/react-fontawesome@npm:3.0.2"
   peerDependencies:
-    react: ^16.13 || ^17 || ^18 || ^19
-  checksum: 10c0/8a469a2f048451ad44229c4e923c7f0d9524540b1b199b09ad57892e04e5a5e8422b2d8444d3d04ab0f4dbe2b6642159d9aef84986b1fba22f08a2225d16efe0
+    "@fortawesome/fontawesome-svg-core": ~6 || ~7
+    react: ^18.0.0 || ^19.0.0
+  checksum: 10c0/0a6a99ab16af74189232b01986d882ce3b2265836297a949709517f0f9b3d7c11dcf67e130200f09aca9d0e015abff21248d105796d768660901273a8ee232db
   languageName: node
   linkType: hard
 
@@ -1420,7 +1446,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "chakornk.github.io@workspace:."
   dependencies:
-    "@icons-pack/react-simple-icons": "npm:^13.7.0"
+    "@fortawesome/fontawesome-svg-core": "npm:^7.0.1"
+    "@fortawesome/free-brands-svg-icons": "npm:^7.0.1"
+    "@fortawesome/react-fontawesome": "npm:^3.0.2"
     "@preact/preset-vite": "npm:^2.10.2"
     "@tailwindcss/typography": "npm:^0.5.16"
     "@tailwindcss/vite": "npm:^4.1.12"

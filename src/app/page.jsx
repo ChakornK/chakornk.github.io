@@ -22,14 +22,15 @@ import { projects } from "../projectsData";
 import { ImgCarousel } from "../components/imgcarousel";
 import { ArrowDown, CheckCircle2, Globe, X } from "lucide-react";
 import { createContext } from "preact";
-import {
-  SiCodepen,
-  SiDiscord,
-  SiGithub,
-  SiInstagram,
-} from "@icons-pack/react-simple-icons";
 import { CdnImg, CdnImgPreloader } from "../components/cdnimg";
 import { Remark } from "react-remark";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCodepen,
+  faDiscord,
+  faGithub,
+  faInstagram,
+} from "@fortawesome/free-brands-svg-icons";
 
 const StateProvider = createContext(null);
 
@@ -196,7 +197,7 @@ const Cover = ({ instantLoad }) => {
         }
       >
         <a href="https://github.com/ChakornK" target="_blank" rel="noreferrer">
-          <SiGithub size={32} />
+          <FontAwesomeIcon icon={faGithub} size={32} />
         </a>
       </motion.div>
 
@@ -464,9 +465,9 @@ const ProjectLink = ({ name, url }) => {
 const LinkIcon = ({ name }) => {
   switch (name.toLowerCase()) {
     case "github":
-      return <SiGithub size={"1.25rem"} />;
+      return <FontAwesomeIcon icon={faGithub} size={"1.25rem"} />;
     case "codepen":
-      return <SiCodepen size={"1.25rem"} />;
+      return <FontAwesomeIcon icon={faCodepen} size={"1.25rem"} />;
     default:
       return <Globe size={"1.25rem"} />;
   }
@@ -575,11 +576,11 @@ const Socials = () => {
 const SocialIcon = ({ name }) => {
   switch (name.toLowerCase()) {
     case "github":
-      return <SiGithub size={"2rem"} />;
+      return <FontAwesomeIcon icon={faGithub} size={"2xl"} />;
     case "instagram":
-      return <SiInstagram size={"2rem"} />;
+      return <FontAwesomeIcon icon={faInstagram} size={"2xl"} />;
     case "discord":
-      return <SiDiscord size={"2rem"} />;
+      return <FontAwesomeIcon icon={faDiscord} size={"2xl"} />;
     default:
       return null;
   }
