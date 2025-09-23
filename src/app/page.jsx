@@ -33,7 +33,14 @@ import { Remark } from "react-remark";
 
 const StateProvider = createContext(null);
 
-const pgNums = 4.5; // length of page in vh
+const fpg = (n) => n / pgNums;
+const pgEnd = {
+  cover: 1,
+  works: 5,
+  socials: 5.5,
+};
+const pgNums = Math.max(...Object.values(pgEnd)); // length of page in vh
+
 let lenis;
 export default () => {
   const [notTop, setNotTop] = useState(false);
@@ -43,12 +50,13 @@ export default () => {
   });
 
   useEffect(() => {
-    if (scrollYProgress.get() > 0.2 / pgNums) setNotTop(true);
+    if (scrollYProgress.get() > fpg(0.2)) setNotTop(true);
 
     lenis = new Lenis({
       autoRaf: true,
       wrapper: mainRef.current,
       prevent: (n) => n.classList.contains("scroll-block"),
+      wheelMultiplier: 0.8,
     });
   }, []);
 
@@ -77,12 +85,12 @@ const Cover = ({ instantLoad }) => {
   const { scrollYProgress, scrollY } = useContext(StateProvider);
   const scale = useTransform(
     scrollYProgress,
-    [0.2 / pgNums, 1 / pgNums],
+    [fpg(0.2), fpg(pgEnd.cover)],
     [1, 0.8]
   );
   const opacity = useTransform(
     scrollYProgress,
-    [0.4 / pgNums, 1 / pgNums],
+    [fpg(0.4), fpg(pgEnd.cover)],
     [1, 0]
   );
 
@@ -189,19 +197,31 @@ const Cover = ({ instantLoad }) => {
   );
 };
 
+const works_revealStart = pgEnd.cover + 0.34;
+const works_cardOffset = pgEnd.cover + 0.6;
 const Works = () => {
   const { scrollYProgress } = useContext(StateProvider);
 
   const opacity = useTransform(
     scrollYProgress,
-    [0.9 / pgNums, 0.95 / pgNums, 4 / pgNums, 4.1 / pgNums],
+    [
+      fpg(pgEnd.cover - 0.1),
+      fpg(pgEnd.cover - 0.05),
+      fpg(pgEnd.works),
+      fpg(pgEnd.works + 0.1),
+    ],
     [0, 1, 1, 0]
   );
   const cardIndexMotion = useTransform(
     scrollYProgress,
     [
-      1.34 / pgNums,
-      ...projects.map((_, i) => ((2.6 / projects.length) * i + 1.35) / pgNums),
+      fpg(works_revealStart),
+      ...projects.map((_, i) =>
+        fpg(
+          ((pgEnd.works - works_cardOffset) / projects.length) * i +
+            works_cardOffset
+        )
+      ),
     ],
     [-1, ...projects.map((_, i) => i)],
     {
@@ -448,7 +468,7 @@ const Socials = () => {
 
   const opacity = useTransform(
     scrollYProgress,
-    [4 / pgNums, 4.1 / pgNums],
+    [fpg(pgEnd.works), fpg(pgEnd.works + 0.1)],
     [0, 1]
   );
 
