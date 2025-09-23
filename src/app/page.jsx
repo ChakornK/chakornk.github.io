@@ -198,7 +198,7 @@ const Cover = ({ instantLoad }) => {
         }
       >
         <a href="https://github.com/ChakornK" target="_blank" rel="noreferrer">
-          <FontAwesomeIcon icon={faGithub} size={32} />
+          <FontAwesomeIcon icon={faGithub} size={"2xl"} />
         </a>
       </motion.div>
 
