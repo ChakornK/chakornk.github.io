@@ -80,19 +80,23 @@ export default () => {
 
   return (
     <StateProvider.Provider value={{ scrollYProgress, scrollY }}>
-      <motion.main ref={mainRef}>
+      <motion.main
+        ref={mainRef}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, transition: { duration: 0.5 } }}
+      >
         <Cover instantLoad={notTop} />
         <Works />
         <Socials />
+        <motion.div
+          className="bottom-0 left-1/2 z-20 fixed bg-white h-0.5 -translate-x-1/2"
+          style={{
+            width: scrollProgress,
+            opacity: scrollProgressOpacity,
+            y: scrollProgressY,
+          }}
+        />
       </motion.main>
-      <motion.div
-        className="bottom-0 left-1/2 z-20 fixed bg-white h-0.5 -translate-x-1/2"
-        style={{
-          width: scrollProgress,
-          opacity: scrollProgressOpacity,
-          y: scrollProgressY,
-        }}
-      />
     </StateProvider.Provider>
   );
 };
