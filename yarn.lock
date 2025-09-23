@@ -495,6 +495,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fortawesome/free-solid-svg-icons@npm:^7.0.1":
+  version: 7.0.1
+  resolution: "@fortawesome/free-solid-svg-icons@npm:7.0.1"
+  dependencies:
+    "@fortawesome/fontawesome-common-types": "npm:7.0.1"
+  checksum: 10c0/25e579f3e6504982884a1231f74125efdad70e3fde3bc8ca657a28d55a80ac4ddf6d5530c5cfd93292dbb702957bb4b91b8488865a934da1e09304a7e2a07a72
+  languageName: node
+  linkType: hard
+
 "@fortawesome/react-fontawesome@npm:^3.0.2":
   version: 3.0.2
   resolution: "@fortawesome/react-fontawesome@npm:3.0.2"
@@ -1448,6 +1457,7 @@ __metadata:
   dependencies:
     "@fortawesome/fontawesome-svg-core": "npm:^7.0.1"
     "@fortawesome/free-brands-svg-icons": "npm:^7.0.1"
+    "@fortawesome/free-solid-svg-icons": "npm:^7.0.1"
     "@fortawesome/react-fontawesome": "npm:^3.0.2"
     "@preact/preset-vite": "npm:^2.10.2"
     "@tailwindcss/typography": "npm:^0.5.16"

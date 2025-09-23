@@ -31,6 +31,7 @@ import {
   faGithub,
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 const StateProvider = createContext(null);
 
@@ -474,9 +475,10 @@ const LinkIcon = ({ name }) => {
 };
 
 const socialLinks = {
-  Github: "https://github.com/chakornk",
-  Instagram: "https://instagram.com/chakorn.07",
-  Discord: "chakorn.7",
+  Github: { url: "https://github.com/chakornk", icon: faGithub },
+  Instagram: { url: "https://instagram.com/chakorn.07", icon: faInstagram },
+  Discord: { url: "chakorn.7", icon: faDiscord },
+  Email: { url: "mailto:chakornk2007@gmail.com", icon: faEnvelope },
 };
 const Socials = () => {
   const { scrollYProgress } = useContext(StateProvider);
@@ -521,7 +523,7 @@ const Socials = () => {
         initial="initial"
         whileInView="animate"
       >
-        {Object.entries(socialLinks).map(([name, url]) => (
+        {Object.entries(socialLinks).map(([name, { url, icon }]) => (
           <motion.a
             key={url}
             className="cursor-pointer"
@@ -543,7 +545,7 @@ const Socials = () => {
               },
             }}
           >
-            <SocialIcon name={name} />
+            <FontAwesomeIcon icon={icon} size="2xl" />
           </motion.a>
         ))}
       </motion.div>
@@ -572,16 +574,4 @@ const Socials = () => {
       </AnimatePresence>
     </motion.div>
   );
-};
-const SocialIcon = ({ name }) => {
-  switch (name.toLowerCase()) {
-    case "github":
-      return <FontAwesomeIcon icon={faGithub} size={"2xl"} />;
-    case "instagram":
-      return <FontAwesomeIcon icon={faInstagram} size={"2xl"} />;
-    case "discord":
-      return <FontAwesomeIcon icon={faDiscord} size={"2xl"} />;
-    default:
-      return null;
-  }
 };
