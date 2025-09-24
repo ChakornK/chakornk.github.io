@@ -39,7 +39,8 @@ const fpg = (n) => n / pgNums;
 const pgEnd = {
   cover: 1,
   works: 5,
-  socials: 5.5,
+  skills: 7,
+  socials: 8,
 };
 const pgNums = Math.max(...Object.values(pgEnd)); // length of page in vh
 
@@ -87,7 +88,9 @@ export default () => {
       >
         <Cover instantLoad={notTop} />
         <Works />
+        <Skills />
         <Socials />
+        <div class="h-screen"></div>
         <motion.div
           className="bottom-0 left-1/2 z-20 fixed bg-white h-0.5 -translate-x-1/2"
           style={{
@@ -226,9 +229,9 @@ const Works = () => {
     scrollYProgress,
     [
       fpg(pgEnd.cover - 0.1),
-      fpg(pgEnd.cover - 0.05),
-      fpg(pgEnd.works),
-      fpg(pgEnd.works + 0.1),
+      fpg(pgEnd.cover),
+      fpg(pgEnd.works - 0.2),
+      fpg(pgEnd.works - 0.1),
     ],
     [0, 1, 1, 0]
   );
@@ -276,7 +279,7 @@ const Works = () => {
       className="page"
       style={{
         opacity,
-        height: "300vh",
+        height: "400vh",
         pointerEvents: canInteract ? "auto" : "none",
       }}
     >
@@ -478,6 +481,53 @@ const LinkIcon = ({ name }) => {
   }
 };
 
+const Skills = () => {
+  const { scrollYProgress } = useContext(StateProvider);
+
+  const opacity = useTransform(
+    scrollYProgress,
+    [
+      fpg(pgEnd.works - 0.1),
+      fpg(pgEnd.works),
+      fpg(pgEnd.skills - 0.2),
+      fpg(pgEnd.skills - 0.1),
+    ],
+    [0, 1, 1, 0]
+  );
+
+  const [canInteract, setCanInteract] = useState(false);
+  useMotionValueEvent(opacity, "change", (v) => {
+    if (v === 0) {
+      setCanInteract(false);
+    } else {
+      setCanInteract(true);
+    }
+  });
+  useEffect(() => {
+    if (opacity.get() === 0) {
+      setCanInteract(false);
+    } else {
+      setCanInteract(true);
+    }
+  }, []);
+
+  return (
+    <motion.div
+      className="page"
+      style={{
+        opacity,
+        height: "200vh",
+        pointerEvents: canInteract ? "auto" : "none",
+      }}
+    >
+      <div className="top-0 sticky flex flex-col items-center w-screen h-screen">
+        <h2 className="mt-16 font-semibold text-6xl">Skills</h2>
+        <div className="w-full grow"></div>
+      </div>
+    </motion.div>
+  );
+};
+
 const socialLinks = {
   Github: { url: "https://github.com/chakornk", icon: faGithub },
   Instagram: { url: "https://instagram.com/chakorn.07", icon: faInstagram },
@@ -489,7 +539,7 @@ const Socials = () => {
 
   const opacity = useTransform(
     scrollYProgress,
-    [fpg(pgEnd.works), fpg(pgEnd.works + 0.1)],
+    [fpg(pgEnd.skills - 0.1), fpg(pgEnd.skills)],
     [0, 1]
   );
 
@@ -509,7 +559,10 @@ const Socials = () => {
   });
 
   return (
-    <motion.div className="page" style={{ opacity, height: "50vh" }}>
+    <motion.div
+      className="flex flex-col justify-center items-center page"
+      style={{ opacity }}
+    >
       <h2 className="font-semibold text-6xl">Socials</h2>
       <motion.div
         className="flex items-center gap-4"
@@ -526,6 +579,7 @@ const Socials = () => {
         }}
         initial="initial"
         whileInView="animate"
+        viewport={{ margin: `0px 0px -${window.innerHeight / 2 - 40}px 0px` }}
       >
         {Object.entries(socialLinks).map(([name, { url, icon }]) => (
           <motion.a
