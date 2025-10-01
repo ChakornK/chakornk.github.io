@@ -622,7 +622,11 @@ const Socials = () => {
         }}
         initial="initial"
         whileInView="animate"
-        viewport={{ margin: `0px 0px -${window.innerHeight / 2 - 40}px 0px` }}
+        viewport={{
+          margin: `0px 0px -${
+            typeof window !== "undefined" ? window.innerHeight / 2 - 40 : 0
+          }px 0px`,
+        }}
       >
         {Object.entries(socialLinks).map(([name, { url, icon }]) => (
           <motion.a
