@@ -32,6 +32,7 @@ import {
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { techstack } from "../techstackData";
 
 const StateProvider = createContext(null);
 
@@ -39,8 +40,8 @@ const fpg = (n) => n / pgNums;
 const pgEnd = {
   cover: 1,
   works: 5,
-  skills: 7,
-  socials: 8,
+  skills: 6.5,
+  socials: 7.5,
 };
 const pgNums = Math.max(...Object.values(pgEnd)); // length of page in vh
 
@@ -511,18 +512,60 @@ const Skills = () => {
     }
   }, []);
 
+  const scrollTransform = useMotionTemplate`calc(${useTransform(
+    scrollYProgress,
+    [fpg(pgEnd.works + 0.05), fpg(pgEnd.skills - 0.25)],
+    [0, 100]
+  )} * (-1% + 1vh - 4px))`;
+
   return (
     <motion.div
       className="page"
       style={{
         opacity,
-        height: "200vh",
+        height: "150vh",
         pointerEvents: canInteract ? "auto" : "none",
       }}
     >
-      <div className="top-0 sticky flex flex-col items-center w-screen h-screen">
-        <h2 className="mt-16 font-semibold text-6xl">Skills</h2>
-        <div className="w-full grow"></div>
+      <div className="top-0 sticky flex flex-col items-center w-screen">
+        <h2 className="mt-16 font-semibold text-6xl">Tech stack</h2>
+      </div>
+      <div className="relative w-full h-[calc(100vh-12rem)] overflow-clip">
+        <motion.div
+          style={{
+            y: scrollTransform,
+          }}
+          className="top-8 left-1/2 absolute px-8 sm:px-16 w-full max-w-2xl min-h-full -translate-x-1/2"
+        >
+          {techstack.map((col, i) => (
+            <div key={i}>
+              {Object.entries(col).map(([catName, catContent]) => (
+                <div key={catName} className="flex flex-col gap-4">
+                  <h3 className="mt-12 text-3xl">{catName}</h3>
+                  {catContent.map(({ name, desc, icon }) => (
+                    <div
+                      key={name}
+                      className="flex items-center gap-4 bg-white/5 p-3 rounded-xl overflow-clip"
+                    >
+                      <div className="relative w-16 h-16">
+                        <img
+                          src={icon}
+                          className="top-0 right-0 bottom-0 left-0 absolute rounded-xl"
+                        />
+                      </div>
+                      <div>
+                        <h4 className="text-xl">{name}</h4>
+                        <p className="text-neutral-400">{desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          ))}
+        </motion.div>
+        <div className="top-0 left-0 absolute bg-gradient-to-b from-black to-transparent w-full h-12"></div>
+        <div className="bottom-0 left-0 absolute bg-gradient-to-t from-black to-transparent w-full h-12"></div>
       </div>
     </motion.div>
   );

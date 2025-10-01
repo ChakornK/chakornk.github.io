@@ -1,0 +1,9 @@
+export { default as asset_express } from "../assets/Express.svg?inline";
+export { default as asset_flutter } from "../assets/Flutter.svg?inline";
+export { default as asset_git } from "../assets/Git.svg?inline";
+export { default as asset_github } from "../assets/Github.svg?inline";
+export { default as asset_nextjs } from "../assets/Nextjs.svg?inline";
+export { default as asset_nodejs } from "../assets/Nodejs.svg?inline";
+export { default as asset_react } from "../assets/React.svg?inline";
+export { default as asset_tailwind } from "../assets/Tailwind.svg?inline";
+export { default as asset_typescript } from "../assets/Typescript.svg?inline";
