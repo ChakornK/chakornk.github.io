@@ -40,8 +40,8 @@ const fpg = (n) => n / pgNums;
 const pgEnd = {
   cover: 1,
   works: 5,
-  skills: 6.5,
-  socials: 7.5,
+  skills: 7,
+  socials: 8,
 };
 const pgNums = Math.max(...Object.values(pgEnd)); // length of page in vh
 
@@ -523,7 +523,7 @@ const Skills = () => {
       className="page"
       style={{
         opacity,
-        height: "150vh",
+        height: "200vh",
         pointerEvents: canInteract ? "auto" : "none",
       }}
     >
