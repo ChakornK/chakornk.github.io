@@ -2,6 +2,7 @@ import Lenis from "lenis";
 import "lenis/dist/lenis.css";
 
 import {
+  animate,
   AnimatePresence,
   motion,
   stagger,
@@ -577,6 +578,7 @@ const socialLinks = {
   Discord: { url: "chakorn.7", icon: faDiscord },
   Email: { url: "mailto:chakornk2007@gmail.com", icon: faEnvelope },
 };
+let prevOpacity = 0;
 const Socials = () => {
   const { scrollYProgress } = useContext(StateProvider);
 
@@ -585,6 +587,19 @@ const Socials = () => {
     [fpg(pgEnd.skills - 0.1), fpg(pgEnd.skills)],
     [0, 1]
   );
+
+  useMotionValueEvent(opacity, "change", (v) => {
+    if (v > 0.5 && prevOpacity <= 0.5) {
+      animate(
+        ".social-links-container a",
+        { opacity: 1 },
+        { delay: stagger(0.1, { startDelay: 0.1, from: "first" }) }
+      );
+    } else if (v < 0.5 && prevOpacity >= 0.5) {
+      animate(".social-links-container a", { opacity: 0 });
+    }
+    prevOpacity = v;
+  });
 
   const [copiedAlertVisible, setCopiedAlertVisible] = useState(false);
   const [copiedAlertId, setCopiedAlertId] = useState(null);
@@ -607,31 +622,11 @@ const Socials = () => {
       style={{ opacity }}
     >
       <h2 className="font-semibold text-6xl">Socials</h2>
-      <motion.div
-        className="flex items-center gap-4"
-        variants={{
-          initial: {
-            opacity: 0,
-          },
-          animate: {
-            opacity: 1,
-            transition: {
-              delayChildren: stagger(0.2, { startDelay: 0.2, from: "first" }),
-            },
-          },
-        }}
-        initial="initial"
-        whileInView="animate"
-        viewport={{
-          margin: `0px 0px -${
-            typeof window !== "undefined" ? window.innerHeight / 2 - 40 : 0
-          }px 0px`,
-        }}
-      >
+      <div className="flex items-center gap-4 social-links-container">
         {Object.entries(socialLinks).map(([name, { url, icon }]) => (
-          <motion.a
+          <a
             key={url}
-            className="cursor-pointer"
+            className="opacity-0 cursor-pointer"
             href={name !== "Discord" && url}
             onClick={
               name === "Discord"
@@ -641,19 +636,11 @@ const Socials = () => {
                 : null
             }
             target="_blank"
-            variants={{
-              initial: {
-                opacity: 0,
-              },
-              animate: {
-                opacity: 1,
-              },
-            }}
           >
             <FontAwesomeIcon icon={icon} size="2xl" />
-          </motion.a>
+          </a>
         ))}
-      </motion.div>
+      </div>
       <AnimatePresence>
         {copiedAlertVisible && (
           <motion.div
