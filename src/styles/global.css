@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+html,
+body {
+  @apply m-0 h-full w-full;
+}
+body {
+  font-family: "JetBrains Mono", monospace;
+  @apply bg-gray-100 tracking-tighter text-gray-950;
+}
