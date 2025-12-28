@@ -6,5 +6,5 @@ body {
 }
 body {
   font-family: "JetBrains Mono", monospace;
-  @apply bg-gray-100 tracking-tighter text-gray-950;
+  @apply bg-gray-100 font-medium tracking-tighter text-gray-950;
 }
