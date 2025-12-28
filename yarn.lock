@@ -550,21 +550,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@iconify-json/carbon@npm:^1.2.15":
+  version: 1.2.15
+  resolution: "@iconify-json/carbon@npm:1.2.15"
+  dependencies:
+    "@iconify/types": "npm:*"
+  checksum: 10c0/0ffe0ccee3893e6cc31d1049dc9d84caa5e0890841dfaf650a67a36e1655dddc43c6fdc3a4fed0b2c7f4710dd867c851e93d7d7574d2d8f3dc3b3e2d942a073f
+  languageName: node
+  linkType: hard
+
 "@iconify-json/simple-icons@npm:^1.2.63":
   version: 1.2.63
   resolution: "@iconify-json/simple-icons@npm:1.2.63"
   dependencies:
     "@iconify/types": "npm:*"
   checksum: 10c0/f79db4c64f90ae66a7969fbad9fcc61cd2b1d1b6c7a79d7022111d808371be862131f32718de0affea01c3175ccb472755594c4dbebabff796bb8d98a08cba4b
-  languageName: node
-  linkType: hard
-
-"@iconify-json/tabler@npm:^1.2.25":
-  version: 1.2.25
-  resolution: "@iconify-json/tabler@npm:1.2.25"
-  dependencies:
-    "@iconify/types": "npm:*"
-  checksum: 10c0/fe539917492426a6500bf9de60d711b3f147578d1d6e9023dd2f981bebf4fd68afa5b7ff9070fc30abc6d2dcb03146a1870f410a086106b8c1a9dac4c04d0994
   languageName: node
   linkType: hard
 
@@ -1881,8 +1881,8 @@ __metadata:
   resolution: "chakornk.github.io@workspace:."
   dependencies:
     "@astrojs/preact": "npm:^4.1.3"
+    "@iconify-json/carbon": "npm:^1.2.15"
     "@iconify-json/simple-icons": "npm:^1.2.63"
-    "@iconify-json/tabler": "npm:^1.2.25"
     "@rollup/plugin-yaml": "npm:^4.1.2"
     "@tailwindcss/vite": "npm:^4.1.18"
     astro: "npm:^5.16.6"
