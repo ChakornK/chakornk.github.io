@@ -1,0 +1,23 @@
+---
+import "@/styles/global.css";
+import Layout from "@/layouts/Layout.astro";
+
+import type { GetStaticPaths } from "astro";
+
+const project = import.meta.glob("/projects/*.md", { eager: true })[`/projects/${Astro.params.id}.md`];
+const { Content, frontmatter } = project as Record<string, any>;
+
+export const getStaticPaths = (() => {
+  const matches = import.meta.glob("/projects/*.md", { eager: true });
+  const projects = Object.values(matches).map((p) => (p as { frontmatter: { id: string } }).frontmatter.id);
+  return projects.map((p) => ({ params: { id: p } }));
+}) satisfies GetStaticPaths;
+---
+
+<Layout title={`ChakornK - ${frontmatter.name}`}>
+  <main class="flex h-full flex-col items-center p-16">
+    <div class="prose w-full max-w-2xl">
+      <Content />
+    </div>
+  </main>
+</Layout>
