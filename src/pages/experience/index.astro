@@ -2,10 +2,12 @@
 import "@/styles/global.css";
 import Layout from "@/layouts/Layout.astro";
 
+import { Icon } from "astro-icon/components";
+
+// @ts-ignore
 import data from "./experience.yml";
 const experience = data.experience as { title: string; date: string; description: string[]; skills: string[] }[];
 const stack = data.stack as { [title: string]: { [skill: string]: string } };
-import { Icon } from "astro-icon/components";
 ---
 
 <Layout title="ChakornK - Experience">
