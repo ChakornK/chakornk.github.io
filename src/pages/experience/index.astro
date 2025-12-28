@@ -2,7 +2,8 @@
 import "@/styles/global.css";
 import Layout from "@/layouts/Layout.astro";
 
-import { experience } from "./experience.yml";
+import { experience, stack } from "./experience.yml";
+import { Icon } from "astro-icon/components";
 ---
 
 <Layout title="ChakornK - Experience">
@@ -22,6 +23,23 @@ import { experience } from "./experience.yml";
             <div class="flex flex-wrap gap-2 text-xs">
               {item.skills.map((skill) => (
                 <p class="border border-gray-950 px-2 py-1">{skill}</p>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+
+      <h1 class="mt-8 text-3xl">Tech stack</h1>
+      {
+        Object.entries(stack).map(([title, items]) => (
+          <div>
+            <h2 class="text-lg">{title}</h2>
+            <div class="flex flex-wrap gap-2 text-sm">
+              {Object.entries(items).map(([skill, icon]) => (
+                <div class="flex items-center gap-2 border border-gray-950 px-2 py-1">
+                  <Icon name={icon} size={18} />
+                  <p class="">{skill}</p>
+                </div>
               ))}
             </div>
           </div>

@@ -17,3 +17,21 @@ experience:
       - Tailwind
       - AWS S3
       - Prisma
+
+stack:
+  Frontend:
+    TypeScript: simple-icons:typescript
+    React: simple-icons:react
+    Tailwind: simple-icons:tailwindcss
+    Next: simple-icons:nextdotjs
+    Astro: simple-icons:astro
+    Flutter: simple-icons:flutter
+  Backend:
+    Node: simple-icons:nodedotjs
+    # Express: simple-icons:express
+    MongoDB: simple-icons:mongodb
+  DevOps:
+    Docker: simple-icons:docker
+    Git: simple-icons:git
+    GitHub Actions: simple-icons:github
+    Figma: simple-icons:figma
