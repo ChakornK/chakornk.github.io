@@ -1,12 +1,23 @@
 ---
 import "@/styles/global.css";
 import Layout from "@/layouts/Layout.astro";
+
+const matches = import.meta.glob("/projects/*.md", { eager: true });
+const projects = Object.values(matches).map((p) => (p as { frontmatter: any }).frontmatter) as { id: string; name: string; description: string }[];
 ---
 
 <Layout title="ChakornK - Projects">
   <main class="flex h-full flex-col items-center p-16">
-    <div class="w-full max-w-2xl">
+    <div class="flex w-full max-w-2xl flex-col gap-4">
       <h1 class="text-3xl">Projects</h1>
+      {
+        projects.map((project) => (
+          <a href={`/projects/${project.id}`} class="flex flex-col gap-2 border border-gray-950 p-4 text-sm">
+            <h2 class="text-lg leading-none">{project.name}</h2>
+            <p>{project.description}</p>
+          </a>
+        ))
+      }
     </div>
   </main>
 </Layout>
