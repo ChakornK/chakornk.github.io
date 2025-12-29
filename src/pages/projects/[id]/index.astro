@@ -3,6 +3,7 @@ import "@/styles/global.css";
 import Layout from "@/layouts/Layout.astro";
 
 import type { GetStaticPaths } from "astro";
+import ProjectLinks from "@/components/ProjectLinks.astro";
 
 const project = import.meta.glob("/projects/*.md", { eager: true })[`/projects/${Astro.params.id}.md`];
 const { Content, frontmatter } = project as Record<string, any>;
@@ -17,7 +18,10 @@ export const getStaticPaths = (() => {
 <Layout title={`ChakornK - ${frontmatter.name}`}>
   <main class="flex h-full flex-col items-center p-16 pt-24">
     <div class="prose prose-gray **:font-medium w-full max-w-2xl">
-      <h1>{frontmatter.name}</h1>
+      <div class="mb-8 flex items-center justify-between">
+        <h1 class="mb-0">{frontmatter.name}</h1>
+        <ProjectLinks {...frontmatter} />
+      </div>
       <Content />
     </div>
   </main>
