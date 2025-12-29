@@ -1,5 +1,6 @@
 ---
 import "@/styles/global.css";
+import "./style.css";
 import Layout from "@/layouts/Layout.astro";
 
 import type { GetStaticPaths } from "astro";
@@ -17,7 +18,7 @@ export const getStaticPaths = (() => {
 
 <Layout title={`ChakornK - ${frontmatter.name}`}>
   <main class="flex h-full flex-col items-center p-16 pt-24">
-    <div class="prose prose-gray **:font-medium prose-li:marker:text-inherit w-full max-w-2xl">
+    <div class="prose prose-gray **:font-medium prose-li:marker:text-inherit prose-img:max-h-96 prose-img:w-auto w-full max-w-2xl">
       <div class="mb-8 flex items-center justify-between">
         <h1 class="mb-0">{frontmatter.name}</h1>
         <ProjectLinks {...frontmatter} />

@@ -1,0 +1,5 @@
+@reference "tailwindcss";
+
+.prose p:has(img) {
+  @apply flex justify-center gap-4;
+}
