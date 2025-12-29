@@ -9,15 +9,15 @@ Together with [@maneetdhaliwal](https://github.com/maneetdhaliwal), we created C
 
 The application features a discovery page for all clubs, which allows students to easily browse through all clubs and see what they have been up to.
 
-![Club discovery page](@/assets/projects/clubmanager0.webp)
+![Club discovery page](/projects/club-manager/1.webp)
 
 Each club has its own page, which allows users to view the club's information.
 
-![Club information page](@/assets/projects/clubmanager1.webp)
+![Club information page](/projects/club-manager/2.webp)
 
 Club owners can easily update their club's information through the application.
 
-![Updating club information](@/assets/projects/clubmanager2.webp)
+![Updating club information](/projects/club-manager/3.webp)
 
 ## Tech stack
 
