@@ -4,19 +4,19 @@ import { Icon } from "astro-icon/components";
 const { github, website } = Astro.props;
 ---
 
-<div class="flex flex-wrap gap-3">
-  {
-    github && (
-      <a href={`https://github.com/${github}`} target="_blank">
-        <Icon name="simple-icons:github" size={20} />
-      </a>
-    )
-  }
-  {
-    website && (
-      <a href={website} target="_blank">
-        <Icon name="carbon:wikis" size={20} />
-      </a>
-    )
-  }
-</div>
+{
+  (github || website) && (
+    <div class="flex flex-wrap gap-3">
+      {github && (
+        <a href={`https://github.com/${github}`} target="_blank">
+          <Icon name="simple-icons:github" size={20} />
+        </a>
+      )}
+      {website && (
+        <a href={website} target="_blank">
+          <Icon name="carbon:wikis" size={20} />
+        </a>
+      )}
+    </div>
+  )
+}
