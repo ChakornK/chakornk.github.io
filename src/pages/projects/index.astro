@@ -3,7 +3,14 @@ import "@/styles/global.css";
 import Layout from "@/layouts/Layout.astro";
 
 const matches = import.meta.glob("/projects/*.md", { eager: true });
-const projects = Object.values(matches).map((p) => (p as { frontmatter: any }).frontmatter) as { id: string; name: string; description: string }[];
+const projects = Object.entries(matches).map(([k, p]) => ({
+  id: k.split("/").slice(-1)[0].split(".")[0],
+  ...(p as { frontmatter: any }).frontmatter,
+})) as {
+  id: string;
+  name: string;
+  description: string;
+}[];
 ---
 
 <Layout title="ChakornK - Projects">

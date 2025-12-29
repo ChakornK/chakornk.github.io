@@ -9,14 +9,15 @@ const { Content, frontmatter } = project as Record<string, any>;
 
 export const getStaticPaths = (() => {
   const matches = import.meta.glob("/projects/*.md", { eager: true });
-  const projects = Object.values(matches).map((p) => (p as { frontmatter: { id: string } }).frontmatter.id);
+  const projects = Object.keys(matches).map((p) => p.split("/").slice(-1)[0].split(".")[0]);
   return projects.map((p) => ({ params: { id: p } }));
 }) satisfies GetStaticPaths;
 ---
 
 <Layout title={`ChakornK - ${frontmatter.name}`}>
   <main class="flex h-full flex-col items-center p-16 pt-24">
-    <div class="prose w-full max-w-2xl">
+    <div class="prose prose-gray **:font-medium w-full max-w-2xl">
+      <h1>{frontmatter.name}</h1>
       <Content />
     </div>
   </main>
