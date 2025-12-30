@@ -26,7 +26,7 @@ export default defineConfig({
     ],
   },
   prefetch: {
-    defaultStrategy: "load",
+    defaultStrategy: "viewport",
     prefetchAll: true,
   },
 });
