@@ -8,16 +8,16 @@ The EagleTime app is used by Johnston Heights Secondary to broadcast announcemen
 
 The app features a home page, which lists information such as block rotations, bell schedule, school map, and links to important resources.
 
-![Home page](/projects/jh-eagles/1.webp)
-![Bell schedule](/projects/jh-eagles/4.webp)
+![Home page](/projects/jh-eagles/1.png)
+![Bell schedule](/projects/jh-eagles/4.png)
 
 The messages page shows the latest school announcements.
 
-![Messages page](/projects/jh-eagles/2.webp)
+![Messages page](/projects/jh-eagles/2.png)
 
 The calendar page allows users to view events and schedules.
 
-![Calendar page](/projects/jh-eagles/3.webp)
+![Calendar page](/projects/jh-eagles/3.png)
 
 The app uses EagleTime's API to fetch data, which allows it to synchronize with the EagleTime app without additional work.
 

@@ -8,8 +8,8 @@ Drawdle allows users to learn basic drawing skills by following video tutorials 
 
 The application features a practice canvas and a sidebar for watching video tutorials. Users can also save their current drawing, which can be restored later.
 
-![Drawdle 1](/projects/drawdle/1.webp)
-![Drawdle 2](/projects/drawdle/2.webp)
+![Drawdle 1](/projects/drawdle/1.jpg)
+![Drawdle 2](/projects/drawdle/2.jpg)
 
 ## Tech stack
 
