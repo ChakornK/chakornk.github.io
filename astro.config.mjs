@@ -3,6 +3,7 @@ import { defineConfig } from "astro/config";
 
 import preact from "@astrojs/preact";
 import icon from "astro-icon";
+import { imageOptimizer } from "./build/imageOptimizer.js";
 
 import tailwindcss from "@tailwindcss/vite";
 import yaml from "@rollup/plugin-yaml";
@@ -10,7 +11,15 @@ import yaml from "@rollup/plugin-yaml";
 import rehypeExternalLinks from "rehype-external-links";
 
 export default defineConfig({
-  integrations: [preact(), icon()],
+  integrations: [
+    preact(),
+    icon(),
+    imageOptimizer({
+      width: 1344,
+      height: 768,
+      quality: 50,
+    }),
+  ],
   vite: {
     plugins: [tailwindcss(), yaml()],
   },

@@ -19,6 +19,7 @@
     "astro-icon": "^1.1.5",
     "preact": "^10.28.1",
     "rehype-external-links": "^3.0.0",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4.1.18"
   }
 }

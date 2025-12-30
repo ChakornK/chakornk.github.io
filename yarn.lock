@@ -1901,6 +1901,7 @@ __metadata:
     astro-icon: "npm:^1.1.5"
     preact: "npm:^10.28.1"
     rehype-external-links: "npm:^3.0.0"
+    sharp: "npm:^0.34.5"
     tailwindcss: "npm:^4.1.18"
   languageName: unknown
   linkType: soft
@@ -4648,7 +4649,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sharp@npm:^0.34.0":
+"sharp@npm:^0.34.0, sharp@npm:^0.34.5":
   version: 0.34.5
   resolution: "sharp@npm:0.34.5"
   dependencies:
