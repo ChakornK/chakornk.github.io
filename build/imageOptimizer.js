@@ -48,7 +48,7 @@ export const imageOptimizer = ({ width, height, quality = 50 }) => ({
                 resolve(metadata);
               });
             });
-            img.resize({ width, height, fit: "inside" }).webp({ quality, effort: 6 });
+            img.resize({ width, height, fit: "inside" }).webp({ quality, effort: 6, smartDeblock: true, smartSubsample: true });
             await new Promise((resolve) => {
               img.toBuffer().then((buffer) => {
                 fs.rmSync(childPath);
