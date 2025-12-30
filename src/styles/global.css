@@ -1,6 +1,13 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 100 800;
+  src: url(/JetBrainsMono.woff2);
+}
+
 html,
 body {
   @apply min-h-dvh m-0 w-full;
