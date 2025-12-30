@@ -1,11 +1,20 @@
 ---
-
+const routes = Object.entries({
+  "/": "Home",
+  "/experience": "Experience",
+  "/projects": "Projects",
+});
+const { pathname } = Astro.url;
 ---
 
-<div
-  class="*:underline *:px-1 *:hover:no-underline *:hover:bg-gray-950 *:hover:text-gray-100 fixed left-0 right-0 top-0 flex items-center gap-4 bg-gray-100/75 p-4 font-medium backdrop-blur"
->
-  <a href="/">Home</a>
-  <a href="/experience">Experience</a>
-  <a href="/projects">Projects</a>
+<div class="*:px-1 fixed left-0 right-0 top-0 flex select-none items-center gap-4 bg-gray-100/75 p-4 font-medium backdrop-blur">
+  {
+    routes.map(([path, name]) =>
+      pathname === path ?
+        <p class="bg-gray-950 text-gray-100">{name}</p>
+      : <a href={path} class="hover:underline">
+          {name}
+        </a>
+    )
+  }
 </div>
