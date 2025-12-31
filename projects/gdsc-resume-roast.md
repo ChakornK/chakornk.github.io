@@ -2,6 +2,7 @@
 name: GDSC Resume Roast
 description: Resume review platform for GDSC UBC's event
 github: ChakornK/gdsc-resume-roast
+skills: Next.js, React, Tailwind, PostgreSQL, AWS S3
 ---
 
 GDSC Resume Roast was used in an event by GDSC UBC, which had 40+ participants. The web application was built using Next.js, React, and Tailwind. Resumes are uploaded to an AWS S3 bucket and their reviews are stored in a PostgreSQL database using Prisma.

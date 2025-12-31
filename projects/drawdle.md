@@ -2,6 +2,7 @@
 name: Drawdle
 description: Web application for learning to draw
 github: drawdle/drawdle
+skills: Next.js, React, Tailwind, PixiJS
 ---
 
 Drawdle allows users to learn basic drawing skills by following video tutorials and practicing on a canvas. This project was created in collaboration with [@TheUnicat](https://github.com/TheUnicat) and [@danburgerisaburger](https://github.com/danburgerisaburger).

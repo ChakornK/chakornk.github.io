@@ -1,6 +1,7 @@
 ---
 name: Club Manager
 description: Web application for managing school clubs
+skills: Next.js, React, Tailwind
 ---
 
 At my high school, clubs were tracked using a spreadsheet, which made it difficult to keep track of all information for each club. Updating information for a club was a manual process that relied on a person with access to the spreadsheet. Furthermore, there was no central location for all club information, making it difficult to find what you were looking for.

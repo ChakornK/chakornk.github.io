@@ -2,6 +2,7 @@
 name: JH Eagles
 description: MD3-compliant version of Johnston Heights Secondary's EagleTime app
 github: chakornk/jh-eagles
+skills: Flutter
 ---
 
 The EagleTime app is used by Johnston Heights Secondary to broadcast announcements to students, parents, and staff. The app had performance issues (>1500ms load time) and its user interface design is outdated and cluttered. To address these issues, I created the JH Eagles app, which incorporates Android's new [Material Design 3](https://m3.material.io/), with Flutter. It has a load time of under 500ms, making it fast and responsive, and is designed to be easy to use, with a clean and modern look.

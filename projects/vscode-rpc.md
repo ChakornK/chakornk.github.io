@@ -3,6 +3,7 @@ name: VSCode Discord RPC
 description: Simple no-config Discord RPC extension for Visual Studio Code
 github: chakornk/vscode-rpc
 website: https://marketplace.visualstudio.com/items?itemName=ChakornK.vsc-discord-rpc
+skills: Node.js, VSCode API
 ---
 
 Discord is a messaging platform that allows users to share their current activity with their friends through Rich Presence (RPC). This extension uses the RPC protocol to display your current VSCode activity on Discord, allowing your friends to see what you are working on.

@@ -3,6 +3,7 @@ name: Wxrdle
 description: Get the best guess suggestions for today's Wordle and view future Wordle answers
 github: chakornk/wxrdle
 website: https://wxrdle.vercel.app/
+skills: Preact, Tailwind, Motion
 ---
 
 [Wordle](https://www.nytimes.com/games/wordle/index.html) is a word-guessing game where players are given 6 guesses to find a 5-letter word. While there are many strategies to winning in as few guesses as possible, one of the simplest strategies is to eliminate as many letters as possible in each guess. However, most players do not know every possible word (over 14k words), which means they may not be able to eliminate letters as efficiently as possible.
