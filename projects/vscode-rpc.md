@@ -1,6 +1,6 @@
 ---
 name: VSCode Discord RPC
-description: A simple no-config Discord RPC extension for Visual Studio Code
+description: Simple no-config Discord RPC extension for Visual Studio Code
 github: chakornk/vscode-rpc
 website: https://marketplace.visualstudio.com/items?itemName=ChakornK.vsc-discord-rpc
 ---
