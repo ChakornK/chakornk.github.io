@@ -1,6 +1,6 @@
 ---
 name: Drawdle
-description: A web application for learning to draw
+description: Web application for learning to draw
 github: drawdle/drawdle
 ---
 
