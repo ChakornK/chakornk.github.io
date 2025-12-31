@@ -19,3 +19,4 @@ Wxrdle can also be used to view future Wordle answers.
 ## Tech stack
 
 - **Frontend**: Preact, Tailwind, Motion
+- **CI/CD**: GitHub Actions

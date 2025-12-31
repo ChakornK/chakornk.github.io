@@ -26,4 +26,4 @@ GitHub Actions is used to build and deploy the app. It also updates a static API
 ## Tech stack
 
 - **Frontend**: Flutter
-- **CD**: GitHub Actions
+- **CI/CD**: GitHub Actions
