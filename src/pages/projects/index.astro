@@ -1,8 +1,9 @@
 ---
 import "@/styles/global.css";
 import Layout from "@/layouts/Layout.astro";
-import ProjectLinks from "@/components/ProjectLinks.astro";
 import { Icon } from "astro-icon/components";
+import ProjectLinks from "@/components/ProjectLinks.astro";
+import SkillList from "@/components/SkillList.astro";
 
 const matches = import.meta.glob("/projects/*.md", { eager: true });
 const projects = Object.entries(matches).map(([k, p]) => ({
@@ -23,11 +24,7 @@ const projects = Object.entries(matches).map(([k, p]) => ({
               <ProjectLinks {...project} />
             </div>
             <p>{project.description}</p>
-            <div class="flex flex-wrap gap-2 text-xs">
-              {project.skills.split(/, ?/).map((skill: string) => (
-                <p class="border border-gray-950 px-2 py-1">{skill}</p>
-              ))}
-            </div>
+            <SkillList items={project.skills.split(/, ?/)} />
             <a href={`/projects/${project.id}`} class="flex items-center gap-2 self-end border border-gray-950 px-2 py-1 font-normal">
               Learn more
               <Icon name="carbon:arrow-right" size={16} />

@@ -5,6 +5,7 @@ import Layout from "@/layouts/Layout.astro";
 
 import type { GetStaticPaths } from "astro";
 import ProjectLinks from "@/components/ProjectLinks.astro";
+import SkillList from "@/components/SkillList.astro";
 
 const project = import.meta.glob("/projects/*.md", { eager: true })[`/projects/${Astro.params.id}.md`];
 const { Content, frontmatter } = project as Record<string, any>;
@@ -22,6 +23,9 @@ export const getStaticPaths = (() => {
       <div class="mb-8 flex items-center justify-between">
         <h1 class="mb-0">{frontmatter.name}</h1>
         <ProjectLinks {...frontmatter} />
+      </div>
+      <div class="-mt-8">
+        <SkillList items={frontmatter.skills.split(/, ?/)} />
       </div>
       <Content />
     </div>
