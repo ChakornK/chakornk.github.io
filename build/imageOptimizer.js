@@ -31,46 +31,63 @@ export const imageOptimizer = ({ width, height, quality = 50 }) => ({
   hooks: {
     "astro:build:generated": async ({ dir, logger }) => {
       const p = fileURLToPath(dir);
-      const traverse = async (dir) => {
+      const traverse = async (dir, fn) => {
         for (const child of fs.readdirSync(dir)) {
           const childPath = path.join(dir, child);
           if (fs.statSync(childPath).isDirectory()) {
-            await traverse(childPath);
-          } else if (child.match(extMatcher)) {
-            const b = Buffer.from(fs.readFileSync(childPath));
-            const img = sharp(b);
-            const { size } = await new Promise((resolve) => {
-              img.metadata((err, metadata) => {
-                if (err) {
-                  logger.error(err);
-                  return resolve({});
-                }
-                resolve(metadata);
-              });
-            });
-            img.resize({ width, height, fit: "inside" }).webp({ quality, effort: 6, smartDeblock: true, smartSubsample: true });
-            await new Promise((resolve) => {
-              img.toBuffer().then((buffer) => {
-                fs.rmSync(childPath);
-                fs.writeFileSync(childPath.replace(extMatcher, ".webp"), buffer);
-                logger.info(
-                  `${childPath.replace(extMatcher, ".webp").replace(p, "").replaceAll("\\", "/")}: ${humanReadable(size)} -> ${humanReadable(buffer.length)}`
-                );
-                resolve();
-              });
-            });
-          } else if (child.endsWith(".html")) {
-            let html = fs.readFileSync(childPath, "utf-8");
-            const matches = html.matchAll(/(?<=<img src=")[^:]*?(?=")/g);
-            for (const match of matches) {
-              const [matchedText] = match;
-              html = html.replaceAll(matchedText, matchedText.replace(extMatcher, ".webp"));
-            }
-            fs.writeFileSync(childPath, html);
+            await traverse(childPath, fn);
+          } else {
+            await fn({ child, childPath });
           }
         }
       };
-      await traverse(p);
+
+      const dimens = {};
+
+      await traverse(p, async ({ child, childPath }) => {
+        if (child.match(extMatcher)) {
+          const b = Buffer.from(fs.readFileSync(childPath));
+          const img = sharp(b);
+          const { size: originalSize } = await new Promise((resolve) => {
+            img.metadata((err, metadata) => {
+              if (err) {
+                logger.error(err);
+                return resolve({});
+              }
+              resolve(metadata);
+            });
+          });
+          img.resize({ width, height, fit: "inside" }).webp({ quality, effort: 6, smartDeblock: true, smartSubsample: true });
+          await new Promise((resolve) => {
+            img.toBuffer({ resolveWithObject: true }).then(({ data: buffer, info: { width, height, size } }) => {
+              fs.rmSync(childPath);
+              fs.writeFileSync(childPath.replace(extMatcher, ".webp"), buffer);
+              dimens[childPath.replace(p, "").replaceAll("\\", "/")] = { width, height };
+              logger.info(
+                `${childPath.replace(extMatcher, ".webp").replace(p, "").replaceAll("\\", "/")}: ${humanReadable(originalSize)} -> ${humanReadable(size)}`
+              );
+              resolve();
+            });
+          });
+        }
+      });
+
+      await traverse(p, async ({ child, childPath }) => {
+        if (child.endsWith(".html")) {
+          let html = fs.readFileSync(childPath, "utf-8");
+          const matches = html.matchAll(/(?<=<img src="\/)[^:]*?(?=")/g);
+          for (const match of matches) {
+            const [matchedText] = match;
+            if (!dimens[matchedText]) {
+              html = html.replaceAll(matchedText, matchedText.replace(extMatcher, ".webp"));
+            } else {
+              const { width, height } = dimens[matchedText];
+              html = html.replaceAll(`${matchedText}"`, `${matchedText.replace(extMatcher, ".webp")}" width="${width}" height="${height}"`);
+            }
+          }
+          fs.writeFileSync(childPath, html);
+        }
+      });
     },
   },
 });
