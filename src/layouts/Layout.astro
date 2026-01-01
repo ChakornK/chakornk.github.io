@@ -6,8 +6,9 @@ import { ClientRouter } from "astro:transitions";
 import { SEO } from "astro-seo";
 import { getImagePath } from "astro-opengraph-images";
 
-const { title, description, image } = Astro.props;
+const { title, description } = Astro.props;
 const { url, site } = Astro;
+const ogImage = getImagePath({ url, site });
 ---
 
 <!doctype html>
@@ -24,11 +25,17 @@ const { url, site } = Astro;
         basic: {
           title: title || "Chakorn Kungsanarux",
           type: "website",
-          image: image ? `${site}${image}` : getImagePath({ url, site }),
+          image: ogImage,
         },
         optional: {
           description,
         },
+      }}
+      twitter={{
+        card: "summary_large_image",
+        title,
+        description,
+        image: ogImage,
       }}
     />
 
