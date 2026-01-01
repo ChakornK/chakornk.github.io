@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 
 import sharp from "sharp";
 
+const THREADS = 4;
 const extMatcher = /\.(png|jpg|jpeg|gif|webp)$/;
 
 sharp.cache(false);
@@ -44,33 +45,44 @@ export const imageOptimizer = ({ width, height, quality = 50 }) => ({
 
       const dimens = {};
 
+      const threads = Array.from({ length: THREADS }, () => []);
+      let t = 0;
       await traverse(p, async ({ child, childPath }) => {
         if (child.match(extMatcher)) {
-          const b = Buffer.from(fs.readFileSync(childPath));
-          const img = sharp(b);
-          const { size: originalSize } = await new Promise((resolve) => {
-            img.metadata((err, metadata) => {
-              if (err) {
-                logger.error(err);
-                return resolve({});
-              }
-              resolve(metadata);
+          threads[(t = (t + 1) % THREADS)].push(async () => {
+            const b = Buffer.from(fs.readFileSync(childPath));
+            const img = sharp(b);
+            const { size: originalSize } = await new Promise((resolve) => {
+              img.metadata((err, metadata) => {
+                if (err) {
+                  logger.error(err);
+                  return resolve({});
+                }
+                resolve(metadata);
+              });
             });
-          });
-          img.resize({ width, height, fit: "inside" }).webp({ quality, effort: 6, smartDeblock: true, smartSubsample: true });
-          await new Promise((resolve) => {
-            img.toBuffer({ resolveWithObject: true }).then(({ data: buffer, info: { width, height, size } }) => {
-              fs.rmSync(childPath);
-              fs.writeFileSync(childPath.replace(extMatcher, ".webp"), buffer);
-              dimens[childPath.replace(p, "").replaceAll("\\", "/")] = { width, height };
-              logger.info(
-                `${childPath.replace(extMatcher, ".webp").replace(p, "").replaceAll("\\", "/")}: ${humanReadable(originalSize)} -> ${humanReadable(size)}`
-              );
-              resolve();
+            img.resize({ width, height, fit: "inside" }).webp({ quality, effort: 6, smartDeblock: true, smartSubsample: true });
+            await new Promise((resolve) => {
+              img.toBuffer({ resolveWithObject: true }).then(({ data: buffer, info: { width, height, size } }) => {
+                fs.rmSync(childPath);
+                fs.writeFileSync(childPath.replace(extMatcher, ".webp"), buffer);
+                dimens[childPath.replace(p, "").replaceAll("\\", "/")] = { width, height };
+                logger.info(
+                  `${childPath.replace(extMatcher, ".webp").replace(p, "").replaceAll("\\", "/")}: ${humanReadable(originalSize)} -> ${humanReadable(size)}`
+                );
+                resolve();
+              });
             });
           });
         }
       });
+      await Promise.all(
+        threads.map(async (thread) => {
+          for (const job of thread) {
+            await job();
+          }
+        })
+      );
 
       await traverse(p, async ({ child, childPath }) => {
         if (child.endsWith(".html")) {
