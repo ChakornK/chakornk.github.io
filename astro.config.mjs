@@ -1,7 +1,6 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 
-import preact from "@astrojs/preact";
 import icon from "astro-icon";
 import { imageOptimizer } from "./build/imageOptimizer.js";
 
@@ -12,7 +11,6 @@ import rehypeExternalLinks from "rehype-external-links";
 
 export default defineConfig({
   integrations: [
-    preact(),
     icon(),
     imageOptimizer({
       width: 1344,
