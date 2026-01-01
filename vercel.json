@@ -6,11 +6,29 @@
   "rewrites": [{ "source": "/(.*)", "statusCode": 404, "destination": "/404.html" }],
   "headers": [
     {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "cache-control",
+          "value": "public, max-age=3600, s-maxage=3600"
+        }
+      ]
+    },
+    {
       "source": "/(.*).(js|css|woff2)",
       "headers": [
         {
           "key": "cache-control",
-          "value": "public, max-age=604800, s-maxage=43200"
+          "value": "public, max-age=604800, s-maxage=604800"
+        }
+      ]
+    },
+    {
+      "source": "/favicon.svg",
+      "headers": [
+        {
+          "key": "cache-control",
+          "value": "public, max-age=604800, s-maxage=604800"
         }
       ]
     }
