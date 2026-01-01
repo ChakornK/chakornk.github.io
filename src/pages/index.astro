@@ -1,0 +1,26 @@
+---
+import "@/styles/global.css";
+import Layout from "@/layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<Layout title="ChakornK">
+  <main class="h-dvh flex flex-col items-center justify-center gap-4 p-16">
+    <h1 class="text-7xl font-light tracking-[-0.075em]">ChakornK</h1>
+    <div class="flex items-center gap-4">
+      <a href="https://github.com/ChakornK" target="_blank">
+        <Icon name="simple-icons:github" size={32} />
+      </a>
+      <a href="https://www.linkedin.com/in/chakorn-kungsanarux-783437388" target="_blank">
+        <Icon name="simple-icons:linkedin" size={32} />
+      </a>
+    </div>
+    <a
+      href="/projects"
+      class="*:mix-blend-difference relative mt-4 flex items-center gap-2 border border-gray-950 px-4 py-2 text-gray-100 hue-rotate-180 before:absolute before:inset-0 before:-z-20 before:bg-gray-100 before:hue-rotate-180 after:absolute after:inset-0 after:-z-10 after:w-0 after:bg-gray-950 after:transition-[width] after:duration-200 hover:after:w-full"
+    >
+      <span>View my projects</span>
+      <Icon name="carbon:arrow-right" size={20} />
+    </a>
+  </main>
+</Layout>

@@ -1,0 +1,52 @@
+---
+import "@/styles/global.css";
+import Layout from "@/layouts/Layout.astro";
+
+import { Icon } from "astro-icon/components";
+
+import SkillList from "@/components/SkillList.astro";
+
+// @ts-ignore
+import data from "./experience.yml";
+const experience = data.experience as { title: string; date: string; description: string[]; skills: string[] }[];
+const stack = data.stack as { [title: string]: { [skill: string]: string } };
+---
+
+<Layout title="ChakornK - Experience">
+  <main class="flex h-full flex-col items-center p-16 pt-24">
+    <div class="flex w-full max-w-2xl flex-col gap-4">
+      <h1 class="text-3xl">Experience</h1>
+      {
+        experience.map((item) => (
+          <div class="flex flex-col gap-2 border border-gray-950 p-4 text-sm">
+            <h2 class="text-lg leading-none">{item.title}</h2>
+            <p class="shrink-0 text-xs">{item.date}</p>
+            <ul class="ml-4">
+              {item.description.map((desc) => (
+                <li class="mb-1 list-disc">{desc}</li>
+              ))}
+            </ul>
+            <SkillList items={item.skills} />
+          </div>
+        ))
+      }
+
+      <h1 class="mt-8 text-3xl">Tech stack</h1>
+      {
+        Object.entries(stack).map(([title, items]) => (
+          <div>
+            <h2 class="text-lg">{title}</h2>
+            <div class="flex flex-wrap gap-2 text-sm">
+              {Object.entries(items).map(([skill, icon]) => (
+                <div class="flex items-center gap-2 border border-gray-950 px-2 py-1">
+                  <Icon name={icon} size={18} />
+                  <p>{skill}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </main>
+</Layout>

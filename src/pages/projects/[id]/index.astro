@@ -1,0 +1,33 @@
+---
+import "@/styles/global.css";
+import "./style.css";
+import Layout from "@/layouts/Layout.astro";
+
+import type { GetStaticPaths } from "astro";
+import ProjectLinks from "@/components/ProjectLinks.astro";
+import SkillList from "@/components/SkillList.astro";
+
+const project = import.meta.glob("/projects/*.md", { eager: true })[`/projects/${Astro.params.id}.md`];
+const { Content, frontmatter } = project as Record<string, any>;
+
+export const getStaticPaths = (() => {
+  const matches = import.meta.glob("/projects/*.md", { eager: true });
+  const projects = Object.keys(matches).map((p) => p.split("/").slice(-1)[0].split(".")[0]);
+  return projects.map((p) => ({ params: { id: p } }));
+}) satisfies GetStaticPaths;
+---
+
+<Layout title={`ChakornK - ${frontmatter.name}`}>
+  <main class="flex h-full flex-col items-center p-16 pt-24">
+    <div class="prose prose-strong:font-bold prose-h1:font-medium prose-li:marker:text-inherit prose-img:max-h-96 prose-img:w-auto w-full max-w-2xl">
+      <div class="mb-8 flex items-center justify-between">
+        <h1 class="mb-0">{frontmatter.name}</h1>
+        <ProjectLinks {...frontmatter} />
+      </div>
+      <div class="-mt-8">
+        <SkillList items={frontmatter.skills.split(/, ?/)} />
+      </div>
+      <Content />
+    </div>
+  </main>
+</Layout>

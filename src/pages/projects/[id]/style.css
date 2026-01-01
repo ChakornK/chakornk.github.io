@@ -1,0 +1,19 @@
+@reference "tailwindcss";
+
+.prose {
+  /* Place consecutive images in a row if possible */
+  p:has(img) {
+    @apply flex flex-wrap justify-center gap-4;
+    img {
+      @apply my-0;
+    }
+  }
+
+  /* Remove spacing between paragraph and list */
+  p:has(+ :is(ul, ol)) {
+    @apply mb-0;
+  }
+  p + :is(ul, ol) {
+    @apply mt-0;
+  }
+}
