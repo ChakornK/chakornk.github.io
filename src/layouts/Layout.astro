@@ -1,5 +1,6 @@
 ---
 import "@/styles/global.css";
+import rawFontCss from "@/styles/font.css?raw";
 import Navbar from "@/components/Navbar.astro";
 import { ClientRouter } from "astro:transitions";
 
@@ -15,6 +16,8 @@ const { title } = Astro.props;
     <title>{title}</title>
 
     <ClientRouter fallback="swap" />
+
+    <link rel="preload" href="/JetBrainsMono.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
   </head>
   <body>
     <Navbar />
