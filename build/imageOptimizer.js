@@ -1,10 +1,11 @@
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import sharp from "sharp";
 
-const THREADS = 4;
+const THREADS = os.cpus().length || 4;
 const extMatcher = /\.(png|jpg|jpeg|gif|webp)$/;
 
 sharp.cache(false);
@@ -45,6 +46,7 @@ export const imageOptimizer = ({ width, height, quality = 50 }) => ({
 
       const dimens = {};
 
+      logger.info(`Using ${THREADS} threads`);
       const threads = Array.from({ length: THREADS }, () => []);
       let t = 0;
       await traverse(p, async ({ child, childPath }) => {
