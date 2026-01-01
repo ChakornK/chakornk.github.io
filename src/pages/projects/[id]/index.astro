@@ -16,7 +16,7 @@ export const getStaticPaths = (() => {
 }) satisfies GetStaticPaths;
 ---
 
-<Layout title={`ChakornK - ${frontmatter.name}`}>
+<Layout title={frontmatter.name} description={frontmatter.description}>
   <main class="flex h-full flex-col items-center p-8 pt-24 sm:p-16">
     <div
       class="prose prose-strong:font-bold prose-h1:font-medium prose-li:marker:text-inherit prose-img:max-h-96 prose-img:max-w-full prose-img:object-contain w-full max-w-2xl"
