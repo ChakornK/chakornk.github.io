@@ -1,0 +1,18 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "astro",
+  "buildCommand": "yarn build",
+  "installCommand": "corepack use yarn",
+  "rewrites": [{ "source": "/(.*)", "statusCode": 404, "destination": "/404.html" }],
+  "headers": [
+    {
+      "source": "/(.*).(js|css|woff2)",
+      "headers": [
+        {
+          "key": "cache-control",
+          "value": "public, max-age=604800, s-maxage=43200"
+        }
+      ]
+    }
+  ]
+}
