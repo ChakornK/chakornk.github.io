@@ -82,7 +82,10 @@ export const imageOptimizer = ({ width, height, quality = 50 }) => ({
               html = html.replaceAll(matchedText, matchedText.replace(extMatcher, ".webp"));
             } else {
               const { width, height } = dimens[matchedText];
-              html = html.replaceAll(`${matchedText}"`, `${matchedText.replace(extMatcher, ".webp")}" width="${width}" height="${height}"`);
+              html = html.replaceAll(
+                `${matchedText}"`,
+                `${matchedText.replace(extMatcher, ".webp")}" width="${width}" height="${height}" style="height:${height}px"`
+              );
             }
           }
           fs.writeFileSync(childPath, html);
