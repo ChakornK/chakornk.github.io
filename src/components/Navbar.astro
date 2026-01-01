@@ -7,11 +7,11 @@ const routes = Object.entries({
 const { pathname } = Astro.url;
 ---
 
-<div class="*:px-1 fixed left-0 right-0 top-0 flex select-none items-center gap-4 bg-gray-100/75 p-4 font-medium backdrop-blur">
+<div class="*:px-1 fixed left-0 right-0 top-0 flex select-none items-center gap-4 bg-neutral-100/75 p-4 font-medium backdrop-blur">
   {
     routes.map(([path, name]) =>
       pathname.replace(/(?<=[^\^])\/$/, "") === path ?
-        <p class="bg-gray-950 text-gray-100">{name}</p>
+        <p class="bg-neutral-950 text-neutral-100">{name}</p>
       : <a href={path} class="hover:underline">
           {name}
         </a>

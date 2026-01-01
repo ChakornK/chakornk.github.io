@@ -17,7 +17,7 @@ const stack = data.stack as { [title: string]: { [skill: string]: string } };
       <h1 class="text-3xl">Experience</h1>
       {
         experience.map((item) => (
-          <div class="flex flex-col gap-2 border border-gray-950 p-4 text-sm">
+          <div class="flex flex-col gap-2 border border-neutral-950 p-4 text-sm">
             <h2 class="text-lg leading-none">{item.title}</h2>
             <p class="shrink-0 text-xs">{item.date}</p>
             <ul class="ml-4">
@@ -37,7 +37,7 @@ const stack = data.stack as { [title: string]: { [skill: string]: string } };
             <h2 class="text-lg">{title}</h2>
             <div class="flex flex-wrap gap-2 text-sm">
               {Object.entries(items).map(([skill, icon]) => (
-                <div class="flex items-center gap-2 border border-gray-950 px-2 py-1">
+                <div class="flex items-center gap-2 border border-neutral-950 px-2 py-1">
                   <Icon name={icon} size={18} />
                   <p>{skill}</p>
                 </div>
