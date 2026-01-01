@@ -17,17 +17,13 @@ const projects = Object.entries(matches).map(([k, p]) => ({
       <h1 class="text-3xl">Projects</h1>
       {
         projects.map((project) => (
-          <div class="flex flex-col gap-2 border border-neutral-950 p-4 text-sm">
+          <div class="flex cursor-pointer flex-col gap-2 border border-neutral-950 p-4 text-sm" onclick={`window.location.href = '/projects/${project.id}'`}>
             <div class="flex justify-between">
               <h2 class="text-lg leading-none">{project.name}</h2>
               <ProjectLinks {...project} />
             </div>
             <p>{project.description}</p>
             <SkillList items={project.skills.split(/, ?/)} />
-            <a href={`/projects/${project.id}`} class="flex items-center gap-2 self-end border border-neutral-950 px-2 py-1 font-normal">
-              Learn more
-              <Icon name="carbon:arrow-right" size={16} />
-            </a>
           </div>
         ))
       }

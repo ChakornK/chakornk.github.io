@@ -6,7 +6,7 @@ const { github, website } = Astro.props;
 
 {
   (github || website) && (
-    <div class="flex flex-wrap gap-3">
+    <div class="flex flex-wrap gap-3" onclick="event.stopPropagation()">
       {github && (
         <a href={`https://github.com/${github}`} target="_blank">
           <Icon name="simple-icons:github" size={20} />
