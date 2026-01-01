@@ -17,8 +17,9 @@ const projects = Object.entries(matches).map(([k, p]) => ({
       <h1 class="text-3xl">Projects</h1>
       {
         projects.map((project) => (
-          <div class="flex cursor-pointer flex-col gap-2 border border-neutral-950 p-4 text-sm" onclick={`window.location.href = '/projects/${project.id}'`}>
+          <div class="flex cursor-pointer flex-col gap-2 border border-neutral-950 p-4 text-sm" onclick="this.querySelector('a').click()">
             <div class="flex justify-between">
+              <a href={`/projects/${project.id}`} class="hidden" />
               <h2 class="text-lg leading-none">{project.name}</h2>
               <ProjectLinks {...project} />
             </div>
