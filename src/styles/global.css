@@ -2,6 +2,13 @@
 @plugin "@tailwindcss/typography";
 
 @font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: block;
+  src: url(/SpaceGrotesk-TT.woff2);
+}
+@font-face {
   font-family: "JetBrains Mono";
   font-style: normal;
   font-weight: 100 800;
@@ -9,11 +16,15 @@
   src: url(/JetBrainsMono-TT.woff2);
 }
 
+@theme {
+  --font-sans: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
 html,
 body {
   @apply min-h-dvh m-0 w-full;
 }
 body {
-  font-family: "JetBrains Mono", monospace;
-  @apply bg-neutral-100 tracking-tight text-neutral-950;
+  @apply bg-neutral-100 font-sans text-neutral-950;
 }
