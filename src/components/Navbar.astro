@@ -7,14 +7,56 @@ const routes = Object.entries({
 const { pathname } = Astro.url;
 ---
 
-<div class="*:px-1 fixed left-0 right-0 top-0 flex select-none items-center gap-4 bg-neutral-100/75 p-4 font-medium backdrop-blur">
+<script is:inline>
+  const c = () => document.querySelector(`[data-path="${window.location.pathname.replace(/(?<=[^\^])\/$/, "")}"]`);
+  let pid;
+  document.addEventListener("astro:before-swap", () => {
+    const p = c();
+    if (!p) {
+      pid = null;
+    } else {
+      pid = p.getAttribute("data-path");
+    }
+  });
+  const calc = () => {
+    const el = document.getElementById("nav-highlight");
+    const n = c();
+    if (!n) {
+      el.style.opacity = 0;
+      return;
+    } else {
+      el.style.opacity = 1;
+    }
+    const nb = n.getBoundingClientRect();
+    if (pid) {
+      const pb = document.querySelector(`[data-path="${pid}"]`).getBoundingClientRect();
+      el.style.transition = nb.left < pb.left ? "left .1s ease-out, width .1s ease-in-out .025s" : "width .1s ease-out, left .1s ease-in-out .025s";
+    } else {
+      el.style.transition = "";
+    }
+    el.style.left = `${nb.left}px`;
+    el.style.width = `${nb.right - nb.left}px`;
+  };
+  document.addEventListener("astro:page-load", calc);
+  document.fonts.addEventListener("loadingdone", calc);
+</script>
+<div class="fixed left-0 right-0 top-0 select-none bg-neutral-100 p-4 font-medium backdrop-blur">
+  <div class="*:px-1 *:col-end-[span_1] *:row-span-1 relative grid auto-cols-max gap-4">
+    {
+      routes.map(([path, name], i) =>
+        pathname.replace(/(?<=[^\^])\/$/, "") === path ?
+          <p style={`grid-column-start: ${i + 1}`} data-path={path}>
+            {name}
+          </p>
+        : <a href={path} class="hover:underline" style={`grid-column-start: ${i + 1}`} data-path={path}>
+            {name}
+          </a>
+      )
+    }
+  </div>
   {
-    routes.map(([path, name]) =>
-      pathname.replace(/(?<=[^\^])\/$/, "") === path ?
-        <p class="bg-neutral-950 text-neutral-100">{name}</p>
-      : <a href={path} class="hover:underline">
-          {name}
-        </a>
+    routes.length > 0 && (
+      <div id="nav-highlight" class="pointer-events-none absolute bottom-4 top-4 bg-white mix-blend-difference transition-opacity" transition:persist />
     )
   }
 </div>
