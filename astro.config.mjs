@@ -15,7 +15,7 @@ import yaml from "@rollup/plugin-yaml";
 import rehypeExternalLinks from "rehype-external-links";
 
 export default defineConfig({
-  site: "https://chakornk.vercel.app",
+  site: "https://chakornk.dev",
   integrations: [
     sitemap(),
     icon(),
