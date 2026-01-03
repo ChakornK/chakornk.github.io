@@ -7,9 +7,9 @@ const routes = Object.entries({
 const { pathname } = Astro.url;
 ---
 
-<script is:inline>
+<script>
   const c = () => document.querySelector(`[data-path="${window.location.pathname.replace(/(?<=[^\^])\/$/, "")}"]`);
-  let pid;
+  let pid: string | null;
   document.addEventListener("astro:before-swap", () => {
     const p = c();
     if (!p) {
@@ -23,15 +23,17 @@ const { pathname } = Astro.url;
     if (!el) return;
     const n = c();
     if (!n) {
-      el.style.opacity = 0;
+      el.style.opacity = "0";
       return;
     } else {
-      el.style.opacity = 1;
+      el.style.opacity = "1";
     }
     const nb = n.getBoundingClientRect();
     if (pid) {
-      const pb = document.querySelector(`[data-path="${pid}"]`).getBoundingClientRect();
-      el.style.transition = nb.left < pb.left ? "left .1s ease-out, width .1s ease-in-out .025s" : "width .1s ease-out, left .1s ease-in-out .025s";
+      const pb = document.querySelector(`[data-path="${pid}"]`)?.getBoundingClientRect();
+      if (pb) {
+        el.style.transition = nb.left < pb.left ? "left .1s ease-out, width .1s ease-in-out .025s" : "width .1s ease-out, left .1s ease-in-out .025s";
+      }
     } else {
       el.style.transition = "";
     }
