@@ -20,6 +20,7 @@ const { pathname } = Astro.url;
   });
   const calc = () => {
     const el = document.getElementById("nav-highlight");
+    if (!el) return;
     const n = c();
     if (!n) {
       el.style.opacity = 0;
