@@ -5,7 +5,7 @@ github: ChakornK/reel-rewards
 skills: Next.js, React, Tailwind, MongoDB, Chrome Extension API
 ---
 
-Reel Rewards is a project built at Hackcamp 2025, a 16-hour hackathon, in collaboration with [@ricd99](https://github.com/ricd99), [@galileokim](https://github.com/galileokim), [@richard-mou](https://github.com/richard-mou).
+Reel Rewards is a project built at Hackcamp 2025, a 18-hour hackathon, in collaboration with [@ricd99](https://github.com/ricd99), [@galileokim](https://github.com/galileokim), [@richard-mou](https://github.com/richard-mou).
 
 It functions as a pomodoro timer that blocks popular social media platforms such as Instagram, Reddit, and YouTube.
 
