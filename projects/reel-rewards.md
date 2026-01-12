@@ -1,6 +1,7 @@
 ---
 name: Reel Rewards
 description: Pomodoro timer that blocks social media access
+devpost: reel-rewards
 github: ChakornK/reel-rewards
 skills: Next.js, React, Tailwind, MongoDB, Chrome Extension API
 ---
