@@ -1,12 +1,17 @@
 ---
 import { Icon } from "astro-icon/components";
 
-const { github, website } = Astro.props;
+const { devpost, github, website } = Astro.props;
 ---
 
 {
   (github || website) && (
     <div class="flex flex-wrap gap-3" onclick="event.stopPropagation()">
+      {devpost && (
+        <a href={`https://devpost.com/software/${devpost}`} target="_blank">
+          <Icon name="simple-icons:devpost" size={20} />
+        </a>
+      )}
       {github && (
         <a href={`https://github.com/${github}`} target="_blank">
           <Icon name="simple-icons:github" size={20} />
