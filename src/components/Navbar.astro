@@ -1,8 +1,13 @@
 ---
+import { Icon } from "astro-icon/components";
+
 const routes = Object.entries({
   "/": "Home",
   "/experience": "Experience",
   "/projects": "Projects",
+});
+const extLinks = Object.entries({
+  Resume: "/resume.pdf",
 });
 const { pathname } = Astro.url;
 ---
@@ -53,8 +58,22 @@ const { pathname } = Astro.url;
           </p>
         : <a href={path} class="hover:underline" style={`grid-column-start: ${i + 1}`} data-path={path}>
             {name}
-          </a>
+          </a>,
       )
+    }
+    {
+      extLinks.map(([name, url], i) => (
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group inline-flex items-center gap-1 hover:underline"
+          style={`grid-column-start: ${routes.length + i + 1}`}
+        >
+          <span>{name}</span>{" "}
+          <Icon name="carbon:launch" size={12} stroke-width={"2px"} class="opacity-0 transition-opacity duration-100 group-hover:opacity-100" />
+        </a>
+      ))
     }
   </div>
   {
