@@ -70,7 +70,7 @@ export const imageOptimizer = ({ width, height, quality = 50 }) => ({
                 fs.writeFileSync(childPath.replace(extMatcher, ".webp"), buffer);
                 dimens[childPath.replace(p, "").replaceAll("\\", "/")] = { width, height };
                 logger.info(
-                  `${childPath.replace(extMatcher, ".webp").replace(p, "").replaceAll("\\", "/")}: ${humanReadable(originalSize)} -> ${humanReadable(size)}`
+                  `${childPath.replace(extMatcher, ".webp").replace(p, "").replaceAll("\\", "/")}: ${humanReadable(originalSize)} -> ${humanReadable(size)}`,
                 );
                 resolve();
               });
@@ -83,7 +83,7 @@ export const imageOptimizer = ({ width, height, quality = 50 }) => ({
           for (const job of thread) {
             await job();
           }
-        })
+        }),
       );
 
       await traverse(p, async ({ child, childPath }) => {
@@ -98,6 +98,11 @@ export const imageOptimizer = ({ width, height, quality = 50 }) => ({
               const { width, height } = dimens[matchedText];
               html = html.replaceAll(`${matchedText}"`, `${matchedText.replace(extMatcher, ".webp")}" width="${width / 2}" height="${height / 2}"`);
             }
+          }
+          const matches2 = html.matchAll(/(?<=style="background-image: url\(\/)[^:]*?(?=\)")/g);
+          for (const match of matches2) {
+            const [matchedText] = match;
+            html = html.replaceAll(matchedText, matchedText.replace(extMatcher, ".webp"));
           }
           fs.writeFileSync(childPath, html);
         }
