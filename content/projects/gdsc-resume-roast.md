@@ -1,6 +1,7 @@
 ---
 name: GDSC Resume Roast
 description: Resume review platform for GDSC UBC's event
+thumbnail: /projects/gdsc-resume-roast/1.png
 github: ChakornK/gdsc-resume-roast
 skills: Next.js, React, Tailwind, PostgreSQL, AWS S3
 ---

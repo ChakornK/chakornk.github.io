@@ -1,6 +1,7 @@
 ---
 name: Wxrdle
 description: Get the best guess suggestions for today's Wordle and view future Wordle answers
+thumbnail: /projects/wxrdle/2.png
 github: chakornk/wxrdle
 website: https://wxrdle.vercel.app/
 skills: Preact, Tailwind, Motion

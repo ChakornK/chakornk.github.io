@@ -1,6 +1,7 @@
 ---
 name: Club Manager
 description: Web application for managing school clubs
+thumbnail: /projects/club-manager/1.jpg
 skills: Next.js, React, Tailwind
 ---
 

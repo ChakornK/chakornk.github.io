@@ -1,6 +1,7 @@
 ---
 name: Drawdle
 description: Web application for learning to draw
+thumbnail: /projects/drawdle/1.jpg
 github: drawdle/drawdle
 skills: Next.js, React, Tailwind, PixiJS
 ---

@@ -1,6 +1,7 @@
 ---
 name: Genshin Sticker Maker
 description: Create stickers with Genshin Impact characters to use on your favorite social media platforms
+thumbnail: /projects/genshin-sticker-maker/1.png
 github: chakornk/genshin-sticker-maker
 website: https://genshin-sticker.vercel.app
 skills: Preact, Tailwind, Konva

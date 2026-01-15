@@ -1,6 +1,7 @@
 ---
 name: JH Eagles
 description: MD3-compliant version of Johnston Heights Secondary's EagleTime app
+thumbnail: /projects/jh-eagles/1.png
 github: chakornk/jh-eagles
 skills: Flutter
 ---

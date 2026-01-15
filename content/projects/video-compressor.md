@@ -1,6 +1,7 @@
 ---
 name: Video Compressor
 description: Flutter app for compressing video files
+thumbnail: /projects/video-compressor/2.png
 github: chakornk/video-compressor
 skills: Flutter, FFmpeg
 ---

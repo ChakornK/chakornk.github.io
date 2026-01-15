@@ -1,6 +1,7 @@
 ---
 name: Personal Website
 description: This website!
+thumbnail: /projects/personal-website/1.png
 github: chakornk/chakornk.github.io
 website: https://chakornk.dev/
 skills: Astro, Tailwind

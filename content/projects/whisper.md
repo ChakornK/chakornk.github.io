@@ -1,6 +1,7 @@
 ---
 name: Whisper
 description: Anonymous confessions from your local community
+thumbnail: /projects/whisper/1.png
 devpost: whispr-5msob7
 github: ChakornK/journeyhacks-2026
 skills: Next.js, React, Tailwind, MongoDB, deck.gl

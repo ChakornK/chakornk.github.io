@@ -1,6 +1,7 @@
 ---
 name: MasterMath
 description: Practice math in a more engaging way
+thumbnail: /projects/mastermath/1.png
 devpost: mastermath
 github: ChakornK/stormhacks-2025
 skills: Next.js, React, Tailwind, MongoDB, Google OAuth, JWT

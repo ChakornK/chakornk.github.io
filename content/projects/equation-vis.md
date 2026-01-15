@@ -1,6 +1,7 @@
 ---
 name: Equation Visualizer
 description: Visualize math equations as a heatmap
+thumbnail: /projects/equation-vis/1.png
 github: chakornk/equation-vis
 website: https://equation-vis.vercel.app/
 skills: Vue, Tailwind, GLSL
