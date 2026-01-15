@@ -50,7 +50,7 @@ const { pathname } = Astro.url;
   document.addEventListener("astro:page-load", calc);
   document.fonts.addEventListener("loadingdone", calc);
 </script>
-<div class="fixed left-0 right-0 top-0 h-14 select-none bg-neutral-100 font-medium">
+<div class="fixed left-0 right-0 top-0 z-50 h-14 select-none bg-neutral-100 font-medium">
   <div id="nav-highlight-container" class="absolute inset-0 mx-auto w-min p-4">
     <div class="*:px-1 *:col-end-[span_1] *:row-span-1 relative grid auto-cols-max gap-4">
       {
