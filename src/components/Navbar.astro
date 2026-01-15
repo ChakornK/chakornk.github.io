@@ -25,7 +25,8 @@ const { pathname } = Astro.url;
   });
   const calc = () => {
     const el = document.getElementById("nav-highlight");
-    if (!el) return;
+    const elc = document.getElementById("nav-highlight-container");
+    if (!el || !elc) return;
     const n = c();
     if (!n) {
       el.style.opacity = "0";
@@ -34,6 +35,7 @@ const { pathname } = Astro.url;
       el.style.opacity = "1";
     }
     const nb = n.getBoundingClientRect();
+    const ncb = elc.getBoundingClientRect();
     if (pid) {
       const pb = document.querySelector(`[data-path="${pid}"]`)?.getBoundingClientRect();
       if (pb) {
@@ -42,43 +44,45 @@ const { pathname } = Astro.url;
     } else {
       el.style.transition = "";
     }
-    el.style.left = `${nb.left}px`;
+    el.style.left = `${nb.left - ncb.left}px`;
     el.style.width = `${nb.right - nb.left}px`;
   };
   document.addEventListener("astro:page-load", calc);
   document.fonts.addEventListener("loadingdone", calc);
 </script>
-<div class="fixed left-0 right-0 top-0 select-none bg-neutral-100 p-4 font-medium backdrop-blur">
-  <div class="*:px-1 *:col-end-[span_1] *:row-span-1 relative grid auto-cols-max gap-4">
+<div class="fixed left-0 right-0 top-0 h-14 select-none bg-neutral-100 font-medium">
+  <div id="nav-highlight-container" class="absolute inset-0 mx-auto w-min p-4">
+    <div class="*:px-1 *:col-end-[span_1] *:row-span-1 relative grid auto-cols-max gap-4">
+      {
+        routes.map(([path, name], i) =>
+          pathname.replace(/(?<=[^\^])\/$/, "") === path ?
+            <p style={`grid-column-start: ${i + 1}`} data-path={path}>
+              {name}
+            </p>
+          : <a href={path} class="hover:underline" style={`grid-column-start: ${i + 1}`} data-path={path}>
+              {name}
+            </a>,
+        )
+      }
+      {
+        extLinks.map(([name, url], i) => (
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group inline-flex items-center gap-1 hover:underline"
+            style={`grid-column-start: ${routes.length + i + 1}`}
+          >
+            <span>{name}</span>{" "}
+            <Icon name="carbon:launch" size={12} stroke-width={"2px"} class="opacity-0 transition-opacity duration-100 group-hover:opacity-100" />
+          </a>
+        ))
+      }
+    </div>
     {
-      routes.map(([path, name], i) =>
-        pathname.replace(/(?<=[^\^])\/$/, "") === path ?
-          <p style={`grid-column-start: ${i + 1}`} data-path={path}>
-            {name}
-          </p>
-        : <a href={path} class="hover:underline" style={`grid-column-start: ${i + 1}`} data-path={path}>
-            {name}
-          </a>,
+      routes.length > 0 && (
+        <div id="nav-highlight" class="pointer-events-none absolute bottom-4 top-4 bg-white mix-blend-difference transition-opacity" transition:persist />
       )
     }
-    {
-      extLinks.map(([name, url], i) => (
-        <a
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="group inline-flex items-center gap-1 hover:underline"
-          style={`grid-column-start: ${routes.length + i + 1}`}
-        >
-          <span>{name}</span>{" "}
-          <Icon name="carbon:launch" size={12} stroke-width={"2px"} class="opacity-0 transition-opacity duration-100 group-hover:opacity-100" />
-        </a>
-      ))
-    }
   </div>
-  {
-    routes.length > 0 && (
-      <div id="nav-highlight" class="pointer-events-none absolute bottom-4 top-4 bg-white mix-blend-difference transition-opacity" transition:persist />
-    )
-  }
 </div>
