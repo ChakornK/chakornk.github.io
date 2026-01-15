@@ -6,11 +6,11 @@ import type { GetStaticPaths } from "astro";
 import ProjectLinks from "@/components/ProjectLinks.astro";
 import SkillList from "@/components/SkillList.astro";
 
-const project = import.meta.glob("/projects/*.md", { eager: true })[`/projects/${Astro.params.id}.md`];
+const project = import.meta.glob("/content/projects/*.md", { eager: true })[`/content/projects/${Astro.params.id}.md`];
 const { Content, frontmatter } = project as Record<string, any>;
 
 export const getStaticPaths = (() => {
-  const matches = import.meta.glob("/projects/*.md", { eager: true });
+  const matches = import.meta.glob("/content/projects/*.md", { eager: true });
   const projects = Object.keys(matches).map((p) => p.split("/").slice(-1)[0].split(".")[0]);
   return projects.map((p) => ({ params: { id: p } }));
 }) satisfies GetStaticPaths;

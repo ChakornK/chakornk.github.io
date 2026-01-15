@@ -1,10 +1,9 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { Icon } from "astro-icon/components";
 import ProjectLinks from "@/components/ProjectLinks.astro";
 import SkillList from "@/components/SkillList.astro";
 
-const matches = import.meta.glob("/projects/*.md", { eager: true });
+const matches = import.meta.glob("/content/projects/*.md", { eager: true });
 const projects = Object.entries(matches).map(([k, p]) => ({
   id: k.split("/").slice(-1)[0].split(".")[0],
   ...(p as { frontmatter: any }).frontmatter,
