@@ -38,7 +38,7 @@ const { pathname } = Astro.url;
     if (pid) {
       const pb = document.querySelector(`[data-path="${pid}"]`)?.getBoundingClientRect();
       if (pb) {
-        el.style.transition = nb.left < pb.left ? "left .1s ease-out, width .1s ease-in-out .025s" : "width .1s ease-out, left .1s ease-in-out .025s";
+        el.style.transition = `opacity .15s linear, ${nb.left < pb.left ? "left .1s ease-out, width .1s ease-in-out .025s" : "width .1s ease-out, left .1s ease-in-out .025s"}`;
       }
     } else {
       el.style.transition = "";
@@ -78,10 +78,12 @@ const { pathname } = Astro.url;
         ))
       }
     </div>
-    {
-      routes.length > 0 && (
-        <div id="nav-highlight" class="pointer-events-none absolute bottom-4 top-4 bg-white mix-blend-difference transition-opacity" transition:persist />
-      )
-    }
+    <div
+      id="nav-highlight"
+      class="pointer-events-none absolute bottom-4 top-4 bg-white mix-blend-difference transition-opacity"
+      transition:persist
+      style={`opacity:${routes.length > 0 ? 1 : 0}`}
+    >
+    </div>
   </div>
 </div>
