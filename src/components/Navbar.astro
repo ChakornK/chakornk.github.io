@@ -104,7 +104,19 @@ const { pathname } = Astro.url;
       locked = null;
     });
   };
+  const scrollPosStore = JSON.parse(window.sessionStorage.getItem("scroll-pos") || "{}") as Record<string, number>;
+  const p = () => {
+    if (scrollPosStore[window.location.pathname]) {
+      window.scrollTo(0, scrollPosStore[window.location.pathname]);
+    }
+  };
+  const p2 = () => {
+    scrollPosStore[window.location.pathname] = window.scrollY;
+    window.sessionStorage.setItem("scroll-pos", JSON.stringify(scrollPosStore));
+  };
   document.addEventListener("astro:page-load", s);
+  document.addEventListener("astro:page-load", p);
+  document.addEventListener("astro:after-preparation", p2);
 </script>
 <div class="fixed left-0 right-0 top-0 z-50 h-14 select-none bg-neutral-50 font-medium">
   <div id="nav-highlight-container" class="absolute inset-0 mx-auto w-min p-4">
