@@ -4,7 +4,7 @@ const { items } = Astro.props;
 
 {
   items.length > 0 && (
-    <div class="flex flex-wrap gap-2 text-xs">
+    <div class="*:my-0 flex flex-wrap gap-2 text-xs">
       {items.map((skill: string) => (
         <p class="bg-neutral-200 px-2 py-1">{skill}</p>
       ))}

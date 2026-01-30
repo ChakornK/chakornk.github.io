@@ -25,7 +25,7 @@ export const getStaticPaths = (() => {
         <h1 class="mb-0">{frontmatter.name}</h1>
         <ProjectLinks {...frontmatter} />
       </div>
-      <div class="-mt-8">
+      <div class="-mt-4">
         <SkillList items={frontmatter.skills.split(/, ?/)} />
       </div>
       <Content />
