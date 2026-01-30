@@ -11,7 +11,7 @@ const projects = Object.entries(matches).map(([k, p]) => ({
 
 <Layout title="Projects" description="What I've worked on">
   <main class="flex flex-col gap-4">
-    <h1 class="font-mono text-3xl font-semibold">Projects</h1>
+    <h1 class="text-3xl font-semibold">Projects</h1>
     {projects.map((project) => <ProjectCard {project} />)}
   </main>
 </Layout>
