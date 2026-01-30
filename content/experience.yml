@@ -18,20 +18,88 @@ experience:
       - AWS S3
       - Prisma
 
+# stack:
+#   Frontend:
+#     TypeScript: simple-icons:typescript
+#     React: simple-icons:react
+#     Tailwind: simple-icons:tailwindcss
+#     Next: simple-icons:nextdotjs
+#     Astro: simple-icons:astro
+#     Flutter: simple-icons:flutter
+#   Backend:
+#     Node: simple-icons:nodedotjs
+#     Express: simple-icons:express
+#     MongoDB: simple-icons:mongodb
+#   DevOps:
+#     Docker: simple-icons:docker
+#     Git: simple-icons:git
+#     GitHub Actions: simple-icons:github
+#     Figma: simple-icons:figma
 stack:
   Frontend:
-    TypeScript: simple-icons:typescript
-    React: simple-icons:react
-    Tailwind: simple-icons:tailwindcss
-    Next: simple-icons:nextdotjs
-    Astro: simple-icons:astro
-    Flutter: simple-icons:flutter
+    - name: TypeScript
+      icon: simple-icons:typescript
+      color: blue
+      link: https://www.typescriptlang.org
+
+    - name: React
+      icon: simple-icons:react
+      color: cyan
+      link: https://react.dev
+
+    - name: Tailwind
+      icon: simple-icons:tailwindcss
+      color: sky
+      link: https://tailwindcss.com
+
+    - name: Next
+      icon: simple-icons:nextdotjs
+      color: neutral
+      link: https://nextjs.org
+
+    - name: Astro
+      icon: simple-icons:astro
+      color: violet
+      link: https://astro.build
+
+    - name: Flutter
+      icon: simple-icons:flutter
+      color: sky
+      link: https://flutter.dev
+
   Backend:
-    Node: simple-icons:nodedotjs
-    Express: simple-icons:express
-    MongoDB: simple-icons:mongodb
+    - name: Node
+      icon: simple-icons:nodedotjs
+      color: green
+      link: https://nodejs.org
+
+    - name: Express
+      icon: simple-icons:express
+      color: neutral
+      link: https://expressjs.com
+
+    - name: MongoDB
+      icon: simple-icons:mongodb
+      color: green
+      link: https://mongodb.com
+
   DevOps:
-    Docker: simple-icons:docker
-    Git: simple-icons:git
-    GitHub Actions: simple-icons:github
-    Figma: simple-icons:figma
+    - name: Docker
+      icon: simple-icons:docker
+      color: blue
+      link: https://www.docker.com
+
+    - name: Git
+      icon: simple-icons:git
+      color: red
+      link: https://git-scm.com
+
+    - name: GitHub Actions
+      icon: simple-icons:github
+      color: orange
+      link: https://github.com
+
+    - name: Figma
+      icon: simple-icons:figma
+      color: emerald
+      link: https://figma.com

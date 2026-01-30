@@ -6,7 +6,30 @@ import SkillList from "@/components/SkillList.astro";
 // @ts-ignore
 import experienceData from "../../content/experience.yml";
 const experience = experienceData.experience as { title: string; date: string; description: string[]; skills: string[] }[];
-const stack = experienceData.stack as { [title: string]: { [skill: string]: string } };
+const stack = experienceData.stack as { [title: string]: { name: string; icon: string; color: string; link: string }[] };
+
+const getColor = (color: string) => {
+  switch (color) {
+    case "red":
+      return "hover:bg-red-100";
+    case "orange":
+      return "hover:bg-orange-100";
+    case "green":
+      return "hover:bg-green-100";
+    case "emerald":
+      return "hover:bg-emerald-100";
+    case "cyan":
+      return "hover:bg-cyan-100";
+    case "sky":
+      return "hover:bg-sky-100";
+    case "blue":
+      return "hover:bg-blue-100";
+    case "violet":
+      return "hover:bg-violet-100";
+    case "neutral":
+      return "hover:bg-neutral-200";
+  }
+};
 
 import ProjectCard from "@/components/ProjectCard.astro";
 // @ts-ignore
@@ -38,10 +61,11 @@ const featuredProjects = Object.entries(projectMatches)
         <div>
           <h2 class="font-mono text-lg font-medium">{title}</h2>
           <div class="flex flex-wrap gap-2 text-sm">
-            {Object.entries(items).map(([skill, icon]) => (
-              <div class="flex items-center gap-2 border border-neutral-950 px-2 py-1">
+            {items.map(({ name, icon, color, link }: { name: string; icon: string; color: string; link: string }) => (
+              <div class={`flex items-center relative gap-2 border border-neutral-950 px-2 py-1 transition-colors ${getColor(color)}`}>
                 <Icon name={icon} size={18} />
-                <p>{skill}</p>
+                <p>{name}</p>
+                <a href={link} target="_blank" class="absolute inset-0" />
               </div>
             ))}
           </div>
