@@ -9,6 +9,7 @@ const extLinks = Object.entries({
   Resume: "/resume.pdf",
 });
 const { pathname } = Astro.url;
+const { navigate } = Astro;
 ---
 
 <script>
@@ -48,6 +49,63 @@ const { pathname } = Astro.url;
   };
   document.addEventListener("astro:page-load", calc);
   document.fonts.addEventListener("loadingdone", calc);
+</script>
+<script>
+  const s = () => {
+    const el = document.querySelector("main") as HTMLDivElement | null;
+    if (!el) return;
+
+    let startX = 0;
+    let startY = 0;
+    let dx = 0;
+    let locked: "x" | "y" | null = null;
+
+    const prev = document.querySelector("a:has(+ p[data-path])") as HTMLLinkElement | null;
+    const next = document.querySelector("a:where(p[data-path] + a:not([target='_blank']))") as HTMLLinkElement | null;
+
+    el.addEventListener("touchstart", (e) => {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      locked = null;
+      el.style.transition = "none";
+    });
+
+    el.addEventListener(
+      "touchmove",
+      (e) => {
+        const x = e.touches[0].clientX;
+        const y = e.touches[0].clientY;
+        const deltaX = x - startX;
+        const diffY = y - startY;
+        if (!locked) {
+          locked = Math.abs(deltaX) > Math.abs(diffY) ? "x" : "y";
+        }
+        if (locked === "x" && (deltaX > 0 ? prev : next)) {
+          e.preventDefault();
+          dx = deltaX;
+          el.style.transform = `translateX(${dx}px)`;
+        }
+      },
+      { passive: false },
+    );
+
+    el.addEventListener("touchend", () => {
+      const dest = dx > 0 ? prev : next;
+      if (locked === "x" && Math.abs(dx) > 120 && dest) {
+        el.style.transition = "transform 0.2s";
+        el.style.transform = `translateX(${dx > 0 ? "100vw" : "-100vw"})`;
+        setTimeout(() => {
+          dest.click();
+        }, 200);
+      } else {
+        el.style.transition = "transform 0.2s";
+        el.style.transform = "translateX(0)";
+      }
+      dx = 0;
+      locked = null;
+    });
+  };
+  document.addEventListener("astro:page-load", s);
 </script>
 <div class="fixed left-0 right-0 top-0 z-50 h-14 select-none bg-neutral-50 font-medium">
   <div id="nav-highlight-container" class="absolute inset-0 mx-auto w-min p-4">

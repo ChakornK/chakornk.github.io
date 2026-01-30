@@ -12,7 +12,7 @@ const ogImage = getImagePath({ url, site });
 ---
 
 <!doctype html>
-<html lang="en" transition:animate="none" class="overflow-x-hidden">
+<html lang="en" transition:animate="none" class="relative overflow-x-hidden">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -48,8 +48,8 @@ const ogImage = getImagePath({ url, site });
   </head>
   <body class="flex flex-col p-8 pt-20 sm:p-16 sm:pt-20">
     <Navbar />
-    <div class="mx-auto w-full max-w-2xl grow">
+    <main class="mx-auto w-full max-w-2xl grow">
       <slot />
-    </div>
+    </main>
   </body>
 </html>
