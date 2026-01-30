@@ -90,7 +90,7 @@ const { pathname } = Astro.url;
 
     el.addEventListener("touchend", () => {
       const dest = dx > 0 ? prev : next;
-      if (locked === "x" && Math.abs(dx) > 120 && dest) {
+      if (locked === "x" && Math.abs(dx) > 60 && dest) {
         el.style.transition = "transform 0.2s";
         el.style.transform = `translateX(${dx > 0 ? "100vw" : "-100vw"})`;
         setTimeout(() => {
