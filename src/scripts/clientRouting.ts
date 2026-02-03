@@ -39,7 +39,7 @@ window.addEventListener("popstate", () => swap(location.href, false));
 
 const prefetchHandler = (e: MouseEvent | TouchEvent) => {
   const a = (e.target as HTMLElement).closest("a");
-  if (a && a.href && a.origin === location.origin) fetchDoc(a.href);
+  if (a && !a.target && a.href && a.origin === location.origin) fetchDoc(a.href);
 };
 document.addEventListener("mouseover", prefetchHandler);
 document.addEventListener("touchstart", prefetchHandler);
