@@ -56,3 +56,4 @@ const addSwipeNav = () => {
   });
 };
 document.addEventListener("nav:page-load", addSwipeNav);
+addSwipeNav();
