@@ -43,62 +43,60 @@ const featuredProjects = Object.entries(projectMatches)
   .filter(({ id }) => featuedProjects.featured.includes(id)) as Record<string, any>[];
 ---
 
-<Layout>
-  <main class="flex flex-col gap-4">
-    <h1 class="text-5xl tracking-tighter">Chakorn Kungsanarux</h1>
-    <div class="flex items-center gap-4">
-      <a href="https://github.com/ChakornK" target="_blank">
-        <Icon name="simple-icons:github" size={24} />
-      </a>
-      <a href="https://www.linkedin.com/in/chakorn-kungsanarux" target="_blank">
-        <Icon name="simple-icons:linkedin" size={24} />
-      </a>
-    </div>
+<Layout class="flex flex-col gap-4">
+  <h1 class="text-5xl tracking-tighter">Chakorn Kungsanarux</h1>
+  <div class="flex items-center gap-4">
+    <a href="https://github.com/ChakornK" target="_blank">
+      <Icon name="simple-icons:github" size={24} />
+    </a>
+    <a href="https://www.linkedin.com/in/chakorn-kungsanarux" target="_blank">
+      <Icon name="simple-icons:linkedin" size={24} />
+    </a>
+  </div>
 
-    <h2 class="-mb-2 mt-8 text-2xl font-semibold">Tech stack</h2>
-    {
-      Object.entries(stack).map(([title, items]) => (
-        <div>
-          <h2 class="text-lg font-medium">{title}</h2>
-          <div class="flex flex-wrap gap-2 text-sm">
-            {items.map(({ name, icon, color, link }: { name: string; icon: string; color: string; link: string }) => (
-              <div class={`flex items-center relative gap-2 border border-neutral-950 px-2 py-1 transition-colors ${getColor(color)}`}>
-                <Icon name={icon} size={18} />
-                <p>{name}</p>
-                <a href={link} target="_blank" class="absolute inset-0" />
-              </div>
-            ))}
-          </div>
+  <h2 class="-mb-2 mt-8 text-2xl font-semibold">Tech stack</h2>
+  {
+    Object.entries(stack).map(([title, items]) => (
+      <div>
+        <h2 class="text-lg font-medium">{title}</h2>
+        <div class="flex flex-wrap gap-2 text-sm">
+          {items.map(({ name, icon, color, link }: { name: string; icon: string; color: string; link: string }) => (
+            <div class={`flex items-center relative gap-2 border border-neutral-950 px-2 py-1 transition-colors ${getColor(color)}`}>
+              <Icon name={icon} size={18} />
+              <p>{name}</p>
+              <a href={link} target="_blank" class="absolute inset-0" />
+            </div>
+          ))}
         </div>
-      ))
-    }
+      </div>
+    ))
+  }
 
-    <h2 class="-mb-2 mt-8 text-2xl font-semibold">Experience</h2>
-    {
-      experience.map((item) => (
-        <div class="flex flex-col gap-2 border border-neutral-950 p-4 text-sm">
-          <h2 class="text-xl font-medium leading-none">{item.title}</h2>
-          <p class="shrink-0 text-xs">{item.date}</p>
-          <ul class="ml-4">
-            {item.description.map((desc) => (
-              <li class="mb-1 list-disc">{desc}</li>
-            ))}
-          </ul>
-          <SkillList items={item.skills} />
-        </div>
-      ))
-    }
+  <h2 class="-mb-2 mt-8 text-2xl font-semibold">Experience</h2>
+  {
+    experience.map((item) => (
+      <div class="flex flex-col gap-2 border border-neutral-950 p-4 text-sm">
+        <h2 class="text-xl font-medium leading-none">{item.title}</h2>
+        <p class="shrink-0 text-xs">{item.date}</p>
+        <ul class="ml-4">
+          {item.description.map((desc) => (
+            <li class="mb-1 list-disc">{desc}</li>
+          ))}
+        </ul>
+        <SkillList items={item.skills} />
+      </div>
+    ))
+  }
 
-    <div class="mt-8 flex items-center justify-between">
-      <h2 class="-mb-2 text-2xl font-semibold">Featured Projects</h2>
-      <a
-        href="/projects"
-        class="relative flex w-fit shrink-0 items-center gap-2 border border-neutral-950 bg-neutral-50 px-2.5 py-1 after:absolute after:inset-0 after:z-10 after:w-0 after:bg-white after:mix-blend-difference after:transition-[width] after:duration-200 hover:after:w-full"
-      >
-        <span>View all</span>
-        <Icon name="carbon:arrow-right" size={20} />
-      </a>
-    </div>
-    {featuredProjects.map((project) => <ProjectCard {project} />)}
-  </main>
+  <div class="mt-8 flex items-center justify-between">
+    <h2 class="-mb-2 text-2xl font-semibold">Featured Projects</h2>
+    <a
+      href="/projects"
+      class="relative flex w-fit shrink-0 items-center gap-2 border border-neutral-950 bg-neutral-50 px-2.5 py-1 after:absolute after:inset-0 after:z-10 after:w-0 after:bg-white after:mix-blend-difference after:transition-[width] after:duration-200 hover:after:w-full"
+    >
+      <span>View all</span>
+      <Icon name="carbon:arrow-right" size={20} />
+    </a>
+  </div>
+  {featuredProjects.map((project) => <ProjectCard {project} />)}
 </Layout>

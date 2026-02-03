@@ -47,7 +47,7 @@ const ogImage = getImagePath({ url, site });
   </head>
   <body class="flex flex-col overflow-x-clip p-8 pt-20 sm:p-16 sm:pt-20">
     <Navbar />
-    <main class={"mx-auto w-full max-w-2xl grow"}>
+    <main class={"mx-auto w-full max-w-2xl grow" + (Astro.props.class ? " " + Astro.props.class : "")}>
       <slot />
     </main>
   </body>

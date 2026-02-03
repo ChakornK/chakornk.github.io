@@ -16,19 +16,17 @@ export const getStaticPaths = (() => {
 }) satisfies GetStaticPaths;
 ---
 
-<Layout title={frontmatter.name} description={frontmatter.description}>
-  <main class="flex h-full flex-col items-center">
-    <div
-      class="prose prose-strong:font-bold prose-h1:font-medium prose-li:marker:text-inherit prose-img:max-h-96 prose-h1:font-sans prose-img:max-w-full prose-img:object-contain w-full max-w-2xl font-sans"
-    >
-      <div class="mb-8 flex items-center justify-between">
-        <h1 class="mb-0">{frontmatter.name}</h1>
-        <ProjectLinks {...frontmatter} />
-      </div>
-      <div class="-mt-4">
-        <SkillList items={frontmatter.skills.split(/, ?/)} />
-      </div>
-      <Content />
+<Layout title={frontmatter.name} description={frontmatter.description} class="flex flex-col items-center">
+  <div
+    class="prose prose-strong:font-bold prose-h1:font-medium prose-li:marker:text-inherit prose-img:max-h-96 prose-h1:font-sans prose-img:max-w-full prose-img:object-contain w-full max-w-2xl font-sans"
+  >
+    <div class="mb-8 flex items-center justify-between">
+      <h1 class="mb-0">{frontmatter.name}</h1>
+      <ProjectLinks {...frontmatter} />
     </div>
-  </main>
+    <div class="-mt-4">
+      <SkillList items={frontmatter.skills.split(/, ?/)} />
+    </div>
+    <Content />
+  </div>
 </Layout>
