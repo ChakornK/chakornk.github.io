@@ -11,119 +11,9 @@ const extLinks = Object.entries({
 const { pathname } = Astro.url;
 ---
 
-<script>
-  const c = () => document.querySelector(`[data-path="${window.location.pathname.replace(/(?<=[^\^])\/$/, "")}"]`);
-  let pid: string | null;
-  document.addEventListener("astro:before-swap", () => {
-    const p = c();
-    if (!p) {
-      pid = null;
-    } else {
-      pid = p.getAttribute("data-path");
-    }
-  });
-  const calc = () => {
-    const el = document.getElementById("nav-highlight");
-    const elc = document.getElementById("nav-highlight-container");
-    if (!el || !elc) return;
-    const n = c();
-    if (!n) {
-      el.style.opacity = "0";
-      return;
-    } else {
-      el.style.opacity = "1";
-    }
-    const nb = n.getBoundingClientRect();
-    const ncb = elc.getBoundingClientRect();
-    if (pid) {
-      const pb = document.querySelector(`[data-path="${pid}"]`)?.getBoundingClientRect();
-      if (pb) {
-        el.style.transition = `opacity .15s linear, ${nb.left < pb.left ? "left .1s ease-out, width .1s ease-in-out .025s" : "width .1s ease-out, left .1s ease-in-out .025s"}`;
-      }
-    } else {
-      el.style.transition = "";
-    }
-    el.style.left = `${nb.left - ncb.left}px`;
-    el.style.width = `${nb.right - nb.left}px`;
-  };
-  document.addEventListener("astro:page-load", calc);
-  document.fonts.addEventListener("loadingdone", calc);
-</script>
-<script>
-  const s = () => {
-    const el = document.querySelector("main") as HTMLDivElement | null;
-    if (!el) return;
-
-    let startX = 0;
-    let startY = 0;
-    let dx = 0;
-    let locked: "x" | "y" | null = null;
-
-    const prev = document.querySelector("a:has(+ p[data-path])") as HTMLLinkElement | null;
-    const next = document.querySelector("a:where(p[data-path] + a:not([target='_blank']))") as HTMLLinkElement | null;
-
-    el.addEventListener("touchstart", (e) => {
-      startX = e.touches[0].clientX;
-      startY = e.touches[0].clientY;
-      locked = null;
-      el.style.transition = "none";
-    });
-
-    el.addEventListener(
-      "touchmove",
-      (e) => {
-        const x = e.touches[0].clientX;
-        const y = e.touches[0].clientY;
-        const deltaX = x - startX;
-        const deltaY = y - startY;
-        if (!locked) {
-          locked = Math.abs(deltaX) > Math.abs(deltaY) ? "x" : "y";
-        }
-        if (locked === "x" && (deltaX > 0 ? prev : next)) {
-          e.preventDefault();
-          dx = deltaX;
-          el.style.transform = `translateX(${dx}px)`;
-          el.style.opacity = `${(240 - Math.abs(dx)) / 240}`;
-        }
-      },
-      { passive: false },
-    );
-
-    el.addEventListener("touchend", () => {
-      const dest = dx > 0 ? prev : next;
-      if (locked === "x" && Math.abs(dx) > 60 && dest) {
-        el.style.transition = "transform 0.2s, opacity 0.5s";
-        el.style.transform = `translateX(${dx > 0 ? "100vw" : "-100vw"})`;
-        el.style.opacity = "0";
-        setTimeout(() => {
-          dest.click();
-        }, 200);
-      } else {
-        el.style.transition = "transform 0.2s, opacity 0.2s";
-        el.style.transform = "translateX(0)";
-        el.style.opacity = "1";
-      }
-      dx = 0;
-      locked = null;
-    });
-  };
-  const scrollPosStore = JSON.parse(window.sessionStorage.getItem("scroll-pos") || "{}") as Record<string, number>;
-  const p = () => {
-    if (scrollPosStore[window.location.pathname]) {
-      window.scrollTo(0, scrollPosStore[window.location.pathname]);
-    }
-  };
-  const p2 = () => {
-    scrollPosStore[window.location.pathname] = window.scrollY;
-    window.sessionStorage.setItem("scroll-pos", JSON.stringify(scrollPosStore));
-  };
-  document.addEventListener("astro:page-load", s);
-  document.addEventListener("astro:page-load", p);
-  document.addEventListener("astro:after-preparation", p2);
-</script>
 <div class="fixed left-0 right-0 top-0 z-50 h-14 select-none bg-neutral-50 font-medium">
   <div id="nav-highlight-container" class="absolute inset-0 mx-auto w-min p-4">
-    <div class="*:px-1 *:col-end-[span_1] *:row-span-1 relative grid auto-cols-max gap-4">
+    <div id="nav-items" class="*:px-1 *:col-end-[span_1] *:row-span-1 relative grid auto-cols-max gap-4">
       {
         routes.map(([path, name], i) =>
           pathname.replace(/(?<=[^\^])\/$/, "") === path ?
@@ -152,9 +42,8 @@ const { pathname } = Astro.url;
     </div>
     <div
       id="nav-highlight"
-      class="pointer-events-none absolute bottom-4 top-4 bg-white mix-blend-difference transition-opacity"
-      transition:persist
-      style={`opacity:${routes.length > 0 ? 1 : 0}`}
+      class="pointer-events-none absolute bottom-4 top-4 bg-white mix-blend-difference"
+      style={`opacity:${routes.length > 0 ? 1 : 0};transition:opacity .15s linear;`}
     >
     </div>
   </div>

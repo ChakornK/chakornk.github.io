@@ -1,7 +1,6 @@
 ---
 import "@/styles/global.css";
 import Navbar from "@/components/Navbar.astro";
-import { ClientRouter } from "astro:transitions";
 
 import { SEO } from "astro-seo";
 import { getImagePath } from "astro-opengraph-images";
@@ -12,7 +11,7 @@ const ogImage = getImagePath({ url, site });
 ---
 
 <!doctype html>
-<html lang="en" transition:animate="none" class="overflow-x-clip">
+<html lang="en" class="overflow-x-clip" style="view-transition-name:none">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -41,9 +40,9 @@ const ogImage = getImagePath({ url, site });
 
     <link rel="sitemap" href="/sitemap-index.xml" />
 
-    <ClientRouter fallback="swap" />
-
     <link rel="preload" href="/SpaceGrotesk-TT.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+
+    <script src="../scripts/index.ts"></script>
   </head>
   <body class="flex flex-col overflow-x-clip p-8 pt-20 sm:p-16 sm:pt-20">
     <Navbar />
