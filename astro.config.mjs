@@ -9,8 +9,8 @@ import { imageOptimizer } from "./build/imageOptimizer.js";
 import { cleanUp } from "./build/cleanUp.js";
 import opengraphImages from "astro-opengraph-images";
 import { ogImage } from "./src/og.tsx";
+import UnoCSS from "unocss/astro";
 
-import tailwindcss from "@tailwindcss/vite";
 import yaml from "@rollup/plugin-yaml";
 
 import rehypeExternalLinks from "rehype-external-links";
@@ -39,9 +39,10 @@ export default defineConfig({
       render: ogImage,
     }),
     cleanUp(),
+    UnoCSS(),
   ],
   vite: {
-    plugins: [tailwindcss(), yaml()],
+    plugins: [yaml()],
     build: {
       rollupOptions: {
         output: {

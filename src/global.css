@@ -1,5 +1,4 @@
-@import "tailwindcss";
-@plugin "@tailwindcss/typography";
+@import "@unocss/reset/tailwind.css";
 
 @font-face {
   font-family: "Space Grotesk";
@@ -7,10 +6,6 @@
   font-weight: 300 700;
   font-display: block;
   src: url(/SpaceGrotesk-TT.woff2);
-}
-
-@theme {
-  --font-sans: "Space Grotesk", sans-serif;
 }
 
 html,
@@ -26,20 +21,17 @@ body {
   @apply bg-neutral-950 text-neutral-50;
 }
 
-.prose {
-  /* Place consecutive images in a row if possible */
-  p:has(img) {
-    @apply flex flex-wrap justify-center gap-4;
-    img {
-      @apply my-0;
-    }
-  }
-
-  /* Remove spacing between paragraph and list */
-  p:has(+ :is(ul, ol)) {
-    @apply mb-0;
-  }
-  p + :is(ul, ol) {
-    @apply mt-0;
-  }
+/* Place consecutive images in a row if possible */
+.prose p:has(img) {
+  @apply flex flex-wrap justify-center gap-4;
+}
+.prose p:has(img) img {
+  @apply my-0;
+}
+/* Remove spacing between paragraph and list */
+.prose p:has(+ :is(ul, ol)) {
+  @apply mb-0;
+}
+.prose p + :is(ul, ol) {
+  @apply mt-0;
 }
