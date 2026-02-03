@@ -29,10 +29,10 @@ export default defineConfig({
       options: {
         fonts: [
           {
-            name: "JetBrains Mono",
+            name: "Space Grotesk",
             weight: 400,
             style: "normal",
-            data: fs.readFileSync("node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-400-normal.woff"),
+            data: fs.readFileSync("node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-400-normal.woff"),
           },
         ],
       },

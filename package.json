@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.6.0",
-    "@fontsource/jetbrains-mono": "^5.2.8",
+    "@fontsource/space-grotesk": "^5.2.10",
     "@iconify-json/carbon": "^1.2.15",
     "@iconify-json/simple-icons": "^1.2.64",
     "@rollup/plugin-yaml": "^4.1.2",
