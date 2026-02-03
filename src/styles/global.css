@@ -8,17 +8,9 @@
   font-display: block;
   src: url(/SpaceGrotesk-TT.woff2);
 }
-@font-face {
-  font-family: "JetBrains Mono";
-  font-style: normal;
-  font-weight: 100 800;
-  font-display: block;
-  src: url(/JetBrainsMono-TT.woff2);
-}
 
 @theme {
   --font-sans: "Space Grotesk", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
 }
 
 html,
