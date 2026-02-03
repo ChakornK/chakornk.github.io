@@ -6,9 +6,8 @@ const loadPos = () => {
     window.scrollTo(0, 0);
   }
 };
-const savePos = () => {
+export const savePos = () => {
   scrollPosStore[window.location.pathname] = window.scrollY;
   window.sessionStorage.setItem("scroll-pos", JSON.stringify(scrollPosStore));
 };
 document.addEventListener("nav:page-load", loadPos);
-document.addEventListener("nav:before-nav", savePos);

@@ -1,3 +1,5 @@
+import { savePos as saveScrollPos } from "./keepScrollPos";
+
 const cache = new Map();
 const supportsVT = !!document.startViewTransition;
 
@@ -11,6 +13,7 @@ const fetchDoc = async (url: string) => {
 
 const swap = async (url: string, push = true) => {
   document.dispatchEvent(new Event("nav:before-nav"));
+  saveScrollPos();
   const html = await fetchDoc(url);
   const doc = new DOMParser().parseFromString(html, "text/html");
   const doSwap = () => {
