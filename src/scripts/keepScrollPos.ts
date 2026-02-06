@@ -10,4 +10,5 @@ export const savePos = () => {
   scrollPosStore[window.location.pathname] = window.scrollY;
   window.sessionStorage.setItem("scroll-pos", JSON.stringify(scrollPosStore));
 };
+window.addEventListener("popstate", loadPos);
 document.addEventListener("nav:page-load", loadPos);
