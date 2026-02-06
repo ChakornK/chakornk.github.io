@@ -18,44 +18,63 @@ experience:
       - AWS S3
       - Prisma
 
-# stack:
-#   Frontend:
-#     TypeScript: simple-icons:typescript
-#     React: simple-icons:react
-#     Tailwind: simple-icons:tailwindcss
-#     Next: simple-icons:nextdotjs
-#     Astro: simple-icons:astro
-#     Flutter: simple-icons:flutter
-#   Backend:
-#     Node: simple-icons:nodedotjs
-#     Express: simple-icons:express
-#     MongoDB: simple-icons:mongodb
-#   DevOps:
-#     Docker: simple-icons:docker
-#     Git: simple-icons:git
-#     GitHub Actions: simple-icons:github
-#     Figma: simple-icons:figma
 stack:
-  Frontend:
+  Languages:
     - name: TypeScript
       icon: simple-icons:typescript
       color: blue
       link: https://www.typescriptlang.org
 
+    - name: Dart
+      icon: simple-icons:dart
+      color: blue
+      link: https://dart.dev
+
+    - name: C++
+      icon: simple-icons:cplusplus
+      color: violet
+      link: https://cplusplus.com
+
+    - name: PHP
+      icon: simple-icons:php
+      color: blue
+      link: https://www.php.net
+
+    - name: Python
+      icon: simple-icons:python
+      color: yellow
+      link: https://www.python.org
+
+  Frontend:
     - name: React
       icon: simple-icons:react
       color: cyan
       link: https://react.dev
 
-    - name: Tailwind
+    - name: Vue
+      icon: simple-icons:vuedotjs
+      color: green
+      link: https://vuejs.org
+
+    - name: Tailwind CSS
       icon: simple-icons:tailwindcss
       color: sky
       link: https://tailwindcss.com
 
-    - name: Next
+    - name: Sass
+      icon: simple-icons:sass
+      color: pink
+      link: https://sass-lang.com
+
+    - name: Next.js
       icon: simple-icons:nextdotjs
       color: neutral
       link: https://nextjs.org
+
+    - name: Vite
+      icon: simple-icons:vite
+      color: violet
+      link: https://vitejs.dev
 
     - name: Astro
       icon: simple-icons:astro
@@ -67,8 +86,13 @@ stack:
       color: sky
       link: https://flutter.dev
 
+    - name: Electron
+      icon: simple-icons:electron
+      color: cyan
+      link: https://electronjs.org
+
   Backend:
-    - name: Node
+    - name: Node.js
       icon: simple-icons:nodedotjs
       color: green
       link: https://nodejs.org
@@ -82,6 +106,11 @@ stack:
       icon: simple-icons:mongodb
       color: green
       link: https://mongodb.com
+
+    - name: Redis
+      icon: simple-icons:redis
+      color: red
+      link: https://redis.io
 
   DevOps:
     - name: Docker
@@ -98,6 +127,11 @@ stack:
       icon: simple-icons:github
       color: orange
       link: https://github.com
+
+    - name: Bash
+      icon: simple-icons:gnubash
+      color: green
+      link: https://www.gnu.org/software/bash
 
     - name: Figma
       icon: simple-icons:figma
