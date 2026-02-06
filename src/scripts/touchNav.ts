@@ -43,13 +43,13 @@ const addSwipeNav = () => {
       el.style.transition = "transform 0.2s, opacity 0.5s";
       el.style.transform = `translateX(${dx > 0 ? "100vw" : "-100vw"})`;
       el.style.opacity = "0";
-      if (dest) {
-        setTimeout(() => {
+      setTimeout(() => {
+        if (dest) {
           dest.click();
-        }, 200);
-      } else {
-        window.history.back();
-      }
+        } else {
+          window.history.back();
+        }
+      }, 200);
     } else {
       el.style.transition = "transform 0.2s, opacity 0.2s";
       el.style.transform = "translateX(0)";
