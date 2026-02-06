@@ -27,7 +27,7 @@ const addSwipeNav = () => {
       if (!locked) {
         locked = Math.abs(deltaX) > Math.abs(deltaY) ? "x" : "y";
       }
-      if (locked === "x" && (deltaX > 0 ? prev : next)) {
+      if (locked === "x" && ((deltaX > 0 ? prev : next) || (window.location.pathname.split("/").length > 2 && deltaX > 0))) {
         e.preventDefault();
         dx = deltaX;
         el.style.transform = `translateX(${dx}px)`;
@@ -39,13 +39,17 @@ const addSwipeNav = () => {
 
   el.addEventListener("touchend", () => {
     const dest = dx > 0 ? prev : next;
-    if (locked === "x" && Math.abs(dx) > 60 && dest) {
+    if (locked === "x" && Math.abs(dx) > 60 && (dest || window.location.pathname.split("/").length > 2)) {
       el.style.transition = "transform 0.2s, opacity 0.5s";
       el.style.transform = `translateX(${dx > 0 ? "100vw" : "-100vw"})`;
       el.style.opacity = "0";
-      setTimeout(() => {
-        dest.click();
-      }, 200);
+      if (dest) {
+        setTimeout(() => {
+          dest.click();
+        }, 200);
+      } else {
+        window.history.back();
+      }
     } else {
       el.style.transition = "transform 0.2s, opacity 0.2s";
       el.style.transform = "translateX(0)";
