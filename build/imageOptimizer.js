@@ -99,7 +99,7 @@ export const imageOptimizer = ({ width, height, quality = 50 }) => ({
               html = html.replaceAll(`${matchedText}"`, `${matchedText.replace(extMatcher, ".webp")}" width="${width / 2}" height="${height / 2}"`);
             }
           }
-          const matches2 = html.matchAll(/(?<=style="background-image: ?url\(\/)[^:]*?(?=\)")/g);
+          const matches2 = html.matchAll(/(?<=style="background-image: ?url\(\/)[^:]*?(?=\))/g);
           for (const match of matches2) {
             const [matchedText] = match;
             html = html.replaceAll(matchedText, matchedText.replace(extMatcher, ".webp"));
