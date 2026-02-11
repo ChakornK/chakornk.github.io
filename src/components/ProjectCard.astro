@@ -5,7 +5,11 @@ const { project } = Astro.props;
 ---
 
 <div class="relative flex flex-col-reverse items-stretch border border-neutral-950 text-sm sm:flex-row">
-  <div class="h-48 w-auto shrink-0 bg-neutral-200 bg-cover bg-center sm:h-auto sm:w-48" style={`background-image: url(${project.thumbnail})`}></div>
+  <div
+    class="h-48 w-auto shrink-0 bg-neutral-200 bg-cover bg-center sm:h-auto sm:w-48"
+    style={`background-image:url(${project.thumbnail});${project.thumbnailPosition ? `background-position:${project.thumbnailPosition};` : ""}`}
+  >
+  </div>
   <div class="flex grow flex-col gap-2 p-4">
     <div class="flex justify-between">
       <h2 class="text-xl font-medium leading-none">{project.name}</h2>
