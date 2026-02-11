@@ -1,7 +1,8 @@
 ---
 name: Imposter
 description: A word guessing game where everyone except one person knows the word. Everyone gives 1-word clues and tries to find who the imposter is.
-thumbnail: /projects/imposter/7.png
+thumbnail: /projects/imposter/1.png
+thumbnailPosition: top
 github: chakornk/imposter
 website: https://imposter.chakornk.dev/
 skills: Vue, Tailwind, Motion
