@@ -56,6 +56,11 @@ stack:
       color: green
       link: https://vuejs.org
 
+    - name: Solid
+      icon: simple-icons:solid
+      color: sky
+      link: https://www.solidjs.com
+
     - name: Tailwind CSS
       icon: simple-icons:tailwindcss
       color: sky
@@ -111,6 +116,11 @@ stack:
       icon: simple-icons:redis
       color: red
       link: https://redis.io
+
+    - name: Cloudflare Workers
+      icon: simple-icons:cloudflare
+      color: orange
+      link: https://workers.cloudflare.com
 
   DevOps:
     - name: Docker
