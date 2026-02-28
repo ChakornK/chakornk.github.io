@@ -3,13 +3,34 @@ import Layout from "@/layouts/Layout.astro";
 import ProjectCard from "@/components/ProjectCard.astro";
 
 const matches = import.meta.glob("/content/projects/*.md", { eager: true });
-const projects = Object.entries(matches).map(([k, p]) => ({
-  id: k.split("/").slice(-1)[0].split(".")[0],
-  ...(p as { frontmatter: any }).frontmatter,
-})) as Record<string, any>[];
+const projects = Object.entries(matches)
+  .map(([k, p]) => ({
+    id: k.split("/").slice(-1)[0].split(".")[0],
+    ...(p as { frontmatter: any }).frontmatter,
+  }))
+  .sort((a, b) => b.id.split("-")[0] - a.id.split("-")[0])
+  .map((p) => ({
+    ...p,
+    id: p.id.split("-").slice(1).join("-"),
+  })) as Record<string, any>[];
+
+const matches2 = import.meta.glob("/content/projects-hackathon/*.md", { eager: true });
+const projects2 = Object.entries(matches2)
+  .map(([k, p]) => ({
+    id: k.split("/").slice(-1)[0].split(".")[0],
+    ...(p as { frontmatter: any }).frontmatter,
+  }))
+  .sort((a, b) => b.id.split("-")[0] - a.id.split("-")[0])
+  .map((p) => ({
+    ...p,
+    id: p.id.split("-").slice(1).join("-"),
+  })) as Record<string, any>[];
 ---
 
 <Layout title="Projects" description="What I've worked on" class="flex flex-col gap-4">
-  <h1 class="text-3xl font-semibold">Projects</h1>
+  <h1 class="text-3xl font-semibold">Hackathons Projects</h1>
+  {projects2.map((project) => <ProjectCard {project} />)}
+
+  <h1 class="mt-8 text-3xl font-semibold">Projects</h1>
   {projects.map((project) => <ProjectCard {project} />)}
 </Layout>
