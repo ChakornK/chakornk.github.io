@@ -37,14 +37,20 @@ const getColor = (color: string) => {
 
 import ProjectCard from "@/components/ProjectCard.astro";
 // @ts-ignore
-import featuedProjects from "../../content/featured-projects.yml";
+import featuredProjectList from "../../content/featured-projects.yml";
 const projectMatches = import.meta.glob("/content/projects/*.md", { eager: true });
-const featuredProjects = Object.entries(projectMatches)
-  .map(([k, p]) => ({
-    id: k.split("/").slice(-1)[0].split(".")[0],
-    ...(p as { frontmatter: any }).frontmatter,
-  }))
-  .filter(({ id }) => featuedProjects.featured.includes(id)) as Record<string, any>[];
+const featuredProjects1 = Object.entries(projectMatches).map(([k, p]) => ({
+  id: k.split("/").slice(-1)[0].split(".")[0].split("-").slice(1).join("-"),
+  ...(p as { frontmatter: any }).frontmatter,
+})) as Record<string, any>[];
+const projectMatches2 = import.meta.glob("/content/projects-hackathon/*.md", { eager: true });
+const featuredProjects2 = Object.entries(projectMatches2).map(([k, p]) => ({
+  id: k.split("/").slice(-1)[0].split(".")[0].split("-").slice(1).join("-"),
+  ...(p as { frontmatter: any }).frontmatter,
+})) as Record<string, any>[];
+
+const featuredProjectsCombined = [...featuredProjects1, ...featuredProjects2];
+const featuredProjects = featuredProjectList.featured.map((id: string) => featuredProjectsCombined.find((p) => p.id === id)) as Record<string, any>[];
 ---
 
 <Layout class="flex flex-col gap-4">
