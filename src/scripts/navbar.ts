@@ -24,8 +24,8 @@ const calc = () => {
 
   const nb = n.getBoundingClientRect();
   const ncb = elc.getBoundingClientRect();
-  const left = nb.left - ncb.left;
-  const width = nb.right - nb.left;
+  const left = nb.left - ncb.left - 4;
+  const width = nb.right - nb.left + 8;
 
   let transition = "opacity .15s linear";
   if (pid) {
