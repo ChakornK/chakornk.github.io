@@ -40,11 +40,34 @@ const { pathname } = Astro.url;
         ))
       }
     </div>
+
     <div
       id="nav-highlight"
-      class="pointer-events-none absolute bottom-4 top-4 bg-white mix-blend-difference"
+      class="pointer-events-none absolute bottom-4 top-4 bg-neutral-900"
       style={`opacity:${routes.length > 0 ? 1 : 0};transition:opacity .15s linear;`}
     >
+    </div>
+
+    <div
+      id="nav-items-clone"
+      aria-hidden="true"
+      class="*:px-1 *:col-end-[span_1] *:row-span-1 pointer-events-none absolute inset-0 grid auto-cols-max gap-4 p-4 text-neutral-50"
+      style="mask-repeat:no-repeat;mask-size:0px 100%;"
+    >
+      {
+        routes.map(([path, name], i) =>
+          pathname.replace(/(?<=[^\^])\/$/, "") === path ?
+            <p style={`grid-column-start: ${i + 1}`}>{name}</p>
+          : <span style={`grid-column-start: ${i + 1}`}>{name}</span>,
+        )
+      }
+      {
+        extLinks.map(([name, url], i) => (
+          <span class="inline-flex items-center gap-1" style={`grid-column-start: ${routes.length + i + 1}`}>
+            <span>{name}</span> <Icon name="carbon:launch" size={12} stroke-width={"2px"} class="opacity-0" />
+          </span>
+        ))
+      }
     </div>
   </div>
 </div>
