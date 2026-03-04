@@ -11,19 +11,21 @@
   "dependencies": {
     "@astrojs/sitemap": "^3.7.0",
     "@fontsource/space-grotesk": "^5.2.10",
-    "@iconify-json/carbon": "^1.2.18",
-    "@iconify-json/simple-icons": "^1.2.69",
+    "@iconify-json/carbon": "^1.2.19",
+    "@iconify-json/simple-icons": "^1.2.72",
     "@rollup/plugin-yaml": "^4.1.2",
-    "@unocss/reset": "^66.6.0",
-    "astro": "^5.17.1",
+    "@unocss/astro": "^66.6.4",
+    "@unocss/preset-wind3": "^66.6.4",
+    "@unocss/reset": "^66.6.4",
+    "astro": "^5.18.0",
     "astro-icon": "^1.1.5",
-    "astro-opengraph-images": "^1.14.2",
+    "astro-opengraph-images": "^1.14.3",
     "astro-seo": "1.1.0",
-    "preact": "^10.28.3",
+    "preact": "^10.28.4",
     "rehype-external-links": "^3.0.0",
     "sharp": "^0.34.5",
     "tw-to-css": "^0.0.12",
-    "unocss": "^66.6.0"
+    "unocss": "^66.6.4"
   },
   "packageManager": "yarn@4.12.0+sha512.f45ab632439a67f8bc759bf32ead036a1f413287b9042726b7cc4818b7b49e14e9423ba49b18f9e06ea4941c1ad062385b1d8760a8d5091a1a31e5f6219afca8"
 }
