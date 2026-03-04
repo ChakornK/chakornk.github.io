@@ -5,8 +5,8 @@ const { devpost, github, website } = Astro.props;
 ---
 
 {
-  (github || website) && (
-    <div class="*:z-20 *:p-1.5 -m-1.5 flex flex-wrap">
+  (devpost || github || website) && (
+    <div class="*:z-20 *:p-1.5 -m-1.5 flex">
       {devpost && (
         <a href={`https://devpost.com/software/${devpost}`} target="_blank">
           <Icon name="simple-icons:devpost" size={20} />
