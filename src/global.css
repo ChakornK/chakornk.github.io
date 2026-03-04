@@ -13,12 +13,12 @@ body {
   @apply min-h-dvh m-0 w-full;
 }
 body {
-  @apply bg-neutral-50 font-sans text-neutral-950;
+  @apply bg-background text-text font-sans;
 }
 
 ::selection,
 ::-moz-selection {
-  @apply bg-neutral-950 text-neutral-50;
+  @apply bg-text text-background;
 }
 
 /* Place consecutive images in a row if possible */

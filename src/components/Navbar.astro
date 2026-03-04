@@ -11,7 +11,7 @@ const extLinks = Object.entries({
 const { pathname } = Astro.url;
 ---
 
-<div class="fixed left-0 right-0 top-0 z-50 h-14 select-none bg-neutral-50 font-medium">
+<div class="bg-background fixed left-0 right-0 top-0 z-50 h-14 select-none font-medium">
   <div id="nav-highlight-container" class="absolute inset-0 mx-auto w-min p-4">
     <div id="nav-items" class="*:px-1 *:col-end-[span_1] *:row-span-1 relative grid auto-cols-max gap-4">
       {
@@ -43,7 +43,7 @@ const { pathname } = Astro.url;
 
     <div
       id="nav-highlight"
-      class="pointer-events-none absolute bottom-4 top-4 bg-neutral-900"
+      class="bg-text pointer-events-none absolute bottom-4 top-4"
       style={`opacity:${routes.length > 0 ? 1 : 0};transition:opacity .15s linear;`}
     >
     </div>
@@ -51,7 +51,7 @@ const { pathname } = Astro.url;
     <div
       id="nav-items-clone"
       aria-hidden="true"
-      class="*:px-1 *:col-end-[span_1] *:row-span-1 pointer-events-none absolute inset-0 grid auto-cols-max gap-4 p-4 text-neutral-50"
+      class="*:px-1 *:col-end-[span_1] *:row-span-1 text-background pointer-events-none absolute inset-0 grid auto-cols-max gap-4 p-4"
       style="mask-repeat:no-repeat;mask-size:0px 100%;"
     >
       {

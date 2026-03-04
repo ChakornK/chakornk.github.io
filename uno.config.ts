@@ -13,5 +13,10 @@ export default defineConfig({
     fontFamily: {
       sans: `"Space Grotesk", sans-serif`,
     },
+    colors: {
+      background: "#fafaf4",
+      surface: "#d6d3d133",
+      text: "#133336",
+    },
   },
 });

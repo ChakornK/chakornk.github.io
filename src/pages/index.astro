@@ -31,7 +31,7 @@ const getColor = (color: string) => {
     case "pink":
       return "hover:bg-pink-100";
     case "neutral":
-      return "hover:bg-neutral-200";
+      return "hover:bg-surface";
   }
 };
 
@@ -71,7 +71,7 @@ const featuredProjects = featuredProjectList.featured.map((id: string) => featur
         <h2 class="text-lg font-medium">{title}</h2>
         <div class="flex flex-wrap gap-2 text-sm">
           {items.map(({ name, icon, color, link }: { name: string; icon: string; color: string; link: string }) => (
-            <div class={`flex items-center relative gap-2 border border-neutral-950 px-2 py-1 transition-colors ${getColor(color)}`}>
+            <div class={`flex items-center relative gap-2 border border-text px-2 py-1 transition-colors ${getColor(color)}`}>
               <Icon name={icon} size={18} />
               <p>{name}</p>
               <a href={link} target="_blank" class="absolute inset-0" />
@@ -85,7 +85,7 @@ const featuredProjects = featuredProjectList.featured.map((id: string) => featur
   <h2 class="-mb-2 mt-8 text-2xl font-semibold">Experience</h2>
   {
     experience.map((item) => (
-      <div class="flex flex-col gap-2 border border-neutral-950 p-4 text-sm">
+      <div class="flex flex-col gap-2 border border-text p-4 text-sm">
         <h2 class="text-xl font-medium leading-none">{item.title}</h2>
         <p class="shrink-0 text-xs">{item.date}</p>
         <ul class="ml-4">
@@ -102,7 +102,7 @@ const featuredProjects = featuredProjectList.featured.map((id: string) => featur
     <h2 class="-mb-2 text-2xl font-semibold">Featured Projects</h2>
     <a
       href="/projects"
-      class="relative flex w-fit shrink-0 items-center gap-2 border border-neutral-950 bg-neutral-50 px-2.5 py-1 after:absolute after:inset-0 after:z-10 after:w-0 after:bg-white after:mix-blend-difference after:transition-[width] after:duration-200 after:content-[''] hover:after:w-full"
+      class="relative flex w-fit shrink-0 items-center gap-2 border border-text bg-background px-2.5 py-1 after:absolute after:inset-0 after:z-10 after:w-0 after:bg-white after:mix-blend-difference after:transition-[width] after:duration-200 after:content-[''] hover:after:w-full"
     >
       <span>View all</span>
       <Icon name="carbon:arrow-right" size={20} />
