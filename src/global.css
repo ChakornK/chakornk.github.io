@@ -35,3 +35,7 @@ body {
 .prose p + :is(ul, ol) {
   @apply mt-0;
 }
+
+.prose img {
+  @apply rounded-lg;
+}

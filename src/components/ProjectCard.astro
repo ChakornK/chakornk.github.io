@@ -4,9 +4,9 @@ import SkillList from "@/components/SkillList.astro";
 const { project } = Astro.props;
 ---
 
-<div class="relative flex flex-col-reverse items-stretch border border-text text-sm sm:flex-row">
+<div class="bg-surface hover:bg-highlight relative flex flex-col-reverse items-stretch gap-2 rounded-xl p-2 text-sm transition-colors sm:flex-row">
   <div
-    class="h-48 w-auto shrink-0 bg-surface bg-cover bg-center sm:h-auto sm:w-48"
+    class="bg-surface h-48 w-auto shrink-0 rounded-md bg-cover bg-center sm:h-auto sm:w-48"
     style={`background-image:url(${project.thumbnail});${project.thumbnailPosition ? `background-position:${project.thumbnailPosition};` : ""}`}
   >
   </div>

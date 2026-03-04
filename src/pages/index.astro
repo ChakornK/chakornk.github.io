@@ -11,27 +11,27 @@ const stack = experienceData.stack as { [title: string]: { name: string; icon: s
 const getColor = (color: string) => {
   switch (color) {
     case "red":
-      return "hover:bg-red-100";
+      return "hover:bg-red-400/16";
     case "orange":
-      return "hover:bg-orange-100";
+      return "hover:bg-orange-400/16";
     case "yellow":
-      return "hover:bg-yellow-100";
+      return "hover:bg-yellow-400/16";
     case "green":
-      return "hover:bg-green-100";
+      return "hover:bg-green-400/16";
     case "emerald":
-      return "hover:bg-emerald-100";
+      return "hover:bg-emerald-400/16";
     case "cyan":
-      return "hover:bg-cyan-100";
+      return "hover:bg-cyan-400/16";
     case "sky":
-      return "hover:bg-sky-100";
+      return "hover:bg-sky-400/16";
     case "blue":
-      return "hover:bg-blue-100";
+      return "hover:bg-blue-400/16";
     case "violet":
-      return "hover:bg-violet-100";
+      return "hover:bg-violet-400/16";
     case "pink":
-      return "hover:bg-pink-100";
+      return "hover:bg-pink-400/16";
     case "neutral":
-      return "hover:bg-surface";
+      return "hover:bg-stone-400/16";
   }
 };
 
@@ -71,8 +71,8 @@ const featuredProjects = featuredProjectList.featured.map((id: string) => featur
         <h2 class="text-lg font-medium">{title}</h2>
         <div class="flex flex-wrap gap-2 text-sm">
           {items.map(({ name, icon, color, link }: { name: string; icon: string; color: string; link: string }) => (
-            <div class={`flex items-center relative gap-2 border border-text px-2 py-1 transition-colors ${getColor(color)}`}>
-              <Icon name={icon} size={18} />
+            <div class={`flex items-center relative gap-2 px-2 py-1 transition-colors rounded-full bg-surface ${getColor(color)}`}>
+              <Icon name={icon} size={16} />
               <p>{name}</p>
               <a href={link} target="_blank" class="absolute inset-0" />
             </div>
@@ -85,7 +85,7 @@ const featuredProjects = featuredProjectList.featured.map((id: string) => featur
   <h2 class="-mb-2 mt-8 text-2xl font-semibold">Experience</h2>
   {
     experience.map((item) => (
-      <div class="flex flex-col gap-2 border border-text p-4 text-sm">
+      <div class="mt-2 flex flex-col gap-2 text-sm">
         <h2 class="text-xl font-medium leading-none">{item.title}</h2>
         <p class="shrink-0 text-xs">{item.date}</p>
         <ul class="ml-4">
@@ -100,12 +100,9 @@ const featuredProjects = featuredProjectList.featured.map((id: string) => featur
 
   <div class="mt-8 flex items-center justify-between">
     <h2 class="-mb-2 text-2xl font-semibold">Featured Projects</h2>
-    <a
-      href="/projects"
-      class="relative flex w-fit shrink-0 items-center gap-2 border border-text bg-background px-2.5 py-1 after:absolute after:inset-0 after:z-10 after:w-0 after:bg-white after:mix-blend-difference after:transition-[width] after:duration-200 after:content-[''] hover:after:w-full"
-    >
+    <a href="/projects" class="hover:border-text flex items-center gap-1 border-b border-transparent leading-none">
       <span>View all</span>
-      <Icon name="carbon:arrow-right" size={20} />
+      <Icon name="carbon:arrow-right" size={16} />
     </a>
   </div>
   {featuredProjects.map((project) => <ProjectCard {project} />)}
