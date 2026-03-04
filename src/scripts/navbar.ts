@@ -40,7 +40,6 @@ const calc = () => {
   el.style.left = `${left}px`;
   el.style.width = `${width}px`;
 
-  clone.style.maskImage = "linear-gradient(black, black)";
   clone.style.maskPosition = `${left}px 0`;
   clone.style.maskSize = `${width}px 100%`;
   clone.style.transition = transition.replaceAll("left", "mask-position").replaceAll("width", "mask-size");
