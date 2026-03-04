@@ -9,8 +9,8 @@
 }
 
 :root {
-  --color-background: oklch(0.99 0.01 106.54);
-  --color-surface: oklch(0.8687 0.01 106.54 / 0.2);
+  --color-background: oklch(0.99 0.0067 106.54);
+  --color-surface: oklch(0.8687 0.0067 106.54 / 0.2);
   --color-text: oklch(0.2967 0.1 203.61);
   --color-highlight: oklch(0.7735 0.139 232.66 / 0.1);
 }
