@@ -24,6 +24,7 @@ export default defineConfig({
       width: 1344,
       height: 768,
       quality: 50,
+      siteUrl: "https://chakornk.dev",
     }),
     opengraphImages({
       options: {

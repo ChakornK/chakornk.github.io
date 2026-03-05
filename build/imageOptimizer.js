@@ -8,12 +8,8 @@ import sharp from "sharp";
 
 const THREADS = os.cpus().length || 4;
 const extMatcher = /\.(png|jpg|jpeg|gif|webp)$/;
-
-// Vercel build cache is mounted at /vercel/cache
-const LOCAL_CACHE_DIR = ".image-cache";
-const VERCEL_CACHE_DIR = "/vercel/cache/image-optimizer";
-const IS_VERCEL = !!process.env.VERCEL;
-const CACHE_DIR = IS_VERCEL ? VERCEL_CACHE_DIR : LOCAL_CACHE_DIR;
+const CACHE_DIR = ".image-cache";
+const REMOTE_CACHE_PATH = "_image-cache";
 
 sharp.cache(false);
 
@@ -49,23 +45,38 @@ const writeToCache = (hash, buffer) => {
   fs.writeFileSync(getCachedPath(hash), buffer);
 };
 
+const fetchFromRemote = async (hash, siteUrl) => {
+  try {
+    const url = `${siteUrl}/${REMOTE_CACHE_PATH}/${hash}.webp`;
+    const res = await fetch(url);
+    if (!res.ok) return null;
+    return Buffer.from(await res.arrayBuffer());
+  } catch {
+    return null;
+  }
+};
+
 /**
  * @typedef {Object} Config
  * @property {number} [width]
  * @property {number} [height]
  * @property {number} [quality]
+ * @property {string} [siteUrl]
  */
 /**
  * @type {(config: Config) => import('astro').AstroIntegration}
  */
-export const imageOptimizer = ({ width, height, quality = 50 }) => ({
+export const imageOptimizer = ({ width, height, quality = 50, siteUrl }) => ({
   name: "image-optimizer",
   hooks: {
     "astro:build:generated": async ({ dir, logger }) => {
       const p = fileURLToPath(dir);
 
       ensureCacheDir();
-      logger.info(`Image cache: ${IS_VERCEL ? "Vercel" : "local"} (${CACHE_DIR})`);
+
+      if (siteUrl) {
+        logger.info(`Remote cache: ${siteUrl}/${REMOTE_CACHE_PATH}/`);
+      }
 
       const traverse = async (dir, fn) => {
         for (const child of fs.readdirSync(dir)) {
@@ -79,7 +90,8 @@ export const imageOptimizer = ({ width, height, quality = 50 }) => ({
       };
 
       const dimens = {};
-      let cacheHits = 0;
+      let localHits = 0;
+      let remoteHits = 0;
       let cacheMisses = 0;
 
       logger.info(`Using ${THREADS} threads`);
@@ -89,20 +101,32 @@ export const imageOptimizer = ({ width, height, quality = 50 }) => ({
         if (child.match(extMatcher)) {
           threads[(t = (t + 1) % THREADS)].push(async () => {
             const hash = hashFile(childPath);
-            const cached = readFromCache(hash);
             const outputPath = childPath.replace(extMatcher, ".webp");
             const relPath = outputPath.replace(p, "").replaceAll("\\", "/");
 
-            if (cached) {
-              const info = await sharp(cached).metadata();
+            let buffer = readFromCache(hash);
+            if (buffer) {
+              localHits++;
+              logger.info(`${relPath}: local cache hit (${humanReadable(buffer.length)})`);
+            }
+
+            if (!buffer && siteUrl) {
+              buffer = await fetchFromRemote(hash, siteUrl);
+              if (buffer) {
+                writeToCache(hash, buffer);
+                remoteHits++;
+                logger.info(`${relPath}: remote cache hit (${humanReadable(buffer.length)})`);
+              }
+            }
+
+            if (buffer) {
+              const info = await sharp(buffer).metadata();
               dimens[childPath.replace(p, "").replaceAll("\\", "/")] = {
                 width: info.width,
                 height: info.height,
               };
               fs.rmSync(childPath);
-              fs.writeFileSync(outputPath, cached);
-              cacheHits++;
-              logger.info(`${relPath}: cache hit (${humanReadable(cached.length)})`);
+              fs.writeFileSync(outputPath, buffer);
               return;
             }
 
@@ -142,7 +166,14 @@ export const imageOptimizer = ({ width, height, quality = 50 }) => ({
         }),
       );
 
-      logger.info(`Cache summary: ${cacheHits} hits, ${cacheMisses} misses`);
+      logger.info(`Cache summary: ${localHits} local hits, ${remoteHits} remote hits, ${cacheMisses} misses`);
+
+      const remoteCacheOutputDir = path.join(p, REMOTE_CACHE_PATH);
+      fs.mkdirSync(remoteCacheOutputDir, { recursive: true });
+      for (const file of fs.readdirSync(CACHE_DIR)) {
+        fs.copyFileSync(path.join(CACHE_DIR, file), path.join(remoteCacheOutputDir, file));
+      }
+      logger.info(`Published ${fs.readdirSync(remoteCacheOutputDir).length} files to /${REMOTE_CACHE_PATH}/`);
 
       await traverse(p, async ({ child, childPath }) => {
         if (child.endsWith(".html")) {
