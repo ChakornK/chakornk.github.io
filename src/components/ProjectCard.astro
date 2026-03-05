@@ -5,11 +5,13 @@ const { project } = Astro.props;
 ---
 
 <div class="bg-surface hover:bg-highlight relative flex flex-col-reverse items-stretch gap-2 rounded-xl p-2 text-sm transition-colors sm:flex-row">
-  <div
-    class="bg-surface h-48 w-auto shrink-0 rounded-md bg-cover bg-center sm:h-auto sm:w-48"
-    style={`background-image:url(${project.thumbnail});${project.thumbnailPosition ? `background-position:${project.thumbnailPosition};` : ""}`}
-  >
-  </div>
+  <img
+    src={project.thumbnail}
+    alt={project.name}
+    class="h-48 w-auto shrink-0 rounded-md object-cover sm:h-auto sm:w-48 sm:self-stretch"
+    style={project.thumbnailPosition ? `object-position:${project.thumbnailPosition}` : undefined}
+    decoding="async"
+  />
   <div class="flex grow flex-col gap-2 p-2 pb-2 sm:pb-4">
     <div class="flex flex-wrap justify-between gap-x-4 gap-y-2">
       <h2 class="text-xl font-medium leading-none">{project.name}</h2>
