@@ -31,9 +31,9 @@ export default defineConfig({
         fonts: [
           {
             name: "Space Grotesk",
-            weight: 400,
+            weight: 500,
             style: "normal",
-            data: fs.readFileSync("node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-400-normal.woff"),
+            data: fs.readFileSync("node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-500-normal.woff"),
           },
         ],
       },

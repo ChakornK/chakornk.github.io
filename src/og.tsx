@@ -7,10 +7,10 @@ import sharp from "sharp";
 
 export async function ogImage({ title, description, pathname }: RenderFunctionInput) {
   const defaultImage = (
-    <div style={twj("h-full w-full flex items-center justify-center bg-gray-50 text-center leading-relaxed")}>
-      <div style={twj("flex items-center justify-center h-full flex-col gap-2 p-24")}>
-        <h1 style={twj("text-7xl")}>{title}</h1>
-        <div style={twj("text-4xl")}>{description}</div>
+    <div style={twj("h-full w-full flex items-center justify-center bg-[#fcfcf7] text-[#003943] text-center leading-relaxed")}>
+      <div style={twj("flex items-center justify-center h-full flex-col p-24")}>
+        <h1 style={twj("text-8xl")}>{title}</h1>
+        <div style={twj("text-6xl")}>{description}</div>
       </div>
     </div>
   );
@@ -38,7 +38,7 @@ export async function ogImage({ title, description, pathname }: RenderFunctionIn
     }
 
     return Promise.resolve(
-      <div style={twj("h-full w-full flex items-center justify-center bg-gray-50")}>
+      <div style={twj("h-full w-full flex items-center justify-center bg-[#fcfcf7]")}>
         <img src={img} alt={data.title} style={twj("object-cover object-center h-full w-full")} />
       </div>,
     );
