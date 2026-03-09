@@ -68,7 +68,7 @@ const featuredProjects = featuredProjectList.featured.map((id: string) => featur
   {
     Object.entries(stack).map(([title, items]) => (
       <div>
-        <h2 class="text-lg font-medium">{title}</h2>
+        <h3 class="text-lg font-medium">{title}</h3>
         <div class="flex flex-wrap gap-2 text-sm">
           {items.map(({ name, icon, color, link }: { name: string; icon: string; color: string; link: string }) => (
             <div class={`flex items-center relative gap-2 px-2 py-1 transition-colors rounded-full bg-surface ${getColor(color)}`}>
@@ -86,7 +86,7 @@ const featuredProjects = featuredProjectList.featured.map((id: string) => featur
   {
     experience.map((item) => (
       <div class="mt-2 flex flex-col gap-2 text-sm">
-        <h2 class="text-xl font-medium leading-none">{item.title}</h2>
+        <h3 class="text-xl font-medium leading-none">{item.title}</h3>
         <p class="shrink-0 text-xs">{item.date}</p>
         <ul class="ml-4">
           {item.description.map((desc) => (
