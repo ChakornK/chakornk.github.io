@@ -36,6 +36,7 @@ const ogImage = getImagePath({ url, site });
         description,
         image: ogImage,
       }}
+      canonical={url.toString().replace(/\/$/, "")}
     />
 
     <link rel="sitemap" href="/sitemap-index.xml" />

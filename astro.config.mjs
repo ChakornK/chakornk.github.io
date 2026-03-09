@@ -18,7 +18,12 @@ import rehypeExternalLinks from "rehype-external-links";
 export default defineConfig({
   site: "https://chakornk.dev",
   integrations: [
-    sitemap(),
+    sitemap({
+      serialize: (item) => {
+        item.url = item.url.replace(/\/$/, "");
+        return item;
+      },
+    }),
     icon(),
     imageOptimizer({
       width: 1344,
