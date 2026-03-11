@@ -2,15 +2,16 @@ experience:
   - title: Developer @ Motion UBC
     date: Nov 2025 - Present
     description:
-      - Worked on a pro-bono software project for processing, storing, and managing client information.
+      - Developing a pro-bono platform for S.U.C.C.E.S.S. to manage volunteer tax clinic operations, including client records, appointment scheduling, and service status tracking
+      - Built the authentication system using Laravel and implemented the frontend auth flows with React and Tailwind
     skills:
       - Laravel
       - React
   - title: Product Developer @ Google Developers Student Club UBC
     date: Sep 2025 - Present
     description:
-      - Created a web app for tracking and predicting disease outbreaks.
-      - Reduced load time of a web app used in an event with 40+ participants by 75%.
+      - Developed a disease outbreak prediction platform for the GDSC Solutions Challenge with a geospatial dashboard rendering 1,000+ data points across 5+ datasets using Deck.gl and WebGL
+      - Improved performance of the resume review platform for the Secure That SWEet Internship event by reducing page load times by 75%, integrating AWS S3 and PostgreSQL for resume storage and review workflows
     skills:
       - Next.js
       - React
