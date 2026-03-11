@@ -22,5 +22,5 @@ const { project } = Astro.props;
     <p>{project.description}</p>
     <SkillList items={project.skills.split(/, ?/)} />
   </div>
-  <a href={`/projects/${project.id}`} class="absolute inset-0 z-10 select-none opacity-0"></a>
+  <a href={`/projects/${project.id}`} class="absolute inset-0 z-10 select-none opacity-0" aria-label={project.name}></a>
 </div>

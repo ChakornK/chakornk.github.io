@@ -60,11 +60,11 @@ const featuredProjects = featuredProjectList.featured.map((id: string) => featur
   </div>
 
   <div class="flex items-center gap-4">
-    <a href="https://github.com/ChakornK" target="_blank">
-      <Icon name="simple-icons:github" size={24} />
+    <a href="https://github.com/ChakornK" target="_blank" rel="noopener noreferrer" aria-label="github">
+      <Icon name="simple-icons:github" size={24} aria-hidden="true" />
     </a>
-    <a href="https://www.linkedin.com/in/chakorn-kungsanarux" target="_blank">
-      <Icon name="simple-icons:linkedin" size={24} />
+    <a href="https://www.linkedin.com/in/chakorn-kungsanarux" target="_blank" rel="noopener noreferrer" aria-label="linkedin">
+      <Icon name="simple-icons:linkedin" size={24} aria-hidden="true" />
     </a>
   </div>
 
@@ -78,7 +78,7 @@ const featuredProjects = featuredProjectList.featured.map((id: string) => featur
             <div class={`flex items-center relative gap-2 px-2 py-1 transition-colors rounded-full bg-surface ${getColor(color)}`}>
               <Icon name={icon} size={16} />
               <p>{name}</p>
-              <a href={link} target="_blank" class="absolute inset-0" />
+              <a href={link} target="_blank" class="absolute inset-0" rel="noopener noreferrer" aria-label={name} />
             </div>
           ))}
         </div>
@@ -106,7 +106,7 @@ const featuredProjects = featuredProjectList.featured.map((id: string) => featur
     <h2 class="-mb-2 text-2xl font-semibold">Featured Projects</h2>
     <a href="/projects" class="hover:border-text flex items-center gap-1 border-b border-transparent leading-none">
       <span>View all</span>
-      <Icon name="carbon:arrow-right" size={16} />
+      <Icon name="carbon:arrow-right" size={16} aria-hidden="true" />
     </a>
   </div>
   {featuredProjects.map((project) => <ProjectCard {project} />)}

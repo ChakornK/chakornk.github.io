@@ -8,18 +8,20 @@ const { devpost, github, website } = Astro.props;
   (devpost || github || website) && (
     <div class="*:z-20 *:p-1.5 -m-1.5 flex">
       {devpost && (
-        <a href={`https://devpost.com/software/${devpost}`} target="_blank">
-          <Icon name="simple-icons:devpost" size={20} />
+        <a href={`https://devpost.com/software/${devpost}`} target="_blank" rel="noopener noreferrer" aria-label="view project on devpost">
+          <Icon name="simple-icons:devpost" size={20} aria-hidden="true" />
         </a>
       )}
+
       {github && (
-        <a href={`https://github.com/${github}`} target="_blank">
-          <Icon name="simple-icons:github" size={20} />
+        <a href={`https://github.com/${github}`} target="_blank" rel="noopener noreferrer" aria-label="view project on github">
+          <Icon name="simple-icons:github" size={20} aria-hidden="true" />
         </a>
       )}
+
       {website && (
-        <a href={website} target="_blank">
-          <Icon name="carbon:wikis" size={20} />
+        <a href={website} target="_blank" rel="noopener noreferrer" aria-label="visit project website">
+          <Icon name="carbon:wikis" size={20} aria-hidden="true" />
         </a>
       )}
     </div>
