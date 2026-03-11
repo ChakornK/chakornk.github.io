@@ -1,6 +1,6 @@
 ---
 name: ClearDebt
-description: Venture to places you never knew existed within your own community.
+description: Pay off debt smarter — AI that knows your calendar, your spending, and your next paycheck.
 thumbnail: /projects/cleardebt/1.png
 thumbnailPosition: center
 devpost: cleardebt
