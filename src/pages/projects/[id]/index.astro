@@ -3,7 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 
 import type { GetStaticPaths } from "astro";
 import ProjectLinks from "@/components/ProjectLinks.astro";
-import SkillList from "@/components/SkillList.astro";
+import ChipList from "@/components/ChipList.astro";
 
 const projects = import.meta.glob("/content/{projects,projects-hackathon}/*.md", { eager: true });
 const project = Object.entries(projects).find(([k, p]) => k.split("/").slice(-1)[0].split("-").slice(1).join("-").split(".")[0] === Astro.params.id)![1];
@@ -25,7 +25,7 @@ export const getStaticPaths = (() => {
       <ProjectLinks {...frontmatter} />
     </div>
     <div class="-mt-4">
-      <SkillList items={frontmatter.skills.split(/, ?/)} />
+      <ChipList awards={frontmatter.awards?.split(/, ?/)} skills={frontmatter.skills?.split(/, ?/)} />
     </div>
     <Content />
   </div>

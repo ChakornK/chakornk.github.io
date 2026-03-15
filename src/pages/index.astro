@@ -2,10 +2,10 @@
 import Layout from "@/layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
 
-import SkillList from "@/components/SkillList.astro";
+import ChipList from "@/components/ChipList.astro";
 // @ts-ignore
 import experienceData from "../../content/experience.yml";
-const experience = experienceData.experience as { title: string; date: string; description: string[]; skills: string[] }[];
+const experience = experienceData.experience as { title: string; date: string; description: string[]; awards?: string[]; skills?: string[] }[];
 const stack = experienceData.stack as { [title: string]: { name: string; icon: string; color: string; link: string }[] };
 
 const getColor = (color: string) => {
@@ -97,7 +97,7 @@ const featuredProjects = featuredProjectList.featured.map((id: string) => featur
             <li class="mb-1 list-disc">{desc}</li>
           ))}
         </ul>
-        <SkillList items={item.skills} />
+        <ChipList awards={item.awards} skills={item.skills} />
       </div>
     ))
   }

@@ -7,6 +7,7 @@ devpost: cleardebt
 github: ChakornK/clear-debt
 website: https://clear-debt.vercel.app
 skills: Next.js, React, Tailwind, Google OAuth, Snowflake, Plaid, FastAPI
+awards: MLH Best Use of Snowflake API
 ---
 
 ClearDebt was built at Mountain Madness 2026, a 24-hour hackathon, in collaboration with [@e-neuf](https://github.com/e-neuf), [@sharmagaurika](https://github.com/sharmagaurika), and [@TulikaVarma](https://github.com/TulikaVarma).

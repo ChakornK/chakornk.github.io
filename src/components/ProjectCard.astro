@@ -1,6 +1,6 @@
 ---
 import ProjectLinks from "@/components/ProjectLinks.astro";
-import SkillList from "@/components/SkillList.astro";
+import ChipList from "@/components/ChipList.astro";
 const { project } = Astro.props;
 ---
 
@@ -20,7 +20,7 @@ const { project } = Astro.props;
       <ProjectLinks {...project} />
     </div>
     <p>{project.description}</p>
-    <SkillList items={project.skills.split(/, ?/)} />
+    <ChipList awards={project.awards?.split(/, ?/)} skills={project.skills?.split(/, ?/)} />
   </div>
   <a href={`/projects/${project.id}`} class="absolute inset-0 z-10 select-none opacity-0" aria-label={project.name}></a>
 </div>
