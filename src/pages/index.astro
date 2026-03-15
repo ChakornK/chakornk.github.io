@@ -110,4 +110,9 @@ const featuredProjects = featuredProjectList.featured.map((id: string) => featur
     </a>
   </div>
   {featuredProjects.map((project) => <ProjectCard {project} />)}
+
+  <div class="mt-8 hidden md:block">
+    <h2 class="mb-2 text-2xl font-semibold">GitHub Contributions</h2>
+    <img src="https://chakornk.github.io/contrib-graph/graph.svg" width="686" height="120" decoding="async" />
+  </div>
 </Layout>
