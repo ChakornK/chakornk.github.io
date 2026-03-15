@@ -113,6 +113,14 @@ const featuredProjects = featuredProjectList.featured.map((id: string) => featur
 
   <div class="mt-8 hidden md:block">
     <h2 class="mb-2 text-2xl font-semibold">GitHub Contributions</h2>
-    <img src="https://chakornk.github.io/contrib-graph/graph.svg" width="686" height="120" decoding="async" />
+    <div class="relative">
+      <img src="https://chakornk.github.io/contrib-graph/graph.svg" width="686" height="120" draggable="false" decoding="async" />
+      <a
+        href="https://github.com/ChakornK"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="absolute inset-0 select-none opacity-0"
+        aria-label={"GitHub contributions graph"}></a>
+    </div>
   </div>
 </Layout>
