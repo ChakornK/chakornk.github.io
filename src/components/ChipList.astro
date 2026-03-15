@@ -6,7 +6,7 @@ const { awards = [], skills = [] } = Astro.props;
   skills.length > 0 && (
     <div class="*:my-0 flex flex-wrap gap-2 text-xs">
       {awards.map((award: string) => (
-        <p class="bg-surface outline-amber-2 rounded-full px-2 py-1 outline outline-1">{award}</p>
+        <p class="bg-text text-background rounded-full px-2 py-1">{award}</p>
       ))}
       {skills.map((skill: string) => (
         <p class="bg-surface rounded-full px-2 py-1">{skill}</p>
