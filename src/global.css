@@ -1,13 +1,5 @@
 @import "@unocss/reset/tailwind.css";
 
-@font-face {
-  font-family: "Space Grotesk";
-  font-style: normal;
-  font-weight: 300 700;
-  font-display: swap;
-  src: url(/SpaceGrotesk-TT.woff2);
-}
-
 :root {
   --color-background: oklch(0.99 0.0067 106.54);
   --color-surface: oklch(0.8687 0.0067 106.54 / 0.2);

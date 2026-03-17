@@ -1,7 +1,7 @@
 import fs from "node:fs";
 
 // @ts-check
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 
 import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
@@ -17,6 +17,16 @@ import rehypeExternalLinks from "rehype-external-links";
 
 export default defineConfig({
   site: "https://chakornk.dev",
+  fonts: [
+    {
+      name: "Space Grotesk",
+      cssVariable: "--font-sans",
+      provider: fontProviders.fontsource(),
+      optimizedFallbacks: false,
+      subsets: ["latin"],
+      weights: ["100 900"],
+    },
+  ],
   integrations: [
     sitemap({
       serialize: (item) => {

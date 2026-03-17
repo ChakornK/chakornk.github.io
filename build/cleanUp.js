@@ -10,7 +10,7 @@ export const cleanUp = () => ({
   hooks: {
     "astro:build:done": ({ dir, logger }) => {
       const p = fileURLToPath(dir);
-      const chunks = fs.readdirSync(path.resolve(p, "_astro"));
+      const chunks = fs.readdirSync(path.resolve(p, "_astro")).filter((f) => f.endsWith(".js"));
       let unused = [];
       for (const chunk of chunks) {
         const content = fs.readFileSync(path.resolve(p, "_astro", chunk), "utf-8");

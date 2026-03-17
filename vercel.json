@@ -14,7 +14,7 @@
       ]
     },
     {
-      "source": "/(.*).(js|css)",
+      "source": "/_astro/(.*)",
       "headers": [
         {
           "key": "cache-control",

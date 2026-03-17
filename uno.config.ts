@@ -11,7 +11,7 @@ export default defineConfig({
   transformers: [transformerDirectives()],
   theme: {
     fontFamily: {
-      sans: `"Space Grotesk", sans-serif`,
+      sans: "var(--font-sans), sans-serif",
     },
     colors: {
       background: "var(--color-background)",
