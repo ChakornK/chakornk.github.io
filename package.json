@@ -9,7 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.7.0",
+    "@astrojs/sitemap": "3.7.1",
     "@fontsource/space-grotesk": "^5.2.10",
     "@iconify-json/carbon": "^1.2.19",
     "@iconify-json/simple-icons": "^1.2.72",
@@ -17,7 +17,7 @@
     "@unocss/astro": "^66.6.6",
     "@unocss/preset-wind3": "^66.6.6",
     "@unocss/reset": "^66.6.6",
-    "astro": "^5.18.0",
+    "astro": "6.0.5",
     "astro-icon": "^1.1.5",
     "astro-opengraph-images": "^1.14.3",
     "astro-seo": "1.1.0",
