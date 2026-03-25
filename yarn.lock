@@ -2372,6 +2372,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"animejs@npm:^4.3.6":
+  version: 4.3.6
+  resolution: "animejs@npm:4.3.6"
+  checksum: 10c0/d430ce275ba175c67c8c9a1f4d6c6c7df2ab374f062f895fa928016c9a6865801f4c6b11210718c6b87ff1c63d0ed5ef2405325a47fa0e8bcf4850754be09adb
+  languageName: node
+  linkType: hard
+
 "ansi-regex@npm:^5.0.1":
   version: 5.0.1
   resolution: "ansi-regex@npm:5.0.1"
@@ -2662,6 +2669,7 @@ __metadata:
     "@unocss/astro": "npm:^66.6.6"
     "@unocss/preset-wind3": "npm:^66.6.6"
     "@unocss/reset": "npm:^66.6.6"
+    animejs: "npm:^4.3.6"
     astro: "npm:6.0.5"
     astro-icon: "npm:^1.1.5"
     astro-opengraph-images: "npm:^1.14.3"

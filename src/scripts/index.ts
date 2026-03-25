@@ -1,3 +1,4 @@
+import "./animate";
 import "./clientRouting";
 import "./keepScrollPos";
 import "./touchNav";
