@@ -2,5 +2,5 @@ import "./animate";
 import "./clientRouting";
 import "./gitGraph";
 import "./keepScrollPos";
-import "./touchNav";
+// import "./touchNav";
 import "./navbar";
