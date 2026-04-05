@@ -3,19 +3,14 @@ const generateGraph = (_data?: string) => {
   const cellSpacing = 3;
   const cellWidth = 10;
   const cellHeight = 10;
-  const fontSize = 12;
 
-  let svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 686 91" width="686" height="91">
+  let svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 686 91">
 <style>
 .t {
   fill: #003943;
   width: ${cellWidth}px; 
   height: ${cellHeight}px; 
   rx: 2px;
-}
-.s {
-  font-size: ${fontSize}px; 
-  dominant-baseline: hanging; 
 }
 .a { fill: #d4d4cf33; }
 .b { opacity: 0.25; }
