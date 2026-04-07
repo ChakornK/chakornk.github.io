@@ -45,6 +45,7 @@ const renderGraph = () => {
       const lns = data.split("\n");
       label.innerHTML = `${lns[0]} contributions in the last year`;
       container.innerHTML = generateGraph(lns.slice(1).join("\n"));
+      container.scrollTo(container.getBoundingClientRect().width, 0);
     };
 
     if (cache !== "") {
