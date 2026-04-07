@@ -120,17 +120,18 @@ const featuredProjects = featuredProjectList.featured.map((id: string) => featur
 </Layout>
 
 <script>
-  import { waapi, stagger } from "animejs";
-  waapi.animate("main > *", {
+  import { animate, stagger } from "animejs";
+  animate("main > *", {
     opacity: [0, 1],
     delay: stagger(50),
-    duration: 300,
+    duration: 1,
   });
 </script>
 
 <style is:global>
   @media (scripting: enabled) {
     .anime-fadein main > * {
+      transition: opacity 0.3s;
       opacity: 0;
     }
     body:not(.anime-fadein) main > * {
