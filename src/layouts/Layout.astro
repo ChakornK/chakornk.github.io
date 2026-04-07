@@ -44,6 +44,7 @@ const ogImage = getImagePath({ url, site });
     <Font cssVariable="--font-sans" preload />
 
     <script src="../scripts/index.ts"></script>
+    {fadein && <script src="../scripts/animate.ts" />}
   </head>
   <body class={`${fadein ? "anime-fadein " : ""}flex flex-col overflow-x-clip p-8 pt-20 sm:p-16 sm:pt-20`}>
     <Navbar />
