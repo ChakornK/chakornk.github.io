@@ -8,6 +8,7 @@ import ChipList from "@/components/ChipList.astro";
 const projects = import.meta.glob("/content/{projects,projects-hackathon}/*.md", { eager: true });
 const project = Object.entries(projects).find(([k, p]) => k.split("/").slice(-1)[0].split("-").slice(1).join("-").split(".")[0] === Astro.params.id)![1];
 const { Content, frontmatter } = project as Record<string, any>;
+const projectId = Astro.params.id;
 
 export const getStaticPaths = (() => {
   const matches = import.meta.glob("/content/{projects,projects-hackathon}/*.md", { eager: true });
@@ -21,13 +22,22 @@ export const getStaticPaths = (() => {
   description={frontmatter.description}
   class="prose prose-slate prose-strong:font-bold prose-h1:font-medium prose-li:marker:text-inherit prose-img:max-h-96 prose-h1:font-sans prose-img:max-w-full prose-img:object-contain *:w-full flex max-w-2xl flex-col items-center"
 >
+  <div class="pointer-events-none fixed inset-0" data-project-bg={projectId}></div>
+  <div>
+    <div class="h-px w-px" data-project-img={projectId}></div>
+  </div>
   <div class="mb-8 flex flex-wrap items-center justify-between gap-x-8 gap-y-2">
-    <h1 class="mb-0">{frontmatter.name}</h1>
-    <ProjectLinks {...frontmatter} />
+    <h1 class="mb-0" data-project-title={projectId}>{frontmatter.name}</h1>
+    <div data-project-links={projectId}><ProjectLinks {...frontmatter} /></div>
   </div>
-  <div class="-mt-4">
-    <ChipList awards={frontmatter.awards?.split(/, ?/)} skills={frontmatter.skills?.split(/, ?/)} />
+  <div>
+    <div class="-mt-6 mb-2 w-fit" data-project-desc={projectId}>{frontmatter.description}</div>
   </div>
-  <Content />
+  <div data-project-chips={projectId}>
+    <ChipList awards={frontmatter.awards?.split(/, ?/)} skills={frontmatter.skills?.split(/, ?/)} projectId={projectId} />
+  </div>
+  <div id="project-content" class="animate-delay-100 animate-fill-both">
+    <Content />
+  </div>
   <div class="font-sans"></div>
 </Layout>

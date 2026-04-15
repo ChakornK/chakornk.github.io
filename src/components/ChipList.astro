@@ -1,15 +1,19 @@
 ---
-const { awards = [], skills = [] } = Astro.props;
+const { awards = [], skills = [], projectId } = Astro.props;
 ---
 
 {
   skills.length > 0 && (
     <div class="*:my-0 flex flex-wrap gap-2 text-xs">
-      {awards.map((award: string) => (
-        <p class="bg-text text-background rounded-full px-2 py-1">{award}</p>
+      {awards.map((award: string, index: number) => (
+        <p class="bg-text text-background rounded-full px-2 py-1" data-chip-award={projectId ? `${projectId}-${index}` : undefined}>
+          {award}
+        </p>
       ))}
-      {skills.map((skill: string) => (
-        <p class="bg-surface rounded-full px-2 py-1">{skill}</p>
+      {skills.map((skill: string, index: number) => (
+        <p class="bg-surface rounded-full px-2 py-1" data-chip-skill={projectId ? `${projectId}-${index}` : undefined}>
+          {skill}
+        </p>
       ))}
     </div>
   )

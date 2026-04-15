@@ -4,7 +4,8 @@ import ChipList from "@/components/ChipList.astro";
 const { project } = Astro.props;
 ---
 
-<div class="bg-surface hover:bg-highlight relative flex flex-col-reverse items-stretch gap-2 rounded-xl p-2 text-sm transition-colors sm:flex-row">
+<div class="group relative flex flex-col-reverse items-stretch gap-2 p-2 text-sm sm:flex-row" data-project-id={project.id}>
+  <div class="bg-surface group-hover:bg-highlight hover:bg-highlight absolute inset-0 rounded-xl transition-colors" data-project-bg={project.id}></div>
   <div class="h-48 shrink-0 overflow-clip rounded-md sm:absolute sm:bottom-2 sm:left-2 sm:top-2 sm:h-auto sm:w-48">
     <img
       src={project.thumbnail}
@@ -12,15 +13,16 @@ const { project } = Astro.props;
       class="h-full w-full object-cover"
       style={project.thumbnailPosition ? `object-position:${project.thumbnailPosition}` : undefined}
       decoding="async"
+      data-project-img={project.id}
     />
   </div>
-  <div class="flex grow flex-col gap-2 p-2 pb-2 sm:pl-52">
+  <div class="z-10 flex grow flex-col gap-2 p-2 pb-2 sm:pl-52">
     <div class="flex flex-wrap justify-between gap-x-4 gap-y-2">
-      <h3 class="text-xl font-medium leading-none">{project.name}</h3>
-      <ProjectLinks {...project} />
+      <h3 class="text-xl font-medium leading-none" data-project-title={project.id}>{project.name}</h3>
+      <div data-project-links={project.id}><ProjectLinks {...project} /></div>
     </div>
-    <p>{project.description}</p>
-    <ChipList awards={project.awards?.split(/, ?/)} skills={project.skills?.split(/, ?/)} />
+    <p data-project-desc={project.id}>{project.description}</p>
+    <div data-project-chips={project.id}><ChipList awards={project.awards?.split(/, ?/)} skills={project.skills?.split(/, ?/)} projectId={project.id} /></div>
   </div>
   <a href={`/projects/${project.id}`} class="absolute inset-0 z-10 select-none opacity-0" aria-label={project.name}></a>
 </div>
