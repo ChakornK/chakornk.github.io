@@ -1,5 +1,6 @@
 import "./clientRouting";
-import "./gitGraph";
 import "./keepScrollPos";
 // import "./touchNav";
 import "./navbar";
+
+import "./home/gitGraph";
