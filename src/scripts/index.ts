@@ -4,3 +4,5 @@ import "./keepScrollPos";
 import "./navbar";
 
 import "./home/gitGraph";
+
+import "./projects/stickyHeader";
