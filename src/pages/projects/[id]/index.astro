@@ -23,21 +23,54 @@ export const getStaticPaths = (() => {
   class="prose prose-slate prose-strong:font-bold prose-h1:font-medium prose-li:marker:text-inherit prose-img:max-h-96 prose-h1:font-sans prose-img:max-w-full prose-img:object-contain *:w-full flex max-w-2xl flex-col items-center"
 >
   <div class="pointer-events-none fixed inset-0" data-project-bg={projectId}></div>
-  <div>
-    <div class="h-px w-px" data-project-img={projectId}></div>
-  </div>
-  <div class="mb-8 flex flex-wrap items-center justify-between gap-x-8 gap-y-2">
-    <h1 class="mb-0" data-project-title={projectId}>{frontmatter.name}</h1>
-    <div data-project-links={projectId}><ProjectLinks {...frontmatter} /></div>
-  </div>
-  <div>
-    <div class="-mt-6 mb-2 w-fit" data-project-desc={projectId}>{frontmatter.description}</div>
-  </div>
-  <div data-project-chips={projectId}>
-    <ChipList awards={frontmatter.awards?.split(/, ?/)} skills={frontmatter.skills?.split(/, ?/)} projectId={projectId} />
+  <div id="project-header" class="bg-background sticky top-14 z-10 pb-2 transition-all duration-200">
+    <div>
+      <div class="absolute left-0 top-0 h-px w-px" data-project-img={projectId}></div>
+    </div>
+    <div class="mb-4 flex flex-wrap items-center justify-between gap-x-8 gap-y-2">
+      <h1 class="mb-0 transition-all duration-200" data-project-title={projectId}>
+        {frontmatter.name}
+      </h1>
+      <div data-project-links={projectId}><ProjectLinks {...frontmatter} /></div>
+    </div>
+    <p class="-mt-4 mb-0 w-fit" data-project-desc={projectId}>
+      {frontmatter.description}
+    </p>
+    <div id="project-header-collapse" class="mt-2 grid transition-all duration-200">
+      <div class="overflow-hidden">
+        <div data-project-chips={projectId}>
+          <ChipList awards={frontmatter.awards?.split(/, ?/)} skills={frontmatter.skills?.split(/, ?/)} projectId={projectId} />
+        </div>
+      </div>
+    </div>
   </div>
   <div id="project-content" class="animate-delay-100 animate-fill-both">
     <Content />
   </div>
   <div class="font-sans"></div>
 </Layout>
+
+<script>
+  const header = document.getElementById("project-header");
+  const collapse = document.getElementById("project-header-collapse");
+  const title = header?.querySelector("h1");
+  const subtitle = header?.querySelector("p");
+
+  if (header && collapse && title && subtitle) {
+    const updateCompact = () => {
+      const isCompact = window.scrollY > 50;
+      collapse.style.gridTemplateRows = isCompact ? "0fr" : "1fr";
+      collapse.style.opacity = isCompact ? "0" : "1";
+      collapse.classList.toggle("mt-2", !isCompact);
+      header.classList.toggle("mb-8", isCompact);
+      title.classList.toggle("text-2xl", isCompact);
+      title.classList.toggle("text-4xl", !isCompact);
+      subtitle.classList.toggle("text-sm", isCompact);
+      subtitle.classList.toggle("text-base", !isCompact);
+    };
+
+    updateCompact();
+    window.addEventListener("scroll", updateCompact, { passive: true });
+    document.addEventListener("nav:page-load", updateCompact);
+  }
+</script>
