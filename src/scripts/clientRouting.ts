@@ -1,4 +1,4 @@
-import { savePos as saveScrollPos } from "./keepScrollPos";
+import { savePos as saveScrollPos, restorePos } from "./keepScrollPos";
 
 const cache = new Map<string, string>();
 const supportsVT = !!document.startViewTransition;
@@ -62,9 +62,12 @@ const fetchDoc = async (url: string): Promise<string> => {
 };
 
 let previousUrl = location.href;
+let isNavigating = false;
 const swap = async (url: string, push = true): Promise<void> => {
+  if (isNavigating) return;
+  isNavigating = true;
   document.dispatchEvent(new Event("nav:before-nav"));
-  saveScrollPos();
+  saveScrollPos(new URL(previousUrl, location.origin).pathname);
 
   const currentProjectId = getProjectIdFromUrl(previousUrl);
   const targetProjectId = getProjectIdFromUrl(url);
@@ -88,21 +91,25 @@ const swap = async (url: string, push = true): Promise<void> => {
     if (oldNav && newNav) oldNav.replaceWith(newNav);
 
     history[push ? "pushState" : "replaceState"]({}, "", url);
-    document.dispatchEvent(new Event("nav:page-load"));
   };
 
   if (!supportsVT || !isProjectNavigation) {
     doSwap();
+    restorePos();
     clearTransitionNames();
+    document.dispatchEvent(new Event("nav:page-load"));
+    isNavigating = false;
     return;
   }
 
   const activeProjectId = targetProjectId ?? (doc.querySelector(`[data-project-bg="${currentProjectId}"]`) && currentProjectId);
   if (activeProjectId) applyTransitionNames(activeProjectId);
 
+  const targetPathname = new URL(url, location.origin).pathname;
   document
     .startViewTransition(() => {
       doSwap();
+      restorePos(targetPathname);
       if (activeProjectId) applyTransitionNames(activeProjectId);
       try {
         document.getElementById("project-content")?.classList.add("fade-in");
@@ -110,6 +117,8 @@ const swap = async (url: string, push = true): Promise<void> => {
     })
     .finished.then(() => {
       clearTransitionNames();
+      document.dispatchEvent(new Event("nav:page-load"));
+      isNavigating = false;
     });
 };
 
@@ -122,6 +131,7 @@ document.addEventListener("click", (e) => {
   swap(url.href);
   previousUrl = url.href;
 });
+
 window.addEventListener("popstate", () => {
   swap(location.href, false);
   previousUrl = location.href;

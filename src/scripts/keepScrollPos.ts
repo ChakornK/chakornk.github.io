@@ -1,14 +1,23 @@
-const scrollPosStore = JSON.parse(window.sessionStorage.getItem("scroll-pos") || "{}") as Record<string, number>;
-const loadPos = () => {
-  if (scrollPosStore[window.location.pathname]) {
-    window.scrollTo(0, scrollPosStore[window.location.pathname]);
+history.scrollRestoration = "manual";
+
+let scrollPosStore: Record<string, number>;
+try {
+  scrollPosStore = JSON.parse(window.sessionStorage.getItem("scroll-pos") || "{}");
+} catch {
+  scrollPosStore = {};
+}
+
+export const savePos = (pathname?: string) => {
+  const path = pathname ?? window.location.pathname;
+  scrollPosStore[path] = window.scrollY;
+  window.sessionStorage.setItem("scroll-pos", JSON.stringify(scrollPosStore));
+};
+
+export const restorePos = (pathname?: string) => {
+  const savedPos = scrollPosStore[pathname ?? window.location.pathname];
+  if (savedPos !== undefined) {
+    window.scrollTo(0, savedPos);
   } else {
     window.scrollTo(0, 0);
   }
 };
-export const savePos = () => {
-  scrollPosStore[window.location.pathname] = window.scrollY;
-  window.sessionStorage.setItem("scroll-pos", JSON.stringify(scrollPosStore));
-};
-window.addEventListener("popstate", loadPos);
-document.addEventListener("nav:page-load", loadPos);
