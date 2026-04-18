@@ -8,7 +8,7 @@ import icon from "astro-icon";
 import { imageOptimizer } from "./build/imageOptimizer.js";
 import { cleanUp } from "./build/cleanUp.js";
 import opengraphImages from "astro-opengraph-images";
-import { ogImage } from "./src/og.tsx";
+import { ogImage } from "./opengraph/og.tsx";
 import UnoCSS from "unocss/astro";
 
 import yaml from "@rollup/plugin-yaml";
