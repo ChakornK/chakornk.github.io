@@ -41,9 +41,7 @@ export const getStaticPaths = (() => {
         </div>
         <div class="grid pt-2 transition-all duration-200">
           <div class="overflow-hidden">
-            <div>
-              <ChipList awards={frontmatter.awards?.split(/, ?/)} skills={frontmatter.skills?.split(/, ?/)} />
-            </div>
+            <ChipList awards={frontmatter.awards?.split(/, ?/)} skills={frontmatter.skills?.split(/, ?/)} />
           </div>
         </div>
       </div>
@@ -61,9 +59,13 @@ export const getStaticPaths = (() => {
             {frontmatter.description}
           </p>
         </div>
-        <div id="project-header-collapse" class="relative grid transition-all duration-200">
-          <div class="bg-background absolute left-0 top-0 w-full" id="project-header-collapse-bg"></div>
-          <div class="z-10 overflow-hidden" data-project-chips={projectId}>
+        <div id="project-header-collapse" class="relative transition-opacity duration-200">
+          <div class="bg-background absolute left-0 top-0 flex w-full items-center overflow-hidden transition-[height]" id="project-header-collapse-bg">
+            <div class="z-10" data-project-chips={projectId}>
+              <ChipList awards={frontmatter.awards?.split(/, ?/)} skills={frontmatter.skills?.split(/, ?/)} projectId={projectId} />
+            </div>
+          </div>
+          <div aria-hidden="true" class="invisible">
             <ChipList awards={frontmatter.awards?.split(/, ?/)} skills={frontmatter.skills?.split(/, ?/)} projectId={projectId} />
           </div>
         </div>
