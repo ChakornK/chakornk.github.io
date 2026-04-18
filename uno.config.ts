@@ -14,10 +14,11 @@ export default defineConfig({
       sans: "var(--font-sans), sans-serif",
     },
     colors: {
-      background: "var(--color-background)",
-      surface: "var(--color-surface)",
-      text: "var(--color-text)",
-      highlight: "var(--color-highlight)",
+      "background": "var(--color-background)",
+      "surface": "var(--color-surface)",
+      "surface-on-background": "var(--color-surface-on-background)",
+      "text": "var(--color-text)",
+      "highlight": "var(--color-highlight)",
     },
   },
 });

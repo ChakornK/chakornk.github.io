@@ -3,6 +3,7 @@
 :root {
   --color-background: oklch(0.99 0.0067 106.54);
   --color-surface: oklch(0.8687 0.0067 106.54 / 0.2);
+  --color-surface-on-background: color-mix(in oklch, oklch(0.8687 0.0067 106.54) 20%, var(--color-background));
   --color-text: oklch(0.2967 0.1 203.61);
   --color-highlight: oklch(0.7735 0.139 232.66 / 0.1);
 }
@@ -52,6 +53,14 @@ body {
 ::view-transition-old(project-bg),
 ::view-transition-new(project-bg) {
   height: 100%;
+}
+
+::view-transition-old(project-img),
+::view-transition-new(project-img) {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  overflow: hidden;
 }
 
 @keyframes fade-in {

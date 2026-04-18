@@ -5,8 +5,9 @@ const { project } = Astro.props;
 ---
 
 <div class="group relative flex flex-col-reverse items-stretch gap-2 p-2 text-sm sm:flex-row" data-project-id={project.id}>
-  <div class="bg-surface group-hover:bg-highlight hover:bg-highlight absolute inset-0 rounded-xl transition-colors" data-project-bg={project.id}></div>
-  <div class="h-48 shrink-0 overflow-clip rounded-md sm:absolute sm:bottom-2 sm:left-2 sm:top-2 sm:h-auto sm:w-48">
+  <div class="bg-surface-on-background group-hover:bg-highlight hover:bg-highlight absolute inset-0 rounded-xl transition-colors" data-project-bg={project.id}>
+  </div>
+  <div class="z-10 h-48 shrink-0 overflow-clip rounded-md sm:absolute sm:bottom-2 sm:left-2 sm:top-2 sm:h-auto sm:w-48">
     <img
       src={project.thumbnail}
       alt={project.name}

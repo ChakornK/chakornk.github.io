@@ -22,29 +22,29 @@ export const getStaticPaths = (() => {
   description={frontmatter.description}
   class="prose prose-slate prose-strong:font-bold prose-h1:font-medium prose-li:marker:text-inherit prose-img:max-h-96 prose-h1:font-sans prose-img:max-w-full prose-img:object-contain *:w-full flex max-w-2xl flex-col items-center"
 >
-  <div class="pointer-events-none fixed inset-0" data-project-bg={projectId}></div>
-  <div id="project-header" class="bg-background sticky top-14 z-10 pb-2 transition-all duration-200">
-    <div>
-      <div class="absolute left-0 top-0 h-px w-px" data-project-img={projectId}></div>
-    </div>
-    <div class="mb-4 flex flex-wrap items-center justify-between gap-x-8 gap-y-2">
-      <h1 class="mb-0 transition-all duration-200" data-project-title={projectId}>
-        {frontmatter.name}
-      </h1>
-      <div data-project-links={projectId}><ProjectLinks {...frontmatter} /></div>
-    </div>
-    <p class="-mt-4 mb-0 w-fit" data-project-desc={projectId}>
-      {frontmatter.description}
-    </p>
-    <div id="project-header-collapse" class="mt-2 grid transition-all duration-200">
-      <div class="overflow-hidden">
-        <div data-project-chips={projectId}>
-          <ChipList awards={frontmatter.awards?.split(/, ?/)} skills={frontmatter.skills?.split(/, ?/)} projectId={projectId} />
+  <div class="bg-background pointer-events-none fixed inset-0 -z-10 opacity-0" data-project-bg={projectId}></div>
+  <div id="project-header" class="bg-background sticky top-14 z-10 flex flex-col-reverse pb-2 transition-all duration-200 sm:flex-row">
+    <div class="h-px w-full sm:h-auto sm:w-px" data-project-img={projectId}></div>
+    <div class="w-full">
+      <div class="mb-4 flex flex-wrap items-center justify-between gap-x-8 gap-y-2">
+        <h1 class="mb-0 transition-all duration-200" data-project-title={projectId}>
+          {frontmatter.name}
+        </h1>
+        <div data-project-links={projectId}><ProjectLinks {...frontmatter} /></div>
+      </div>
+      <p class="-mt-4 mb-0 w-fit" data-project-desc={projectId}>
+        {frontmatter.description}
+      </p>
+      <div id="project-header-collapse" class="mt-2 grid transition-all duration-200">
+        <div class="overflow-hidden">
+          <div data-project-chips={projectId}>
+            <ChipList awards={frontmatter.awards?.split(/, ?/)} skills={frontmatter.skills?.split(/, ?/)} projectId={projectId} />
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div id="project-content" class="animate-delay-100 animate-fill-both">
+  <div id="project-content" class="animate-delay-100 animate-fill-both z-10">
     <Content />
   </div>
   <div class="font-sans"></div>
