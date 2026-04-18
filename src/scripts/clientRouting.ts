@@ -1,4 +1,5 @@
-import { savePos as saveScrollPos, restorePos } from "./keepScrollPos";
+import { savePos as saveScrollPos, restorePos, getSavedPos } from "./keepScrollPos";
+import { registerStickyHeader, updateHeader } from "./projects/stickyHeader";
 
 const cache = new Map<string, string>();
 const supportsVT = !!document.startViewTransition;
@@ -76,6 +77,8 @@ const swap = async (url: string, push = true): Promise<void> => {
   const html = await fetchDoc(url);
   const doc = new DOMParser().parseFromString(html, "text/html");
 
+  const targetPathname = new URL(url, location.origin).pathname;
+
   const doSwap = (): void => {
     document.title = doc.title;
     const oldMain = document.querySelector("main");
@@ -84,6 +87,7 @@ const swap = async (url: string, push = true): Promise<void> => {
       location.href = url;
       return;
     }
+    updateHeader(doc, getSavedPos(targetPathname));
     oldMain.replaceWith(newMain);
 
     const oldNav = document.getElementById("nav-items");
@@ -105,15 +109,17 @@ const swap = async (url: string, push = true): Promise<void> => {
   const activeProjectId = targetProjectId ?? (doc.querySelector(`[data-project-bg="${currentProjectId}"]`) && currentProjectId);
   if (activeProjectId) applyTransitionNames(activeProjectId);
 
-  const targetPathname = new URL(url, location.origin).pathname;
   document
     .startViewTransition(() => {
       doSwap();
       restorePos(targetPathname);
-      if (activeProjectId) applyTransitionNames(activeProjectId);
-      try {
+      if (activeProjectId) {
+        applyTransitionNames(activeProjectId);
+      }
+      if (targetProjectId) {
         document.getElementById("project-content")?.classList.add("fade-in");
-      } catch (e) {}
+      }
+      registerStickyHeader(document);
     })
     .finished.then(() => {
       clearTransitionNames();

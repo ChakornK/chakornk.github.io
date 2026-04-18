@@ -13,11 +13,7 @@ export const savePos = (pathname?: string) => {
   window.sessionStorage.setItem("scroll-pos", JSON.stringify(scrollPosStore));
 };
 
+export const getSavedPos = (pathname?: string) => scrollPosStore[pathname ?? window.location.pathname];
 export const restorePos = (pathname?: string) => {
-  const savedPos = scrollPosStore[pathname ?? window.location.pathname];
-  if (savedPos !== undefined) {
-    window.scrollTo(0, savedPos);
-  } else {
-    window.scrollTo(0, 0);
-  }
+  window.scrollTo(0, getSavedPos(pathname) ?? 0);
 };
