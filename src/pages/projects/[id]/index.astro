@@ -23,21 +23,47 @@ export const getStaticPaths = (() => {
   class="prose prose-slate prose-strong:font-bold prose-h1:font-medium prose-li:marker:text-inherit prose-img:max-h-96 prose-h1:font-sans prose-img:max-w-full prose-img:object-contain *:w-full flex max-w-2xl flex-col items-center"
 >
   <div class="bg-background pointer-events-none fixed inset-0 -z-10 opacity-0" data-project-bg={projectId}></div>
-  <div id="project-header" class="bg-background sticky top-14 z-20 flex flex-col-reverse pb-2 transition-all duration-200 sm:flex-row">
+  <div id="project-header" class="sticky top-14 z-20 flex flex-col-reverse pb-2 transition-all duration-200 sm:flex-row">
     <div class="h-px w-full sm:h-auto sm:w-px" data-project-img={projectId}></div>
-    <div class="w-full">
-      <div class="mb-4 flex flex-wrap items-center justify-between gap-x-8 gap-y-2">
-        <h1 class="mb-0 transition-all duration-200" data-project-title={projectId}>
-          {frontmatter.name}
-        </h1>
-        <div data-project-links={projectId}><ProjectLinks {...frontmatter} /></div>
+    <div class="relative w-full">
+      <!-- Sizing placeholder -->
+      <div aria-hidden="true" class="invisible">
+        <div class="bg-red flex flex-wrap items-center justify-between gap-x-8 gap-y-2 pb-4">
+          <h1 class="mb-0 transition-all duration-200">
+            {frontmatter.name}
+          </h1>
+          <div><ProjectLinks {...frontmatter} /></div>
+        </div>
+        <div class="bg-red w-full">
+          <p class="-mt-4 mb-0 w-fit">
+            {frontmatter.description}
+          </p>
+        </div>
+        <div class="bg-red grid pt-2 transition-all duration-200">
+          <div class="overflow-hidden">
+            <div>
+              <ChipList awards={frontmatter.awards?.split(/, ?/)} skills={frontmatter.skills?.split(/, ?/)} projectId={projectId} />
+            </div>
+          </div>
+        </div>
       </div>
-      <p class="-mt-4 mb-0 w-fit" data-project-desc={projectId}>
-        {frontmatter.description}
-      </p>
-      <div id="project-header-collapse" class="mt-2 grid transition-all duration-200">
-        <div class="overflow-hidden">
-          <div data-project-chips={projectId}>
+
+      <!-- Display -->
+      <div class="absolute left-0 top-0 w-full" id="project-header-visible">
+        <div class="bg-background flex flex-wrap items-center justify-between gap-x-8 gap-y-2 pb-4">
+          <h1 class="mb-0 transition-[font-size] duration-200" data-project-title={projectId}>
+            {frontmatter.name}
+          </h1>
+          <div data-project-links={projectId}><ProjectLinks {...frontmatter} /></div>
+        </div>
+        <div class="bg-background w-full pb-2">
+          <p class="-mt-4 mb-0 w-fit transition-[font-size]" data-project-desc={projectId}>
+            {frontmatter.description}
+          </p>
+        </div>
+        <div id="project-header-collapse" class="relative grid transition-all duration-200">
+          <div class="bg-background absolute left-0 top-0 w-full" id="project-header-collapse-bg"></div>
+          <div class="z-10 overflow-hidden" data-project-chips={projectId}>
             <ChipList awards={frontmatter.awards?.split(/, ?/)} skills={frontmatter.skills?.split(/, ?/)} projectId={projectId} />
           </div>
         </div>
