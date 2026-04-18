@@ -45,7 +45,7 @@ const ogImage = getImagePath({ url, site });
 
     <script src="../scripts/index.ts"></script>
   </head>
-  <body class={`${fadein ? "anime-fadein " : ""}flex flex-col overflow-x-clip p-8 pt-20 sm:p-16 sm:pt-20`}>
+  <body class={`${fadein ? "intro-fadein " : ""}flex flex-col overflow-x-clip p-8 pt-20 sm:p-16 sm:pt-20`}>
     <Navbar />
     <main class={"mx-auto w-full max-w-2xl grow" + (Astro.props.class ? " " + Astro.props.class : "")}>
       <slot />

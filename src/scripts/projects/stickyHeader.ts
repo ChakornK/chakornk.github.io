@@ -16,18 +16,26 @@ export const updateHeader = (document: Document, scrollY: number) => {
   }
 };
 
-let scrollListener: () => void = () => {};
+let scrollListener: null | (() => void) = null;
 
 export const registerStickyHeader = (document: Document) => {
-  document.removeEventListener("scroll", scrollListener);
+  if (document.getElementById("project-header")) {
+    if (scrollListener != null) return;
 
-  const main = document.querySelector("main");
-  if (!main || main.getAttribute("data-shr")) return;
-  main.setAttribute("data-shr", "true");
+    const main = document.querySelector("main");
+    if (!main || main.getAttribute("data-shr")) return;
+    main.setAttribute("data-shr", "true");
 
-  scrollListener = () => updateHeader(document, window.scrollY);
-  updateHeader(document, window.scrollY);
-  document.addEventListener("scroll", scrollListener);
+    scrollListener = () => updateHeader(document, window.scrollY);
+    // updateHeader(document, window.scrollY);
+    document.addEventListener("scroll", scrollListener);
+  } else {
+    if (scrollListener == null) return;
+    try {
+      document.removeEventListener("scroll", scrollListener);
+    } catch {}
+    scrollListener = null;
+  }
 };
 
 registerStickyHeader(document);

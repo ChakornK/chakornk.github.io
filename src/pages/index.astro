@@ -114,7 +114,7 @@ const featuredProjects = featuredProjectList.featured.map((id: string) => featur
 
   <div class="mt-8">
     <h2 class="mb-2 text-2xl font-semibold">GitHub Contributions</h2>
-    <div id="git-contributions" class="*:w-2xl overflow-x-auto"></div>
+    <div id="git-contributions" class="*:w-2xl direction-rtl overflow-x-auto"></div>
     <p id="git-contributions-label" class="text-sm"></p>
   </div>
 </Layout>
@@ -125,9 +125,11 @@ const featuredProjects = featuredProjectList.featured.map((id: string) => featur
   @media (scripting: enabled) {
     .intro-fadein main > * {
       opacity: 0;
+      transition: opacity 300ms ease;
     }
     body:not(.intro-fadein) main > * {
       opacity: 1 !important;
+      transition: none !important;
     }
   }
 </style>

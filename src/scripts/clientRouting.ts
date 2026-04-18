@@ -115,11 +115,11 @@ const swap = async (url: string, push = true): Promise<void> => {
       restorePos(targetPathname);
       if (activeProjectId) {
         applyTransitionNames(activeProjectId);
+        registerStickyHeader(document);
       }
       if (targetProjectId) {
         document.getElementById("project-content")?.classList.add("fade-in");
       }
-      registerStickyHeader(document);
     })
     .finished.then(() => {
       clearTransitionNames();

@@ -21,4 +21,12 @@ export default defineConfig({
       "highlight": "var(--color-highlight)",
     },
   },
+  rules: [
+    [
+      /^direction-(.*)$/,
+      ([, dir]) => ({
+        direction: dir,
+      }),
+    ],
+  ],
 });
