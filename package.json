@@ -9,24 +9,24 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/sitemap": "3.7.1",
+    "@astrojs/sitemap": "3.7.2",
     "@fontsource/space-grotesk": "^5.2.10",
-    "@iconify-json/carbon": "^1.2.19",
-    "@iconify-json/simple-icons": "^1.2.75",
+    "@iconify-json/carbon": "^1.2.20",
+    "@iconify-json/simple-icons": "^1.2.78",
     "@rollup/plugin-yaml": "^4.1.2",
-    "@unocss/astro": "^66.6.7",
-    "@unocss/preset-wind3": "^66.6.7",
-    "@unocss/reset": "^66.6.7",
+    "@unocss/astro": "^66.6.8",
+    "@unocss/preset-wind3": "^66.6.8",
+    "@unocss/reset": "^66.6.8",
     "animejs": "^4.3.6",
-    "astro": "6.0.8",
+    "astro": "6.1.7",
     "astro-icon": "^1.1.5",
     "astro-opengraph-images": "^1.14.3",
     "astro-seo": "1.1.0",
-    "preact": "^10.29.0",
+    "preact": "^10.29.1",
     "rehype-external-links": "^3.0.0",
     "sharp": "^0.34.5",
     "tw-to-css": "^0.0.12",
-    "unocss": "^66.6.7"
+    "unocss": "^66.6.8"
   },
   "packageManager": "yarn@4.14.1+sha512.64df448055b2d37ba269d7db535a469b8da93f8ef1140c25fd7a83c00a8fbaacb214ca0e02553b92a2c54cef78bb67d0b4817fab02001df0e24fac0faccc3b42"
 }
