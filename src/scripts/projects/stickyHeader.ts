@@ -1,3 +1,5 @@
+const SCROLL_THRESHOLD = 36;
+
 let updateCompact = () => {};
 export const updateHeader = (document: Document, scrollY: number) => {
   const header = document.getElementById("project-header");
@@ -5,7 +7,7 @@ export const updateHeader = (document: Document, scrollY: number) => {
   const title = header?.querySelector("h1");
   const subtitle = header?.querySelector("p");
   if (header && collapse && title && subtitle) {
-    const isCompact = scrollY > 50;
+    const isCompact = scrollY > SCROLL_THRESHOLD;
     collapse.style.gridTemplateRows = isCompact ? "0fr" : "1fr";
     for (const chip of document.querySelectorAll("[data-chip-award], [data-chip-skill]") as NodeListOf<HTMLElement>) {
       chip.style.opacity = isCompact ? "0" : "1";
@@ -28,7 +30,7 @@ export const registerStickyHeader = (document: Document) => {
   const subtitle = header?.querySelector("p");
   if (header && collapse && title && subtitle) {
     updateCompact = () => {
-      const isCompact = window.scrollY > 50;
+      const isCompact = window.scrollY > SCROLL_THRESHOLD;
       collapse.style.gridTemplateRows = isCompact ? "0fr" : "1fr";
       for (const chip of document.querySelectorAll("[data-chip-award], [data-chip-skill]") as NodeListOf<HTMLElement>) {
         chip.style.opacity = isCompact ? "0" : "1";
