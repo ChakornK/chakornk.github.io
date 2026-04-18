@@ -28,21 +28,21 @@ export const getStaticPaths = (() => {
     <div class="relative w-full">
       <!-- Sizing placeholder -->
       <div aria-hidden="true" class="invisible">
-        <div class="bg-red flex flex-wrap items-center justify-between gap-x-8 gap-y-2 pb-4">
+        <div class="flex flex-wrap items-center justify-between gap-x-8 gap-y-2 pb-4">
           <h1 class="mb-0 transition-all duration-200">
             {frontmatter.name}
           </h1>
           <div><ProjectLinks {...frontmatter} /></div>
         </div>
-        <div class="bg-red w-full">
+        <div class="w-full">
           <p class="-mt-4 mb-0 w-fit">
             {frontmatter.description}
           </p>
         </div>
-        <div class="bg-red grid pt-2 transition-all duration-200">
+        <div class="grid pt-2 transition-all duration-200">
           <div class="overflow-hidden">
             <div>
-              <ChipList awards={frontmatter.awards?.split(/, ?/)} skills={frontmatter.skills?.split(/, ?/)} projectId={projectId} />
+              <ChipList awards={frontmatter.awards?.split(/, ?/)} skills={frontmatter.skills?.split(/, ?/)} />
             </div>
           </div>
         </div>
