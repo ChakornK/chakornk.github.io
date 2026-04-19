@@ -55,7 +55,7 @@ const featuredProjects = featuredProjectList.featured.map((id: string) => featur
 
 <Layout class="flex flex-col gap-4" fadein page="home">
   <p class="font-450 text-2xl">Hello, I'm</p>
-  <h1 class="-mt-4 text-5xl font-light tracking-tighter">Chakorn Kungsanarux</h1>
+  <h1 class="-mb-2 -mt-4 pb-2 text-5xl font-light tracking-tighter">Chakorn Kungsanarux</h1>
 
   <div class="flex items-center gap-4">
     <a href="https://github.com/ChakornK" target="_blank" rel="noopener noreferrer" aria-label="github">
@@ -126,10 +126,12 @@ const featuredProjects = featuredProjectList.featured.map((id: string) => featur
     .intro-fadein main[data-page="home"] > * {
       opacity: 0;
       transition: opacity 300ms ease;
+      contain: content;
     }
     body:not(.intro-fadein) main[data-page="home"] > * {
       opacity: 1 !important;
       transition: none !important;
+      contain: none !important;
     }
   }
 </style>
