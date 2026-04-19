@@ -85,3 +85,10 @@ body {
     opacity: 0;
   }
 }
+
+::view-transition-new(project-bg) {
+  opacity: 0;
+}
+.fade-in {
+  animation: fade-in 300ms ease-out 100ms 1 normal both;
+}

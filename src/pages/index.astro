@@ -53,7 +53,7 @@ const featuredProjectsCombined = [...featuredProjects1, ...featuredProjects2];
 const featuredProjects = featuredProjectList.featured.map((id: string) => featuredProjectsCombined.find((p) => p.id === id)) as Record<string, any>[];
 ---
 
-<Layout class="flex flex-col gap-4" fadein>
+<Layout class="flex flex-col gap-4" fadein page="home">
   <p class="font-450 text-2xl">Hello, I'm</p>
   <h1 class="-mt-4 text-5xl font-light tracking-tighter">Chakorn Kungsanarux</h1>
 
@@ -123,11 +123,11 @@ const featuredProjects = featuredProjectList.featured.map((id: string) => featur
 
 <style is:global>
   @media (scripting: enabled) {
-    .intro-fadein main > * {
+    .intro-fadein main[data-page="home"] > * {
       opacity: 0;
       transition: opacity 300ms ease;
     }
-    body:not(.intro-fadein) main > * {
+    body:not(.intro-fadein) main[data-page="home"] > * {
       opacity: 1 !important;
       transition: none !important;
     }

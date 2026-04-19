@@ -6,7 +6,7 @@ import { SEO } from "astro-seo";
 import { getImagePath } from "astro-opengraph-images";
 import { Font } from "astro:assets";
 
-const { title, description, fadein } = Astro.props;
+const { title, description, fadein, page } = Astro.props;
 const { url, site } = Astro;
 const ogImage = getImagePath({ url, site });
 ---
@@ -47,7 +47,7 @@ const ogImage = getImagePath({ url, site });
   </head>
   <body class={`${fadein ? "intro-fadein " : ""}flex flex-col overflow-x-clip p-8 pt-20 sm:p-16 sm:pt-20`}>
     <Navbar />
-    <main class={"mx-auto w-full max-w-2xl grow" + (Astro.props.class ? " " + Astro.props.class : "")}>
+    <main class={"mx-auto w-full max-w-2xl grow" + (Astro.props.class ? " " + Astro.props.class : "")} data-page={page}>
       <slot />
     </main>
   </body>
