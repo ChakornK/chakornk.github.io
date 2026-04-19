@@ -122,7 +122,7 @@ const featuredProjects = featuredProjectList.featured.map((id: string) => featur
 <script src="../scripts/animate.ts"></script>
 
 <style is:global>
-  @media (scripting: enabled) {
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
     .intro-fadein main[data-page="home"] > * {
       opacity: 0;
       transition: opacity 300ms ease;
