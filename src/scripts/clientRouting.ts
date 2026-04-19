@@ -109,23 +109,24 @@ const swap = async (url: string, push = true): Promise<void> => {
   const activeProjectId = targetProjectId ?? (doc.querySelector(`[data-project-bg="${currentProjectId}"]`) && currentProjectId);
   if (activeProjectId) applyTransitionNames(activeProjectId);
 
-  document
-    .startViewTransition(() => {
-      doSwap();
-      restorePos(targetPathname);
-      if (activeProjectId) {
-        applyTransitionNames(activeProjectId);
-        registerStickyHeader(document);
-      }
-      if (targetProjectId) {
-        document.getElementById("project-content")?.classList.add("fade-in");
-      }
-    })
-    .finished.then(() => {
-      clearTransitionNames();
-      document.dispatchEvent(new Event("nav:page-load"));
-      isNavigating = false;
-    });
+  const vt = document.startViewTransition(() => {
+    doSwap();
+    restorePos(targetPathname);
+    if (activeProjectId) {
+      applyTransitionNames(activeProjectId);
+      registerStickyHeader(document);
+    }
+  });
+  vt.ready.then(() => {
+    if (targetProjectId) {
+      document.getElementById("project-content")?.classList.add("fade-in");
+    }
+  });
+  vt.finished.then(() => {
+    clearTransitionNames();
+    document.dispatchEvent(new Event("nav:page-load"));
+    isNavigating = false;
+  });
 };
 
 document.addEventListener("click", (e) => {
