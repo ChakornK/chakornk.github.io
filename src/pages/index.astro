@@ -95,9 +95,9 @@ const featuredProjects = featuredProjectList.featured.map((id: string) => featur
   <h2 class="-mb-2 mt-8 text-2xl font-semibold">Experience</h2>
   {
     experience.map((item) => (
-      <div class="mt-2 flex flex-col gap-2 text-sm">
+      <div class="mt-2 flex flex-col gap-2">
         <h3 class="text-xl font-medium leading-none">{item.title}</h3>
-        <p class="shrink-0 text-xs">{item.date}</p>
+        <p class="shrink-0 text-sm">{item.date}</p>
         <ul class="ml-4">
           {item.description.map((desc) => (
             <li class="mb-1 list-disc">{desc}</li>
