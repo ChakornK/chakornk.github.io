@@ -5,6 +5,7 @@ import { Icon } from "astro-icon/components";
 import ChipList from "@/components/ChipList.astro";
 // @ts-ignore
 import experienceData from "../../content/experience.yml";
+const bio = experienceData.bio as string;
 const experience = experienceData.experience as { title: string; date: string; description: string[]; awards?: string[]; skills?: string[] }[];
 const stack = experienceData.stack as { [title: string]: { name: string; icon: string; color: string; link: string }[] };
 
@@ -69,7 +70,11 @@ const featuredProjects = featuredProjectList.featured.map((id: string) => featur
     </a>
   </div>
 
-  <h2 class="-mb-2 mt-8 text-2xl font-semibold">Technical Skills</h2>
+  <div class="*:mb-2 mt-2">
+    {bio.split("\n").map((line) => <p>{line}</p>)}
+  </div>
+
+  <h2 class="-mb-2 text-2xl font-semibold">Technical Skills</h2>
   {
     Object.entries(stack).map(([title, items]) => (
       <div>
