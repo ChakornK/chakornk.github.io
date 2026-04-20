@@ -39,7 +39,14 @@ export async function ogImage({ title, description, pathname }: RenderFunctionIn
 
     return Promise.resolve(
       <div style={twj("h-full w-full flex items-center justify-center bg-[#fcfcf7]")}>
-        <img src={img} alt={data.title} style={twj("object-cover object-center h-full w-full")} />
+        <img
+          src={img}
+          alt={data.title}
+          style={{
+            ...twj("object-cover h-full w-full"),
+            objectPosition: data.thumbnailPosition || "center",
+          }}
+        />
       </div>,
     );
   }
