@@ -14,6 +14,7 @@ import UnoCSS from "unocss/astro";
 import yaml from "@rollup/plugin-yaml";
 
 import rehypeExternalLinks from "rehype-external-links";
+import { unified } from "@astrojs/markdown-remark";
 
 export default defineConfig({
   site: "https://chakornk.dev",
@@ -73,14 +74,16 @@ export default defineConfig({
     },
   },
   markdown: {
-    rehypePlugins: [
-      [
-        rehypeExternalLinks,
-        {
-          target: "_blank",
-          rel: "noopener noreferrer",
-        },
+    processor: unified({
+      rehypePlugins: [
+        [
+          rehypeExternalLinks,
+          {
+            target: "_blank",
+            rel: "noopener noreferrer",
+          },
+        ],
       ],
-    ],
+    }),
   },
 });
