@@ -1,10 +1,10 @@
 @import "@unocss/reset/tailwind.css";
 
 :root {
-  --color-background: oklch(0.97 0.0067 106.54);
+  --color-background: oklch(0.97 0.01067 88);
   --color-surface: oklch(0.8687 0.0067 106.54 / 0.2);
   --color-surface-on-background: color-mix(in oklch, oklch(0.8687 0.0067 106.54) 20%, var(--color-background));
-  --color-text: oklch(0.2 0.04 203.61);
+  --color-text: oklch(0.25 0.067 203.61);
   --color-highlight: oklch(0.7735 0.139 232.66 / 0.1);
 }
 
