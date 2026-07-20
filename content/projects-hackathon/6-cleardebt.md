@@ -5,7 +5,6 @@ thumbnail: /projects/cleardebt/1.png
 thumbnailPosition: center
 devpost: cleardebt
 github: ChakornK/clear-debt
-website: https://clear-debt.vercel.app
 skills: Next.js, React, Tailwind, Google OAuth, Snowflake, Plaid, FastAPI
 awards: MLH Best Use of Snowflake API
 ---

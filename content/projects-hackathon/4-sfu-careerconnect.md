@@ -4,7 +4,6 @@ description: Find your next tech internship that aligns with your experiences
 thumbnail: /projects/sfu-careerconnect/1.png
 devpost: sfu-careerconnect
 github: ChakornK/sfu-careerconnect
-website: https://sfu-careerconnect.vercel.app/
 skills: Next.js, React, Tailwind, Motion, MongoDB, Redis, Better Auth
 ---
 

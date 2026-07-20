@@ -5,7 +5,6 @@ thumbnail: /projects/local-gems/1.png
 thumbnailPosition: top
 devpost: local-gems
 github: ChakornK/local-gems
-website: https://local-gems-2026.vercel.app/
 skills: Next.js, React, Tailwind, Motion, MongoDB, AWS S3, Redis, Better Auth
 ---
 
