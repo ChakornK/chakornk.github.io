@@ -97,7 +97,7 @@ body {
   @apply inline relative -mx-0.5;
 
   .inner {
-    @apply bg-surface hover:bg-highlight rounded-full p-1 pr-2 leading-none flex-inline items-center gap-1.5 relative top-1;
+    @apply bg-surface hover:bg-highlight rounded-full p-1 pr-1.5 leading-none flex-inline items-center gap-1.5 relative top-1;
   }
   img {
     @apply w-5 h-5 rounded-full m-0;
