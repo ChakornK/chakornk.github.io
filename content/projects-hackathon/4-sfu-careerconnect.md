@@ -7,7 +7,7 @@ github: ChakornK/sfu-careerconnect
 skills: Next.js, React, Tailwind, Motion, MongoDB, Redis, Better Auth
 ---
 
-SFU CareerConnect is a project built at SystemHacks 2026 (a.k.a XHacks), a 24-hour hackathon, in collaboration with [@aaf1007](https://github.com/aaf1007), [@BlingBloaw](https://github.com/BlingBloaw), and [@avgee123](https://github.com/avgee123).
+SFU CareerConnect is a project built at SystemHacks 2026 (a.k.a XHacks), a 24-hour hackathon, in collaboration with @github(aaf1007), @github(BlingBloaw), and @github(avgee123).
 
 ![Landing page](/projects/sfu-careerconnect/1.png)
 

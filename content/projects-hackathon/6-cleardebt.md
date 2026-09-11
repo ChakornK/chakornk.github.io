@@ -9,7 +9,7 @@ skills: Next.js, React, Tailwind, Google OAuth, Snowflake, Plaid, FastAPI
 awards: MLH Best Use of Snowflake API
 ---
 
-ClearDebt was built at Mountain Madness 2026, a 24-hour hackathon, in collaboration with [@e-neuf](https://github.com/e-neuf), [@sharmagaurika](https://github.com/sharmagaurika), and [@TulikaVarma](https://github.com/TulikaVarma).
+ClearDebt was built at Mountain Madness 2026, a 24-hour hackathon, in collaboration with @github(e-neuf), @github(sharmagaurika), and @github(TulikaVarma).
 
 It is an intelligent personal finance platform that transforms multi-calendar complexity into actionable debt repayment insights. ClearDebt integrates spending behavior, calendar events, and AI-powered predictions to help users take control of their financial future.
 

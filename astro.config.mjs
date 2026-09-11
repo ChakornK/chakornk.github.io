@@ -15,6 +15,7 @@ import yaml from "@rollup/plugin-yaml";
 
 import rehypeExternalLinks from "rehype-external-links";
 import { unified } from "@astrojs/markdown-remark";
+import remarkGithubUser from "@/plugins/remark-github-user.ts";
 
 export default defineConfig({
   site: "https://chakornk.dev",
@@ -84,6 +85,9 @@ export default defineConfig({
           },
         ],
       ],
+      remarkPlugins: [
+        [remarkGithubUser]
+      ]
     }),
   },
 });

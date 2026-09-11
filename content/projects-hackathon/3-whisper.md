@@ -7,7 +7,7 @@ github: ChakornK/journeyhacks-2026
 skills: Next.js, React, Tailwind, MongoDB, deck.gl
 ---
 
-Whisper is a project built at Journeyhacks 2026, an 8-hour hackathon, in collaboration with [@galileokim](https://github.com/galileokim), [@maneetdhaliwal](https://github.com/maneetdhaliwal), and [@tommyxie0stu](https://github.com/tommyxie0stu). It is an anonymous confession platform that allows users to share their thoughts and feelings with their local community.
+Whisper is a project built at Journeyhacks 2026, an 8-hour hackathon, in collaboration with @github(galileokim), @github(maneetdhaliwal), and @github(tommyxie0stu). It is an anonymous confession platform that allows users to share their thoughts and feelings with their local community.
 
 ![Landing page](/projects/whisper/1.png)
 

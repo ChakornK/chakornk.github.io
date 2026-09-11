@@ -10,7 +10,7 @@ skills: Next.js, React, TypeScript, GitHub Copilot
 awards: CSSS Rube Goldberg challenge winner
 ---
 
-BSCode was built at SillyHacks 2026, a 12-hour hackathon event celebrating "April Fools"-style projects. I made this project in collaboration with [@aaf1007](https://github.com/aaf1007), [@Decentblup](https://github.com/Decentblup), and [@galileokim](https://github.com/galileokim). It is a satirical brainrot code editor that parodies modern "vibe coding" culture, proving that you can embrace the brainrotted distractions while still shipping functional software (hopefully).
+BSCode was built at SillyHacks 2026, a 12-hour hackathon event celebrating "April Fools"-style projects. I made this project in collaboration with @github(aaf1007), @github(Decentblup), and @github(galileokim). It is a satirical brainrot code editor that parodies modern "vibe coding" culture, proving that you can embrace the brainrotted distractions while still shipping functional software (hopefully).
 
 ![Thumbnail](/projects/bscode/1.jpg)
 

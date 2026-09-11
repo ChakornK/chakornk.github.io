@@ -2751,6 +2751,7 @@ __metadata:
     rehype-external-links: "npm:^3.0.0"
     sharp: "npm:^0.35.4"
     tw-to-css: "npm:^0.0.12"
+    unist-util-visit: "npm:^5.1.0"
     unocss: "npm:^66.10.2"
   languageName: unknown
   linkType: soft

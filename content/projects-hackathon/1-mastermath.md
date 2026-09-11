@@ -7,7 +7,7 @@ github: ChakornK/stormhacks-2025
 skills: Next.js, React, Tailwind, MongoDB, Google OAuth, JWT
 ---
 
-MasterMath is a project built at Stormhacks 2025, a 24-hour hackathon, in collaboration with [@noknight12](https://github.com/noknight12), [@maneetdhaliwal](https://github.com/maneetdhaliwal), and [@ricd99](https://github.com/ricd99). Its main goal is to help users practice math in a more engaging way through a streak system and a playful, interactive UI.
+MasterMath is a project built at Stormhacks 2025, a 24-hour hackathon, in collaboration with @github(noknight12), @github(maneetdhaliwal), and @github(ricd99). Its main goal is to help users practice math in a more engaging way through a streak system and a playful, interactive UI.
 
 ![Home page](/projects/mastermath/1.png)
 

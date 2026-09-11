@@ -8,7 +8,7 @@ github: ChakornK/local-gems
 skills: Next.js, React, Tailwind, Motion, MongoDB, AWS S3, Redis, Better Auth
 ---
 
-Local Gems was built at Hack the Coast 2026, a 24-hour hackathon, in collaboration with [@Crysuski](https://github.com/Crysuski), [@david-w06](https://github.com/david-w06), and [@Decentblup](https://github.com/Decentblup).
+Local Gems was built at Hack the Coast 2026, a 24-hour hackathon, in collaboration with @github(Crysuski), @github(david-w06), and @github(Decentblup).
 
 ![Sign in page](/projects/local-gems/1.png)
 ![Map view](/projects/local-gems/2.png)

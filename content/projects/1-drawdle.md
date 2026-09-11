@@ -6,7 +6,7 @@ github: drawdle/drawdle
 skills: Next.js, React, Tailwind, PixiJS
 ---
 
-Drawdle allows users to learn basic drawing skills by following video tutorials and practicing on a canvas. This project was created in collaboration with [@TheUnicat](https://github.com/TheUnicat) and [@danburgerisaburger](https://github.com/danburgerisaburger).
+Drawdle allows users to learn basic drawing skills by following video tutorials and practicing on a canvas. This project was created in collaboration with @github(TheUnicat) and @github(danburgerisaburger).
 
 The application features a practice canvas and a sidebar for watching video tutorials. Users can also save their current drawing, which can be restored later.
 

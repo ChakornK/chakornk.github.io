@@ -22,10 +22,10 @@ body {
 }
 
 /* Place consecutive images in a row if possible */
-.prose p:has(img) {
+.prose p:has(> img) {
   @apply flex flex-wrap justify-center gap-4;
 }
-.prose p:has(img) img {
+.prose p:has(> img) img {
   @apply my-0;
 }
 /* Remove spacing between paragraph and list */
@@ -91,4 +91,21 @@ body {
 }
 .fade-in {
   animation: fade-in 300ms ease-out 100ms 1 normal both;
+}
+
+.github-user-chip {
+  @apply inline relative -mx-0.5;
+
+  .inner {
+    @apply bg-surface hover:bg-highlight rounded-full p-1 pr-2 leading-none flex-inline items-center gap-1.5 relative top-1;
+  }
+  img {
+    @apply w-5 h-5 rounded-full m-0;
+  }
+  p {
+    @apply m-0;
+  }
+  a {
+    @apply absolute inset-0
+  }
 }
