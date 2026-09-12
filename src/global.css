@@ -383,7 +383,7 @@ main .prose {
 }
 
 :is(.experience-description, .prose ul):not(:where(.not-prose, .not-prose *)) {
-  list-style-type: "–\00a0";
+  list-style-type: "◆\00a0";
   list-style-position: outside;
   padding-inline-start: 1.25em;
 }
@@ -400,8 +400,9 @@ main .prose {
 }
 
 :is(.experience-description, .prose ul):not(:where(.not-prose, .not-prose *)) > li::marker {
-  color: var(--color-muted);
+  color: var(--color-text);
   font-family: var(--font-display), Georgia, serif;
+  font-size: 0.625em;
   font-weight: 400;
 }
 
