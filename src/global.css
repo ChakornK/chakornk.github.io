@@ -389,6 +389,7 @@ main .prose {
 }
 
 :is(.experience-description, .prose ul):not(:where(.not-prose, .not-prose *)) > li {
+  position: relative;
   margin-block: 0;
   padding-inline-start: 0.5em;
   text-wrap: pretty;
@@ -399,11 +400,24 @@ main .prose {
   margin-block-start: 0.625em;
 }
 
+/* Keep the native marker for list semantics; position the visible diamond on the first line. */
 :is(.experience-description, .prose ul):not(:where(.not-prose, .not-prose *)) > li::marker {
-  color: var(--color-text);
+  color: transparent;
   font-family: var(--font-display), Georgia, serif;
   font-size: 0.625em;
   font-weight: 400;
+  forced-color-adjust: none;
+}
+
+:is(.experience-description, .prose ul):not(:where(.not-prose, .not-prose *)) > li::before {
+  content: "";
+  position: absolute;
+  inset-block-start: 0.5lh;
+  inset-inline-start: -0.75em;
+  inline-size: 0;
+  block-size: 0;
+  border: 0.1875em solid var(--color-text);
+  transform: translateY(-50%) rotate(45deg);
 }
 
 .prose li > ul:not(:where(.not-prose, .not-prose *)) {
