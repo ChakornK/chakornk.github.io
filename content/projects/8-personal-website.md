@@ -5,6 +5,8 @@ thumbnail: /projects/personal-website/1.png
 github: chakornk/chakornk.github.io
 website: https://chakornk.dev/
 skills: Astro, Tailwind
+stack:
+  Frontend: [Astro, Tailwind]
 ---
 
 My main goals for this website are to make it simple, fast, and maintainable. Astro is a great choice for this because it excels at generating static sites and supports loading content from markdown files.
@@ -37,7 +39,3 @@ I optimized all images to be as small as possible by using Sharp to convert them
 ### Fonts
 
 The loading time of fonts is crucial as they block the initial rendering of the page. While the `font-display` property could be set to `swap` to allow the page to be rendered with a fallback font, this approach would cause the page's layout to change when the actual font is loaded. Instead, I optimized the font to only include ASCII glyphs, which drastically reduces the size of the font files.
-
-## Tech stack
-
-- **Frontend**: Astro, Tailwind

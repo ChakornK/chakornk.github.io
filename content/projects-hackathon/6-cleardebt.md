@@ -7,6 +7,12 @@ devpost: cleardebt
 github: ChakornK/clear-debt
 skills: Next.js, React, Tailwind, Google OAuth, Snowflake, Plaid, FastAPI
 awards: MLH Best Use of Snowflake API
+stack:
+  Frontend: [TypeScript, Next.js, React, Tailwind]
+  Backend: [Python, FastAPI]
+  Database: [Snowflake]
+  Auth: [Google OAuth 2.0]
+  Bank Integration: [Plaid]
 ---
 
 ClearDebt was built at Mountain Madness 2026, a 24-hour hackathon, in collaboration with @github(e-neuf), @github(sharmagaurika), and @github(TulikaVarma).
@@ -67,11 +73,3 @@ Handles hypotheticals: "What if I got a $3k bonus?" or "Should I consolidate?"
 Full conversation history re-injected on every message for continuity
 
 ![Chat](/projects/cleardebt/6.png)
-
-## Tech stack
-
-- **Frontend**: TypeScript, Next.js, React, Tailwind
-- **Backend**: Python, FastAPI
-- **Database**: Snowflake
-- **Auth**: Google OAuth 2.0
-- **Bank Integration**: Plaid

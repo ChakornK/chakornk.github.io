@@ -1,0 +1,210 @@
+TypeScript:
+  icon: simple-icons:typescript
+  color: blue
+  link: https://www.typescriptlang.org
+Dart:
+  icon: simple-icons:dart
+  color: blue
+  link: https://dart.dev
+C++:
+  icon: simple-icons:cplusplus
+  color: violet
+  link: https://cplusplus.com
+PHP:
+  icon: simple-icons:php
+  color: blue
+  link: https://www.php.net
+Python:
+  icon: simple-icons:python
+  color: yellow
+  link: https://www.python.org
+React:
+  icon: simple-icons:react
+  color: cyan
+  link: https://react.dev
+Vue:
+  icon: simple-icons:vuedotjs
+  color: green
+  link: https://vuejs.org
+Solid:
+  icon: simple-icons:solid
+  color: sky
+  link: https://www.solidjs.com
+Tailwind CSS: &tailwind
+  icon: simple-icons:tailwindcss
+  color: sky
+  link: https://tailwindcss.com
+Tailwind: *tailwind
+Sass:
+  icon: simple-icons:sass
+  color: pink
+  link: https://sass-lang.com
+Next.js:
+  icon: simple-icons:nextdotjs
+  color: neutral
+  link: https://nextjs.org
+Vite:
+  icon: simple-icons:vite
+  color: violet
+  link: https://vitejs.dev
+Astro:
+  icon: simple-icons:astro
+  color: violet
+  link: https://astro.build
+Flutter:
+  icon: simple-icons:flutter
+  color: sky
+  link: https://flutter.dev
+Electron:
+  icon: simple-icons:electron
+  color: cyan
+  link: https://electronjs.org
+Node.js:
+  icon: simple-icons:nodedotjs
+  color: green
+  link: https://nodejs.org
+Express:
+  icon: simple-icons:express
+  color: neutral
+  link: https://expressjs.com
+MongoDB:
+  icon: simple-icons:mongodb
+  color: green
+  link: https://mongodb.com
+Redis:
+  icon: simple-icons:redis
+  color: red
+  link: https://redis.io
+Cloudflare Workers:
+  icon: simple-icons:cloudflare
+  color: orange
+  link: https://workers.cloudflare.com
+Docker:
+  icon: simple-icons:docker
+  color: blue
+  link: https://www.docker.com
+Git:
+  icon: simple-icons:git
+  color: red
+  link: https://git-scm.com
+GitHub Actions:
+  icon: simple-icons:github
+  color: orange
+  link: https://github.com
+Bash:
+  icon: simple-icons:gnubash
+  color: green
+  link: https://www.gnu.org/software/bash
+Figma:
+  icon: simple-icons:figma
+  color: emerald
+  link: https://figma.com
+PixiJS:
+  icon: carbon:code
+  color: pink
+  link: https://pixijs.com
+SQLite:
+  icon: simple-icons:sqlite
+  color: blue
+  link: https://sqlite.org
+ASP.NET Core:
+  icon: simple-icons:dotnet
+  color: violet
+  link: https://dotnet.microsoft.com/apps/aspnet
+Entity Framework Core:
+  icon: simple-icons:dotnet
+  color: violet
+  link: https://learn.microsoft.com/ef/core/
+Preact:
+  icon: simple-icons:preact
+  color: violet
+  link: https://preactjs.com
+Konva:
+  icon: simple-icons:konva
+  color: green
+  link: https://konvajs.org
+VSCode API:
+  icon: carbon:code
+  color: blue
+  link: https://code.visualstudio.com/api
+Adobe Illustrator:
+  icon: simple-icons:adobeillustrator
+  color: orange
+  link: https://www.adobe.com/products/illustrator.html
+Motion:
+  icon: carbon:code
+  color: yellow
+  link: https://motion.dev
+PostgreSQL:
+  icon: simple-icons:postgresql
+  color: blue
+  link: https://www.postgresql.org
+Prisma:
+  icon: simple-icons:prisma
+  color: neutral
+  link: https://www.prisma.io
+AWS S3:
+  icon: simple-icons:amazons3
+  color: green
+  link: https://aws.amazon.com/s3/
+HTML Canvas:
+  icon: simple-icons:html5
+  color: orange
+  link: https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API
+GLSL:
+  icon: simple-icons:opengl
+  color: blue
+  link: https://www.khronos.org/opengl/wiki/Core_Language_(GLSL)
+KaTeX:
+  icon: carbon:code
+  color: green
+  link: https://katex.org
+Google OAuth: &google-oauth
+  icon: simple-icons:google
+  color: blue
+  link: https://developers.google.com/identity/protocols/oauth2
+Google OAuth 2.0: *google-oauth
+JWT:
+  icon: simple-icons:jsonwebtokens
+  color: pink
+  link: https://jwt.io
+Google Gemini:
+  icon: simple-icons:googlegemini
+  color: blue
+  link: https://ai.google.dev
+Chrome Extension API:
+  icon: simple-icons:googlechrome
+  color: green
+  link: https://developer.chrome.com/docs/extensions/reference/api
+deck.gl:
+  icon: carbon:code
+  color: cyan
+  link: https://deck.gl
+Google Maps:
+  icon: simple-icons:googlemaps
+  color: green
+  link: https://developers.google.com/maps
+Better Auth:
+  icon: simple-icons:betterauth
+  color: neutral
+  link: https://www.better-auth.com
+FastAPI:
+  icon: simple-icons:fastapi
+  color: emerald
+  link: https://fastapi.tiangolo.com
+Snowflake:
+  icon: simple-icons:snowflake
+  color: sky
+  link: https://www.snowflake.com
+Plaid:
+  icon: carbon:code
+  color: neutral
+  link: https://plaid.com
+Monaco:
+  icon: carbon:code
+  color: blue
+  link: https://microsoft.github.io/monaco-editor/
+Eruda:
+  icon: carbon:code
+  color: green
+  link: https://eruda.liriliri.io

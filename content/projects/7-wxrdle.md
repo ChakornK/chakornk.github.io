@@ -5,6 +5,9 @@ thumbnail: /projects/wxrdle/2.png
 github: chakornk/wxrdle
 website: https://wxrdle.vercel.app/
 skills: Preact, Tailwind, Motion
+stack:
+  Frontend: [Preact, Tailwind, Motion]
+  CI/CD: [GitHub Actions]
 ---
 
 [Wordle](https://www.nytimes.com/games/wordle/index.html) is a word-guessing game where players are given 6 guesses to find a 5-letter word. While there are many strategies to winning in as few guesses as possible, one of the simplest strategies is to eliminate as many letters as possible in each guess. However, most players do not know every possible word (over 14k words), which means they may not be able to eliminate letters as efficiently as possible.
@@ -17,8 +20,3 @@ Wxrdle is a web application that provides suggestions for the best next guess th
 Wxrdle can also be used to view future Wordle answers.
 
 ![Word list](/projects/wxrdle/3.png)
-
-## Tech stack
-
-- **Frontend**: Preact, Tailwind, Motion
-- **CI/CD**: GitHub Actions

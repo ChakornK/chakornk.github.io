@@ -26,130 +26,31 @@ experience:
 
 stack:
   Languages:
-    - name: TypeScript
-      icon: simple-icons:typescript
-      color: blue
-      link: https://www.typescriptlang.org
-
-    - name: Dart
-      icon: simple-icons:dart
-      color: blue
-      link: https://dart.dev
-
-    - name: C++
-      icon: simple-icons:cplusplus
-      color: violet
-      link: https://cplusplus.com
-
-    - name: PHP
-      icon: simple-icons:php
-      color: blue
-      link: https://www.php.net
-
-    - name: Python
-      icon: simple-icons:python
-      color: yellow
-      link: https://www.python.org
-
+    - TypeScript
+    - Dart
+    - C++
+    - PHP
+    - Python
   Frontend:
-    - name: React
-      icon: simple-icons:react
-      color: cyan
-      link: https://react.dev
-
-    - name: Vue
-      icon: simple-icons:vuedotjs
-      color: green
-      link: https://vuejs.org
-
-    - name: Solid
-      icon: simple-icons:solid
-      color: sky
-      link: https://www.solidjs.com
-
-    - name: Tailwind CSS
-      icon: simple-icons:tailwindcss
-      color: sky
-      link: https://tailwindcss.com
-
-    - name: Sass
-      icon: simple-icons:sass
-      color: pink
-      link: https://sass-lang.com
-
-    - name: Next.js
-      icon: simple-icons:nextdotjs
-      color: neutral
-      link: https://nextjs.org
-
-    - name: Vite
-      icon: simple-icons:vite
-      color: violet
-      link: https://vitejs.dev
-
-    - name: Astro
-      icon: simple-icons:astro
-      color: violet
-      link: https://astro.build
-
-    - name: Flutter
-      icon: simple-icons:flutter
-      color: sky
-      link: https://flutter.dev
-
-    - name: Electron
-      icon: simple-icons:electron
-      color: cyan
-      link: https://electronjs.org
-
+    - React
+    - Vue
+    - Solid
+    - Tailwind CSS
+    - Sass
+    - Next.js
+    - Vite
+    - Astro
+    - Flutter
+    - Electron
   Backend:
-    - name: Node.js
-      icon: simple-icons:nodedotjs
-      color: green
-      link: https://nodejs.org
-
-    - name: Express
-      icon: simple-icons:express
-      color: neutral
-      link: https://expressjs.com
-
-    - name: MongoDB
-      icon: simple-icons:mongodb
-      color: green
-      link: https://mongodb.com
-
-    - name: Redis
-      icon: simple-icons:redis
-      color: red
-      link: https://redis.io
-
-    - name: Cloudflare Workers
-      icon: simple-icons:cloudflare
-      color: orange
-      link: https://workers.cloudflare.com
-
+    - Node.js
+    - Express
+    - MongoDB
+    - Redis
+    - Cloudflare Workers
   DevOps:
-    - name: Docker
-      icon: simple-icons:docker
-      color: blue
-      link: https://www.docker.com
-
-    - name: Git
-      icon: simple-icons:git
-      color: red
-      link: https://git-scm.com
-
-    - name: GitHub Actions
-      icon: simple-icons:github
-      color: orange
-      link: https://github.com
-
-    - name: Bash
-      icon: simple-icons:gnubash
-      color: green
-      link: https://www.gnu.org/software/bash
-
-    - name: Figma
-      icon: simple-icons:figma
-      color: emerald
-      link: https://figma.com
+    - Docker
+    - Git
+    - GitHub Actions
+    - Bash
+    - Figma

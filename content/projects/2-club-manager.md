@@ -3,6 +3,9 @@ name: Club Manager
 description: Web application for managing school clubs
 thumbnail: /projects/club-manager/1.jpg
 skills: Next.js, React, Tailwind
+stack:
+  Frontend: [TypeScript, React, Tailwind, Next.js]
+  Backend: [ASP.NET Core, Entity Framework Core]
 ---
 
 At my high school, clubs were tracked using a spreadsheet, which made it difficult to keep track of all information for each club. Updating information for a club was a manual process that relied on a person with access to the spreadsheet. Furthermore, there was no central location for all club information, making it difficult to find what you were looking for.
@@ -20,8 +23,3 @@ Each club has its own page, which allows users to view the club's information.
 Club owners can easily update their club's information through the application.
 
 ![Updating club information](/projects/club-manager/3.jpg)
-
-## Tech stack
-
-- **Frontend**: TypeScript, React, Tailwind, Next.js,
-- **Backend**: ASP.NET Core, Entity Framework Core

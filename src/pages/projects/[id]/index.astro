@@ -4,6 +4,7 @@ import Layout from "@/layouts/Layout.astro";
 import type { GetStaticPaths } from "astro";
 import ProjectLinks from "@/components/ProjectLinks.astro";
 import ChipList from "@/components/ChipList.astro";
+import TechStack from "@/components/TechStack.astro";
 
 const projects = import.meta.glob("/content/{projects,projects-hackathon}/*.md", { eager: true });
 const project = Object.entries(projects).find(([k, p]) => k.split("/").slice(-1)[0].split("-").slice(1).join("-").split(".")[0] === Astro.params.id)![1];
@@ -65,5 +66,13 @@ export const getStaticPaths = (() => {
     class="prose prose-slate prose-li:marker:text-inherit prose-img:max-h-96 prose-img:max-w-full prose-img:object-contain animate-delay-100 animate-fill-both relative z-10"
   >
     <Content />
+    {frontmatter.stack && Object.values(frontmatter.stack).some((items) => Array.isArray(items) && items.length > 0) && (
+      <section aria-labelledby="tech-stack">
+        <h2 id="tech-stack">Tech stack</h2>
+        <div class="not-prose">
+          <TechStack stack={frontmatter.stack} />
+        </div>
+      </section>
+    )}
   </div>
 </Layout>

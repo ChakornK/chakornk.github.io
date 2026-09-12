@@ -5,6 +5,11 @@ thumbnail: /projects/whisper/1.png
 devpost: whispr-5msob7
 github: ChakornK/journeyhacks-2026
 skills: Next.js, React, Tailwind, MongoDB, deck.gl
+stack:
+  Frontend: [Next.js, React, Tailwind, deck.gl]
+  Backend: [Node.js]
+  Database: [MongoDB]
+  External APIs: [Google Maps]
 ---
 
 Whisper is a project built at Journeyhacks 2026, an 8-hour hackathon, in collaboration with @github(galileokim), @github(maneetdhaliwal), and @github(tommyxie0stu). It is an anonymous confession platform that allows users to share their thoughts and feelings with their local community.
@@ -29,10 +34,3 @@ Whisper has a responsive UI design, meaning it still looks good on smaller mobil
 
 ![Mobile map](/projects/whisper/4.png)
 ![Mobile post](/projects/whisper/5.png)
-
-## Tech stack
-
-- **Frontend**: Next.js, React, Tailwind, deck.gl
-- **Backend**: Node.js
-- **Database**: MongoDB
-- **External APIs**: Google Maps

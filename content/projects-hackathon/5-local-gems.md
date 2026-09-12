@@ -6,6 +6,11 @@ thumbnailPosition: top
 devpost: local-gems
 github: ChakornK/local-gems
 skills: Next.js, React, Tailwind, Motion, MongoDB, AWS S3, Redis, Better Auth
+stack:
+  Frontend: [Next.js, React, Tailwind, Motion]
+  Backend: [Node.js, Redis]
+  Database: [MongoDB, AWS S3]
+  Auth: [Better Auth, Google OAuth 2.0]
 ---
 
 Local Gems was built at Hack the Coast 2026, a 24-hour hackathon, in collaboration with @github(Crysuski), @github(david-w06), and @github(Decentblup).
@@ -34,10 +39,3 @@ It also has a built-in camera and photo editor UI so users can capture gems on t
 Once posted, gems will appear on the map, as well as on the user's profile page. Users can customize their profile's appearance and view their stats.
 
 ![Profile](/projects/local-gems/9.png)
-
-## Tech stack
-
-- **Frontend**: Next.js, React, Tailwind, Motion
-- **Backend**: Node.js, Redis
-- **Database**: MongoDB, AWS S3
-- **Auth**: Better Auth, Google OAuth 2.0

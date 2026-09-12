@@ -6,6 +6,8 @@ thumbnailPosition: top
 github: chakornk/imposter
 website: https://imposter.chakornk.dev/
 skills: Vue, Tailwind, Motion
+stack:
+  Frontend: [Vue, Tailwind, Motion]
 ---
 
 A word guessing game where everyone except one person knows the word. Everyone gives 1-word clues and tries to find who the imposter is.
@@ -28,7 +30,3 @@ After everyone has viewed their card, discussion starts and players try to figur
 The word is revealed after the discussion ends and the imposter is eliminated.
 
 ![Win](/projects/imposter/7.png)
-
-## Tech stack
-
-- **Frontend**: Vue, Tailwind, Motion

@@ -3,41 +3,15 @@ import Layout from "@/layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
 
 import ChipList from "@/components/ChipList.astro";
+import TechStack from "@/components/TechStack.astro";
 // @ts-ignore
 import experienceData from "../../content/experience.yml";
 const bio = experienceData.bio as string;
 const experience = experienceData.experience as { title: string; date: string; description: string[]; awards?: string[]; skills?: string[] }[];
-const stack = experienceData.stack as { [title: string]: { name: string; icon: string; color: string; link: string }[] };
+const stack = experienceData.stack as Record<string, string[]>;
 
 const formatExperienceDate = (date: string) =>
   date.replace(/\b\d{2}(\d{2})\b/g, "'$1").replace(/\bPresent\b/gi, "Now");
-
-const getColor = (color: string) => {
-  switch (color) {
-    case "red":
-      return "hover:bg-red-400/16";
-    case "orange":
-      return "hover:bg-orange-400/16";
-    case "yellow":
-      return "hover:bg-yellow-400/16";
-    case "green":
-      return "hover:bg-green-400/16";
-    case "emerald":
-      return "hover:bg-emerald-400/16";
-    case "cyan":
-      return "hover:bg-cyan-400/16";
-    case "sky":
-      return "hover:bg-sky-400/16";
-    case "blue":
-      return "hover:bg-blue-400/16";
-    case "violet":
-      return "hover:bg-violet-400/16";
-    case "pink":
-      return "hover:bg-pink-400/16";
-    case "neutral":
-      return "hover:bg-stone-400/16";
-  }
-};
 
 import ProjectCard from "@/components/ProjectCard.astro";
 // @ts-ignore
@@ -123,23 +97,7 @@ const featuredProjects = featuredProjectList.featured.map((id: string) => featur
 
   <section class="page-section" aria-labelledby="skills-heading">
     <h2 id="skills-heading" class="section-title">Technical Skills</h2>
-    <dl class="skills-list">
-      {
-        Object.entries(stack).map(([title, items]) => (
-          <div class="skill-group">
-            <dt class="skill-label">{title}</dt>
-            <dd class="skill-items">
-              {items.map(({ name, icon, color, link }: { name: string; icon: string; color: string; link: string }) => (
-                <a href={link} target="_blank" rel="noopener noreferrer" class={`skill-chip rounded-full bg-surface transition-colors ${getColor(color)}`}>
-                  <Icon name={icon} size={16} aria-hidden="true" />
-                  <span>{name}</span>
-                </a>
-              ))}
-            </dd>
-          </div>
-        ))
-      }
-    </dl>
+    <TechStack {stack} />
   </section>
 
   <section class="page-section" aria-labelledby="contributions-heading">

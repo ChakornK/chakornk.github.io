@@ -5,6 +5,11 @@ thumbnail: /projects/sfu-careerconnect/1.png
 devpost: sfu-careerconnect
 github: ChakornK/sfu-careerconnect
 skills: Next.js, React, Tailwind, Motion, MongoDB, Redis, Better Auth
+stack:
+  Frontend: [Next.js, React, Tailwind, Motion]
+  Backend: [Node.js, Redis]
+  Database: [MongoDB]
+  Auth: [Better Auth, Google OAuth 2.0]
 ---
 
 SFU CareerConnect is a project built at SystemHacks 2026 (a.k.a XHacks), a 24-hour hackathon, in collaboration with @github(aaf1007), @github(BlingBloaw), and @github(avgee123).
@@ -32,10 +37,3 @@ After that, a list of internships, taken from LinkedIn, in the Vancouver area is
 Users can also view an analysis of their tech-related skills to see their strengths and weaknesses.
 
 ![Skill insights](/projects/sfu-careerconnect/5.png)
-
-## Tech stack
-
-- **Frontend**: Next.js, React, Tailwind, Motion
-- **Backend**: Node.js, Redis
-- **Database**: MongoDB
-- **Auth**: Better Auth, Google OAuth 2.0
