@@ -247,13 +247,6 @@ p {
   margin-top: var(--space-related);
 }
 
-.experience-description {
-  display: grid;
-  gap: 0.5rem;
-  padding-left: 1.25rem;
-  list-style: disc;
-}
-
 .project-list {
   container: project-list / inline-size;
   display: grid;
@@ -389,6 +382,41 @@ main .prose {
   margin-block: 0 var(--space-heading);
 }
 
+:is(.experience-description, .prose ul):not(:where(.not-prose, .not-prose *)) {
+  list-style-type: "–\00a0";
+  list-style-position: outside;
+  padding-inline-start: 1.25em;
+}
+
+:is(.experience-description, .prose ul):not(:where(.not-prose, .not-prose *)) > li {
+  margin-block: 0;
+  padding-inline-start: 0.5em;
+  text-wrap: pretty;
+  overflow-wrap: anywhere;
+}
+
+:is(.experience-description, .prose ul):not(:where(.not-prose, .not-prose *)) > li + li {
+  margin-block-start: 0.625em;
+}
+
+:is(.experience-description, .prose ul):not(:where(.not-prose, .not-prose *)) > li::marker {
+  color: var(--color-muted);
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 400;
+}
+
+.prose li > ul:not(:where(.not-prose, .not-prose *)) {
+  margin-block: 0.625em 0;
+}
+
+.prose ul:not(:where(.not-prose, .not-prose *)) > li > p:first-child {
+  margin-block-start: 0;
+}
+
+.prose ul:not(:where(.not-prose, .not-prose *)) > li > p:last-child {
+  margin-block-end: 0;
+}
+
 .prose :is(strong, b) {
   color: inherit;
   font-weight: 600;
@@ -428,12 +456,12 @@ main .prose {
 .prose p:has(> img) img {
   @apply my-0;
 }
-/* Remove spacing between paragraph and list */
+/* List margins control the gap after introductory paragraphs. */
 .prose p:has(+ :is(ul, ol)) {
   @apply mb-0;
 }
 .prose p + :is(ul, ol) {
-  @apply mt-0;
+  margin-top: 0.625em;
 }
 
 .prose img {
