@@ -124,8 +124,6 @@ p {
 
 .section-heading-row > a {
   flex-shrink: 0;
-  font-size: var(--type-label);
-  font-weight: 500;
 }
 
 .intro-greeting {
@@ -136,33 +134,42 @@ p {
   line-height: 1.4;
 }
 
-.intro-heading {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--space-heading);
-}
-
-.intro-heading > h1 {
-  min-width: 0;
-}
-
 .intro-links {
   display: flex;
-  flex-shrink: 0;
-  gap: var(--space-related);
+  flex-wrap: wrap;
+  gap: var(--space-related) 1.5rem;
+  margin-top: var(--space-heading);
 }
 
-.intro-links a {
-  display: grid;
-  place-items: center;
-  width: 2rem;
-  height: 2rem;
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  color: var(--color-muted);
+  font-size: var(--type-label);
+  text-decoration: none;
 }
 
-.intro-links svg {
-  width: 1.25rem;
-  height: 1.25rem;
+.text-link-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  border-bottom: 1px solid transparent;
+}
+
+.text-link:hover,
+.text-link:focus-visible {
+  color: var(--color-text);
+}
+
+.text-link:hover .text-link-label,
+.text-link:focus-visible .text-link-label {
+  border-bottom-color: currentColor;
+}
+
+.text-link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
 }
 
 .intro-bio {
@@ -404,15 +411,6 @@ main .prose {
   .skill-group {
     grid-template-columns: 6.5rem minmax(0, 1fr);
     gap: 1rem;
-  }
-}
-
-@media (min-width: 48rem) {
-  .intro-heading {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
   }
 }
 
