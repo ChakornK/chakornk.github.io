@@ -41,11 +41,12 @@ const ogImage = getImagePath({ url, site });
 
     <link rel="sitemap" href="/sitemap-index.xml" />
 
+    <Font cssVariable="--font-display" preload />
     <Font cssVariable="--font-sans" preload />
 
     <script src="../scripts/index.ts"></script>
   </head>
-  <body class={`${fadein ? "intro-fadein " : ""}flex flex-col overflow-x-clip p-8 pt-20 sm:p-16 sm:pt-20`}>
+  <body class={`${fadein ? "intro-fadein " : ""}flex flex-col overflow-x-clip px-6 pb-16 pt-24 sm:px-12`}>
     <Navbar />
     <main class={"mx-auto w-full max-w-2xl grow" + (Astro.props.class ? " " + Astro.props.class : "")} data-page={page}>
       <slot />

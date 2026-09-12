@@ -9,6 +9,9 @@ const bio = experienceData.bio as string;
 const experience = experienceData.experience as { title: string; date: string; description: string[]; awards?: string[]; skills?: string[] }[];
 const stack = experienceData.stack as { [title: string]: { name: string; icon: string; color: string; link: string }[] };
 
+const formatExperienceDate = (date: string) =>
+  date.replace(/\b\d{2}(\d{2})\b/g, "'$1").replace(/\bPresent\b/gi, "Now");
+
 const getColor = (color: string) => {
   switch (color) {
     case "red":
@@ -54,74 +57,95 @@ const featuredProjectsCombined = [...featuredProjects1, ...featuredProjects2];
 const featuredProjects = featuredProjectList.featured.map((id: string) => featuredProjectsCombined.find((p) => p.id === id)) as Record<string, any>[];
 ---
 
-<Layout class="flex flex-col gap-4" fadein page="home">
-  <p class="font-450 text-2xl">Hello, I'm</p>
-  <h1 class="-mb-2 -mt-4 pb-2 text-5xl font-light tracking-tighter">Chakorn Kungsanarux</h1>
-
-  <div class="flex items-center gap-4">
-    <a href="https://github.com/ChakornK" target="_blank" rel="noopener noreferrer" aria-label="github">
-      <Icon name="simple-icons:github" size={24} aria-hidden="true" />
-    </a>
-    <a href="https://www.linkedin.com/in/chakorn-kungsanarux" target="_blank" rel="noopener noreferrer" aria-label="linkedin">
-      <Icon name="simple-icons:linkedin" size={24} aria-hidden="true" />
-    </a>
-    <a href="https://devpost.com/chakornk" target="_blank" rel="noopener noreferrer" aria-label="linkedin">
-      <Icon name="simple-icons:devpost" size={24} aria-hidden="true" />
-    </a>
-  </div>
-
-  <div class="*:mb-2 mt-2">
-    {bio.split("\n").map((line) => <p>{line}</p>)}
-  </div>
-
-  <h2 class="-mb-2 text-2xl font-semibold">Technical Skills</h2>
-  {
-    Object.entries(stack).map(([title, items]) => (
-      <div>
-        <h3 class="text-lg font-medium">{title}</h3>
-        <div class="flex flex-wrap gap-2 text-sm">
-          {items.map(({ name, icon, color, link }: { name: string; icon: string; color: string; link: string }) => (
-            <div class={`flex items-center relative gap-2 px-2 py-1 transition-colors rounded-full bg-surface ${getColor(color)}`}>
-              <Icon name={icon} size={16} />
-              <p>{name}</p>
-              <a href={link} target="_blank" class="absolute inset-0" rel="noopener noreferrer" aria-label={name} />
-            </div>
-          ))}
-        </div>
+<Layout class="page-flow" fadein page="home">
+  <header>
+    <p class="intro-greeting">Hello, I'm</p>
+    <div class="intro-heading">
+      <h1 class="display-title">Chakorn Kungsanarux</h1>
+      <div class="intro-links">
+        <a href="https://github.com/ChakornK" target="_blank" rel="noopener noreferrer" aria-label="github">
+          <Icon name="simple-icons:github" size={20} aria-hidden="true" />
+        </a>
+        <a href="https://www.linkedin.com/in/chakorn-kungsanarux" target="_blank" rel="noopener noreferrer" aria-label="linkedin">
+          <Icon name="simple-icons:linkedin" size={20} aria-hidden="true" />
+        </a>
+        <a href="https://devpost.com/chakornk" target="_blank" rel="noopener noreferrer" aria-label="devpost">
+          <Icon name="simple-icons:devpost" size={20} aria-hidden="true" />
+        </a>
       </div>
-    ))
-  }
+    </div>
 
-  <h2 class="-mb-2 mt-8 text-2xl font-semibold">Experience</h2>
-  {
-    experience.map((item) => (
-      <div class="mt-2 flex flex-col gap-2">
-        <h3 class="text-xl font-medium leading-none">{item.title}</h3>
-        <p class="shrink-0 text-sm">{item.date}</p>
-        <ul class="ml-4">
-          {item.description.map((desc) => (
-            <li class="mb-1 list-disc">{desc}</li>
-          ))}
-        </ul>
-        <ChipList awards={item.awards} skills={item.skills} />
-      </div>
-    ))
-  }
+    <div class="intro-bio">
+      {bio.trim().split(/\n\s*\n/).map((paragraph) => <p>{paragraph}</p>)}
+    </div>
+  </header>
 
-  <div class="mt-8 flex items-center justify-between">
-    <h2 class="-mb-2 text-2xl font-semibold">Featured Projects</h2>
-    <a href="/projects" class="hover:border-text flex items-center gap-1 border-b border-transparent leading-none">
-      <span>View all</span>
-      <Icon name="carbon:arrow-right" size={16} aria-hidden="true" />
-    </a>
-  </div>
-  {featuredProjects.map((project) => <ProjectCard {project} />)}
+  <section class="page-section" aria-labelledby="featured-heading">
+    <div class="section-heading-row">
+      <h2 id="featured-heading" class="section-title">Featured Projects</h2>
+      <a href="/projects" class="hover:border-text flex items-center gap-1 border-b border-transparent">
+        <span>View all</span>
+        <Icon name="carbon:arrow-right" size={16} aria-hidden="true" />
+      </a>
+    </div>
+    <div class="project-list">
+      {featuredProjects.map((project) => <ProjectCard {project} />)}
+    </div>
+  </section>
 
-  <div class="mt-8">
-    <h2 class="mb-2 text-2xl font-semibold">GitHub Contributions</h2>
+  <section class="page-section" aria-labelledby="experience-heading">
+    <h2 id="experience-heading" class="section-title">Experience</h2>
+    <div class="experience-list">
+      {
+        experience.map((item) => {
+          const [role, ...organization] = item.title.split(" @ ");
+          const employer = organization.join(" @ ");
+          return (
+            <article class="experience-entry">
+              <header>
+                <h3 class="entry-title">{employer || role}</h3>
+                <div class="experience-meta">
+                  {employer && <p class="experience-role">{role}</p>}
+                  <p class="meta-text experience-date" title={item.date}>{formatExperienceDate(item.date)}</p>
+                </div>
+                <ChipList awards={item.awards} skills={item.skills} />
+              </header>
+              <ul class="experience-description">
+                {item.description.map((desc) => <li>{desc}</li>)}
+              </ul>
+            </article>
+          );
+        })
+      }
+    </div>
+  </section>
+
+  <section class="page-section" aria-labelledby="skills-heading">
+    <h2 id="skills-heading" class="section-title">Technical Skills</h2>
+    <dl class="skills-list">
+      {
+        Object.entries(stack).map(([title, items]) => (
+          <div class="skill-group">
+            <dt class="skill-label">{title}</dt>
+            <dd class="skill-items">
+              {items.map(({ name, icon, color, link }: { name: string; icon: string; color: string; link: string }) => (
+                <a href={link} target="_blank" rel="noopener noreferrer" class={`skill-chip rounded-full bg-surface transition-colors ${getColor(color)}`}>
+                  <Icon name={icon} size={16} aria-hidden="true" />
+                  <span>{name}</span>
+                </a>
+              ))}
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+  </section>
+
+  <section class="page-section" aria-labelledby="contributions-heading">
+    <h2 id="contributions-heading" class="section-title">GitHub Contributions</h2>
     <div id="git-contributions" class="*:w-2xl direction-rtl overflow-x-auto"></div>
-    <p id="git-contributions-label" class="text-sm"></p>
-  </div>
+    <p id="git-contributions-label" class="meta-text mt-2"></p>
+  </section>
 </Layout>
 
 <script src="../scripts/animate.ts"></script>

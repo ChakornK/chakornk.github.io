@@ -807,10 +807,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource/space-grotesk@npm:^5.3.0":
+"@fontsource/vollkorn@npm:^5.3.0":
   version: 5.3.0
-  resolution: "@fontsource/space-grotesk@npm:5.3.0"
-  checksum: 10c0/6804603d339edb99e50419e951c153d6ab0c175cd1a3c5044341c5efa261dcae63aec2288d5dd4d698d82b44c9a23a34f065881055b08887de08df2769c9791a
+  resolution: "@fontsource/vollkorn@npm:5.3.0"
+  checksum: 10c0/50b821b7ebe324dd02af6c150ef9157d5d7a48c85c43aeb02c7dc6ecb3c1b0b7cd5d6b57fa9ed0e1b145a7c2a09b0177c03026ab17d73f1b692ab9fc5a0bcbee
   languageName: node
   linkType: hard
 
@@ -2735,7 +2735,7 @@ __metadata:
   dependencies:
     "@astrojs/markdown-remark": "npm:7.3.1"
     "@astrojs/sitemap": "npm:3.7.4"
-    "@fontsource/space-grotesk": "npm:^5.3.0"
+    "@fontsource/vollkorn": "npm:^5.3.0"
     "@iconify-json/carbon": "npm:^1.2.27"
     "@iconify-json/simple-icons": "npm:^1.2.95"
     "@rollup/plugin-yaml": "npm:^5.0.0"

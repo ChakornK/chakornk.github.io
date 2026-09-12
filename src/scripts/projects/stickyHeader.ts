@@ -11,8 +11,8 @@ export const updateHeader = (document: Document, scrollY: number) => {
     const isCompact = scrollY > SCROLL_THRESHOLD;
     collapse.style.opacity = isCompact ? "0" : "1";
     collapseBg.style.height = isCompact ? "0" : "100%";
-    title.style.fontSize = isCompact ? "1.5rem" : "2.25rem";
-    subtitle.style.fontSize = isCompact ? "0.875rem" : "1rem";
+    title.style.fontSize = isCompact ? "var(--type-title-compact)" : "var(--type-title)";
+    subtitle.style.fontSize = isCompact ? "var(--type-label)" : "var(--type-body)";
   }
 };
 

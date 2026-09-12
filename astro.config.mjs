@@ -21,12 +21,22 @@ export default defineConfig({
   site: "https://chakornk.dev",
   fonts: [
     {
-      name: "Space Grotesk",
+      name: "Vollkorn",
+      cssVariable: "--font-display",
+      provider: fontProviders.fontsource(),
+      fallbacks: ["Georgia", "serif"],
+      subsets: ["latin"],
+      styles: ["normal"],
+      weights: ["400 500"],
+    },
+    {
+      name: "Manrope",
       cssVariable: "--font-sans",
       provider: fontProviders.fontsource(),
-      optimizedFallbacks: false,
+      fallbacks: ["Arial", "sans-serif"],
       subsets: ["latin"],
-      weights: ["100 900"],
+      styles: ["normal"],
+      weights: ["400 700"],
     },
   ],
   integrations: [
@@ -47,10 +57,12 @@ export default defineConfig({
       options: {
         fonts: [
           {
-            name: "Space Grotesk",
+            name: "Vollkorn",
             weight: 500,
             style: "normal",
-            data: fs.readFileSync("node_modules/@fontsource/space-grotesk/files/space-grotesk-latin-500-normal.woff"),
+            data: fs.readFileSync(
+              "node_modules/@fontsource/vollkorn/files/vollkorn-latin-500-normal.woff",
+            ),
           },
         ],
       },
@@ -85,9 +97,7 @@ export default defineConfig({
           },
         ],
       ],
-      remarkPlugins: [
-        [remarkGithubUser]
-      ]
+      remarkPlugins: [[remarkGithubUser]],
     }),
   },
 });

@@ -12,6 +12,7 @@ export default defineConfig({
   theme: {
     fontFamily: {
       sans: "var(--font-sans), sans-serif",
+      display: "var(--font-display), Georgia, serif",
     },
     colors: {
       "background": "var(--color-background)",

@@ -27,10 +27,23 @@ const projects2 = Object.entries(matches2)
   })) as Record<string, any>[];
 ---
 
-<Layout title="Projects" description="What I've worked on" class="flex flex-col gap-4">
-  <h1 class="text-3xl font-semibold">Hackathons Projects</h1>
-  {projects2.map((project) => <ProjectCard {project} />)}
+<Layout title="Projects" description="What I've worked on" class="page-flow projects-page">
+  <header class="grid gap-4">
+    <h1 class="page-title">Projects</h1>
+    <p>I build web apps and developer tools, and work with teams on hackathon projects.</p>
+  </header>
 
-  <h1 class="mt-8 text-3xl font-semibold">Projects</h1>
-  {projects.map((project) => <ProjectCard {project} />)}
+  <section class="page-section" aria-labelledby="hackathons-heading">
+    <h2 id="hackathons-heading" class="section-title">Hackathons</h2>
+    <div class="project-list">
+      {projects2.map((project) => <ProjectCard {project} />)}
+    </div>
+  </section>
+
+  <section class="page-section" aria-labelledby="more-projects-heading">
+    <h2 id="more-projects-heading" class="section-title">More Projects</h2>
+    <div class="project-list">
+      {projects.map((project) => <ProjectCard {project} />)}
+    </div>
+  </section>
 </Layout>

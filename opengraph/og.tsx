@@ -7,7 +7,12 @@ import sharp from "sharp";
 
 export async function ogImage({ title, description, pathname }: RenderFunctionInput) {
   const defaultImage = (
-    <div style={twj("h-full w-full flex items-center justify-center bg-[#fcfcf7] text-[#003943] text-center leading-relaxed")}>
+    <div
+      style={{
+        ...twj("h-full w-full flex items-center justify-center bg-[#fcfcf7] text-[#003943] text-center leading-relaxed"),
+        fontFamily: "Vollkorn",
+      }}
+    >
       <div style={twj("flex items-center justify-center h-full flex-col p-24")}>
         <h1 style={twj("text-8xl")}>{title}</h1>
         <div style={twj("text-6xl")}>{description}</div>

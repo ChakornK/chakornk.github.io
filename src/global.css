@@ -3,9 +3,30 @@
 :root {
   --color-background: oklch(0.97 0.01067 88);
   --color-surface: oklch(0.8687 0.0067 106.54 / 0.2);
-  --color-surface-on-background: color-mix(in oklch, oklch(0.8687 0.0067 106.54) 20%, var(--color-background));
+  --color-surface-on-background: color-mix(
+    in oklch,
+    oklch(0.8687 0.0067 106.54) 20%,
+    var(--color-background)
+  );
   --color-text: oklch(0.25 0.067 203.61);
   --color-highlight: oklch(0.7735 0.139 232.66 / 0.1);
+  --color-muted: color-mix(in oklch, var(--color-text) 72%, var(--color-background));
+
+  --type-display: clamp(2.5rem, 2rem + 2vw, 3.5rem);
+  --type-title: clamp(2rem, 1.5rem + 2vw, 2.75rem);
+  --type-title-compact: 1.5rem;
+  --type-section: clamp(1.75rem, 1.625rem + 0.5vw, 2rem);
+  --type-entry: 1.5rem;
+  --type-body: 1rem;
+  --type-label: 0.875rem;
+  --type-meta: 0.75rem;
+  --leading-body: 1.6;
+  --heading-weight: 500;
+
+  --space-section: 3rem;
+  --space-group: 2rem;
+  --space-heading: 1rem;
+  --space-related: 0.5rem;
 }
 
 html,
@@ -14,6 +35,385 @@ body {
 }
 body {
   @apply bg-background text-text font-sans;
+  font-size: var(--type-body);
+  font-weight: 400;
+  line-height: var(--leading-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.display-title,
+.page-title,
+.section-title,
+.entry-title {
+  @apply font-display;
+  font-weight: var(--heading-weight);
+  font-optical-sizing: auto;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+
+h1,
+.page-title {
+  --heading-weight: 400;
+  font-size: var(--type-title);
+  line-height: 1.1;
+}
+
+h2,
+.section-title {
+  --heading-weight: 450;
+  font-size: var(--type-section);
+}
+
+h3,
+.entry-title {
+  --heading-weight: 500;
+  font-size: var(--type-entry);
+  line-height: 1.15;
+}
+
+h4,
+h5,
+h6 {
+  font-size: 1.25rem;
+}
+
+.display-title {
+  --heading-weight: 400;
+  font-size: var(--type-display);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+.meta-text,
+.skill-label {
+  color: var(--color-muted);
+  font-size: var(--type-label);
+  line-height: 1.5;
+}
+
+.page-flow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-section);
+}
+
+.page-section > .section-title,
+.section-heading-row {
+  margin-bottom: var(--space-heading);
+}
+
+.section-heading-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-related);
+}
+
+.section-heading-row > a {
+  flex-shrink: 0;
+  font-size: var(--type-label);
+  font-weight: 500;
+}
+
+.intro-greeting {
+  @apply font-display;
+  margin-bottom: 0.25rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.intro-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-heading);
+}
+
+.intro-heading > h1 {
+  min-width: 0;
+}
+
+.intro-links {
+  display: flex;
+  flex-shrink: 0;
+  gap: var(--space-related);
+}
+
+.intro-links a {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+}
+
+.intro-links svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.intro-bio {
+  margin-top: 1.5rem;
+}
+
+.intro-bio p + p {
+  margin-top: var(--space-heading);
+}
+
+.skills-list {
+  display: grid;
+  gap: var(--space-heading);
+}
+
+.skill-group {
+  display: grid;
+  gap: var(--space-related);
+}
+
+.skill-label {
+  padding-block: 0.25rem;
+  font-weight: 500;
+}
+
+.skill-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-related);
+  min-width: 0;
+  font-size: var(--type-label);
+  line-height: 1.5;
+}
+
+.skill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-related);
+  max-width: 100%;
+  padding: 0.25rem 0.5rem;
+}
+
+.experience-list {
+  display: grid;
+  gap: var(--space-group);
+}
+
+.experience-entry {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-heading);
+}
+
+.experience-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 1rem;
+}
+
+.experience-role {
+  font-size: var(--type-label);
+  line-height: 1.5;
+}
+
+.experience-date {
+  font-size: var(--type-meta);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.experience-entry > header .chip-list {
+  margin-top: var(--space-related);
+}
+
+.experience-description {
+  display: grid;
+  gap: 0.5rem;
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+
+.project-list {
+  container: project-list / inline-size;
+  display: grid;
+  gap: var(--space-heading);
+}
+
+.project-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: stretch;
+  gap: var(--space-heading);
+  min-width: 0;
+  padding: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.project-card-media {
+  width: 100%;
+  aspect-ratio: 8 / 5;
+}
+
+.project-card-copy {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* The transition captures this box, so it must not stretch with the content column. */
+.project-card-copy > .entry-title {
+  align-self: flex-start;
+  max-width: 100%;
+}
+
+.project-card-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--space-related) 0.75rem;
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+.project-card-footer > [data-project-chips] {
+  flex: 1 1 14rem;
+  min-width: 0;
+}
+
+.project-card-footer > [data-project-links] {
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.project-card:has(> .project-card-link:focus-visible) .entry-title {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.chip-list {
+  font-size: var(--type-meta);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.project-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+}
+
+.project-title-row > .page-title {
+  min-width: 0;
+  margin: 0;
+}
+
+.project-title-row > :last-child {
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.project-summary-block {
+  padding-block: var(--space-related) var(--space-heading);
+}
+
+.project-summary {
+  margin: 0;
+  font-size: var(--type-body);
+  line-height: 1.6;
+}
+
+#project-content {
+  margin-top: var(--space-group);
+}
+
+main .prose {
+  --un-prose-links: var(--color-text);
+  --un-prose-quotes: var(--color-text);
+  --un-prose-captions: var(--color-muted);
+  max-width: none;
+  color: var(--color-text);
+  font-size: var(--type-body);
+  line-height: var(--leading-body);
+}
+
+.prose :is(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: var(--heading-weight);
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: inherit;
+}
+
+.prose :is(h1, h2) {
+  margin-block: var(--space-group) var(--space-heading);
+  font-size: var(--type-section);
+}
+
+.prose h3 {
+  margin-block: 1.5rem 0;
+  font-size: var(--type-entry);
+  line-height: 1.15;
+}
+
+.prose :is(h4, h5, h6) {
+  margin-block: 1.5rem var(--space-related);
+  font-size: 1.25rem;
+}
+
+.prose :is(p, ul, ol) {
+  margin-block: 0 var(--space-heading);
+}
+
+.prose :is(strong, b) {
+  color: inherit;
+  font-weight: 600;
+}
+
+.prose a {
+  overflow-wrap: anywhere;
+}
+
+.error-code {
+  font-size: 6rem;
+  line-height: 1;
+}
+
+@container project-list (min-width: 34em) {
+  .project-card {
+    grid-template-columns: 12rem minmax(0, 1fr);
+  }
+}
+
+@media (min-width: 40rem) {
+  .skill-group {
+    grid-template-columns: 6.5rem minmax(0, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 48rem) {
+  .intro-heading {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
 }
 
 ::selection,
@@ -106,6 +506,6 @@ body {
     @apply m-0;
   }
   a {
-    @apply absolute inset-0
+    @apply absolute inset-0;
   }
 }
