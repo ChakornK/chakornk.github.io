@@ -198,6 +198,8 @@ p {
 .skill-items {
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
   gap: var(--space-related);
   min-width: 0;
   font-size: var(--type-label);
