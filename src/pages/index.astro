@@ -106,20 +106,3 @@ const featuredProjects = featuredProjectList.featured.map((id: string) => featur
     <p id="git-contributions-label" class="meta-text mt-2"></p>
   </section>
 </Layout>
-
-<script src="../scripts/animate.ts"></script>
-
-<style is:global>
-  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
-    .intro-fadein main[data-page="home"] > * {
-      opacity: 0;
-      transition: opacity 300ms ease;
-      contain: content;
-    }
-    body:not(.intro-fadein) main[data-page="home"] > * {
-      opacity: 1 !important;
-      transition: none !important;
-      contain: none !important;
-    }
-  }
-</style>
