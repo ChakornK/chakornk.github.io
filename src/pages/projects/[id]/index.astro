@@ -24,7 +24,7 @@ export const getStaticPaths = (() => {
     <div class="h-px w-full sm:h-auto sm:w-px" data-project-img={projectId}></div>
     <div class="relative w-full">
       {/* Sizing placeholder */}
-      <div aria-hidden="true" class="invisible">
+      <div aria-hidden="true" class="invisible -mx-px">
         <div class="project-title-row">
           <p class="page-title">{frontmatter.name}</p>
           <div><ProjectLinks {...frontmatter} /></div>
@@ -36,6 +36,7 @@ export const getStaticPaths = (() => {
       </div>
 
       {/* Overlap the sticky edges by a pixel to cover subpixel seams. */}
+      {/* -mx-px for better optical alignment */}
       <div class="absolute left-0 right-0 top-0 -mx-px -translate-y-px" id="project-header-visible">
         <div class="project-title-row bg-background">
           <h1 class="page-title transition-[font-size] duration-200" data-project-title={projectId}>
