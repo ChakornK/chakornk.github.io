@@ -441,9 +441,16 @@ main .prose {
   overflow-wrap: anywhere;
 }
 
-.error-code {
-  font-size: 6rem;
+.not-found-code {
+  margin-bottom: var(--space-heading);
+  font-size: clamp(4.5rem, 14vw, 6rem);
   line-height: 1;
+}
+
+.not-found-description {
+  max-width: 32ch;
+  margin: var(--space-heading) auto 0;
+  color: var(--color-muted);
 }
 
 @container project-list (min-width: 34em) {

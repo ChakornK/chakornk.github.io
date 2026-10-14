@@ -3,11 +3,18 @@ import Layout from "@/layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
 ---
 
-<Layout title="404" description="Page not found" class="-mt-8 flex flex-col items-center justify-center text-center">
-  <h1 class="display-title error-code">404</h1>
-  <p class="mt-4">Page not found</p>
-  <a href="/" class="border-text relative mt-4 flex items-center gap-2 border px-4 py-2">
-    <Icon name="carbon:home" size={16} aria-hidden="true" />
-    <span>Return home</span>
-  </a>
+<Layout title="404" description="Page not found" class="flex items-center justify-center">
+  <section class="w-full pb-12 pt-8 text-center" aria-labelledby="not-found-heading">
+    <p class="display-title not-found-code">404</p>
+    <h1 id="not-found-heading" class="page-title">Page not found</h1>
+
+    <div class="intro-links justify-center">
+      <a href="/" class="text-link">
+        <span class="text-link-label">
+          <Icon name="carbon:arrow-left" size={16} aria-hidden="true" />
+          Return home
+        </span>
+      </a>
+    </div>
+  </section>
 </Layout>
