@@ -143,10 +143,39 @@ Prisma:
   icon: simple-icons:prisma
   color: neutral
   link: https://www.prisma.io
-AWS S3:
+AWS S3: &amazon-s3
   icon: simple-icons:amazons3
   color: green
   link: https://aws.amazon.com/s3/
+Amazon S3: *amazon-s3
+Amazon Bedrock:
+  icon: simple-icons:amazonwebservices
+  color: orange
+  link: https://aws.amazon.com/bedrock/
+Amazon Cognito:
+  icon: simple-icons:amazoncognito
+  color: orange
+  link: https://aws.amazon.com/cognito/
+Amazon OpenSearch:
+  icon: simple-icons:opensearch
+  color: blue
+  link: https://aws.amazon.com/opensearch-service/
+Amazon DynamoDB:
+  icon: simple-icons:amazondynamodb
+  color: blue
+  link: https://aws.amazon.com/dynamodb/
+AWS Lambda:
+  icon: simple-icons:awslambda
+  color: orange
+  link: https://aws.amazon.com/lambda/
+Amazon CloudFront:
+  icon: simple-icons:amazonwebservices
+  color: orange
+  link: https://aws.amazon.com/cloudfront/
+AWS CDK:
+  icon: simple-icons:amazonwebservices
+  color: orange
+  link: https://aws.amazon.com/cdk/
 HTML Canvas:
   icon: simple-icons:html5
   color: orange
@@ -180,6 +209,10 @@ deck.gl:
   icon: carbon:code
   color: cyan
   link: https://deck.gl
+MapLibre GL:
+  icon: simple-icons:maplibre
+  color: blue
+  link: https://maplibre.org
 Google Maps:
   icon: simple-icons:googlemaps
   color: green
